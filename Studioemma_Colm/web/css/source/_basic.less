@@ -1,0 +1,1931 @@
+// /**
+//  * Copyright © 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  */
+
+//
+//  Colm
+//  basic classes without mixins
+//  _____________________________________________
+
+/* variables for colm.css */
+
+/* breakpoints */
+@brp-small: 479px;
+@brp-medium: 769px;
+@brp-large: 1024px;
+
+/* Magento 2 responsive variables */
+@brp-small: @screen__xs;
+@brp-medium: @screen__m;
+@brp-large: @screen__l;
+
+/* margins */
+@m-bottom: 2em;
+
+/* paddings / gap */
+@p-gap: 2em;
+@p-gap-lines: 3.2em;
+
+/* line-color */
+@line-color: #e3e3e3;
+
+& when (@media-common = true) {
+
+/* clearfix for the container */
+
+.colm-grid {
+    *zoom: 1; /* IE6-7 */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 0 @m-bottom 0;
+    padding: 0;
+}
+
+.colm-grid:before,
+.colm-grid:after {
+    content: " ";
+    display: table;
+}
+
+.colm-grid:after {
+    clear: both;
+}
+
+/* reset for columns */
+
+.colm-grid {
+
+    > .colm1-2,
+    > .colm1-2-pim,
+    > .colm1-3,
+    > .colm2-3,
+    > .colm1-4,
+    > .colm3-4,
+    > .colm50-25,
+    > .colm280-fixed,
+    > .colm280-fixed-right,
+    > .colm280-flex {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0 0 @m-bottom 0;
+        padding: 0;
+    }
+}
+
+/* images */
+
+.colm-grid img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+} // end when common
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-small) {
+    .colm-grid {
+        > .colm1-2-pim {
+            margin: 0;
+            float: left;
+            width: 50%;
+        }
+
+        > .colm1-2-pim:nth-child(odd) {
+            padding-left: 0;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-2-pim:nth-child(even) {
+            padding-left: @p-gap / 2;
+            padding-right: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-medium) {
+
+    .colm-grid {
+
+        > .colm1-2,
+        > .colm1-2-pim,
+        > .colm1-3,
+        > .colm2-3,
+        > .colm1-4,
+        > .colm3-4,
+        > .colm50-25,
+        > .colm280-fixed,
+        > .colm280-fixed-right,
+        > .colm280-flex {
+            margin: 0;
+        }
+
+        /* 1-2 */
+
+        > .colm1-2,
+        > .colm1-2-pim {
+            float: left;
+            width: 50%;
+        }
+
+        > .colm1-2:nth-child(odd),
+        > .colm1-2-pim:nth-child(odd) {
+            padding-left: 0;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-2:nth-child(even),
+        > .colm1-2-pim:nth-child(even) {
+            padding-left: @p-gap / 2;
+            padding-right: 0;
+        }
+
+        /* 1-3 */
+
+        > .colm1-3 {
+            float: left;
+            width: 33.33%;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: 0;
+            padding-right: @p-gap * 2 / 3;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap / 3;
+            padding-right: @p-gap / 3;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: @p-gap * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3 {
+            float: left;
+            width: 66.66%;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: @p-gap / 3;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: @p-gap / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap * 2 / 3;
+            padding-right: 0;
+        }
+
+
+        /* 1-4 */
+
+        > .colm1-4 {
+            float: left;
+            width: 25%;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap / 2;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap / 2;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: @p-gap / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 {
+            float: left;
+            width: 75%;
+            padding-left: 0;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        /* fixed */
+
+        > .colm280-fixed {
+            float: left;
+            width: 280px;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 312px;
+            padding-right: 0;
+        }
+
+        > .colm280-fixed-right {
+            float: right;
+            width: 280px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 0;
+            padding-right: 312px;
+        }
+
+        /* colm50-25 */
+
+        > .colm50-25 {
+            display: inline-block;
+            width: 50%;
+            margin-right: -.25em;
+            vertical-align: top;
+        }
+
+        > .colm50-25:nth-child(odd) {
+            padding-left: 0;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm50-25:nth-child(even) {
+            padding-left: @p-gap / 2;
+            padding-right: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-large) {
+
+    .colm-grid {
+        /* colm50-25 */
+
+        > .colm50-25 {
+            display: block;
+            float: left;
+            width: 25%;
+            margin-right: 0;
+        }
+
+        > .colm50-25:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        > .colm50-25:nth-child(4n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm50-25:nth-child(4n+3) {
+            padding-left: @p-gap / 2;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm50-25:nth-child(4n+4) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+    }
+}
+
+& when (@media-common = true) {
+
+/* non-responsive */
+
+.colm-grid.non-responsive {
+
+    /* 1-2 */
+
+    .colm1-2 {
+        float: left;
+        width: 50%;
+    }
+
+    .colm1-2:nth-child(odd) {
+        padding-left: 0;
+        padding-right: @p-gap / 2;
+    }
+
+    .colm1-2:nth-child(even) {
+        padding-left: @p-gap / 2;
+        padding-right: 0;
+    }
+
+    /* 1-3 */
+
+    .colm1-3 {
+        float: left;
+        width: 33.33%;
+    }
+
+    .colm1-3:nth-child(3n+1) {
+        padding-left: 0;
+        padding-right: @p-gap * 2 / 3;
+    }
+
+    .colm1-3:nth-child(3n+2) {
+        padding-left: @p-gap / 3;
+        padding-right: @p-gap / 3;
+    }
+
+    .colm1-3:nth-child(3n+3) {
+        padding-left: @p-gap * 2 / 3;
+        padding-right: 0;
+    }
+
+    .colm2-3 {
+        float: left;
+        width: 66.66%;
+    }
+
+    .colm2-3:nth-child(2n+1) {
+        padding-left: 0;
+        padding-right: @p-gap / 3;
+    }
+
+    .colm2-3:nth-child(2n+2) {
+        padding-left: @p-gap / 3;
+        padding-right: 0;
+    }
+
+    .colm2-3 + .colm1-3:nth-child(3n+2) {
+        padding-left: @p-gap * 2 / 3;
+        padding-right: 0;
+    }
+
+
+    /* 1-4 */
+
+    .colm1-4 {
+        float: left;
+        width: 25%;
+    }
+
+    .colm1-4:nth-child(4n+1) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    .colm1-4:nth-child(4n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 2;
+    }
+
+    .colm1-4:nth-child(4n+3) {
+        padding-left: @p-gap / 2;
+        padding-right: @p-gap / 4;
+    }
+
+    .colm1-4:nth-child(4n+4) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+
+    .colm1-2 + .colm1-4:nth-child(4n+2) {
+        padding-left: @p-gap / 2;
+        padding-right: @p-gap / 4;
+    }
+
+    .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+
+    .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+        padding-left: @p-gap / 2;
+        padding-right: 0;
+    }
+
+    .colm1-4 + .colm1-2:nth-child(3n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 4;
+    }
+
+    .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+
+    .colm3-4 {
+        float: left;
+        width: 75%;
+        padding-left: 0;
+        padding-right: @p-gap / 4;
+    }
+
+    .colm1-4 + .colm3-4:nth-child(2n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: 0;
+    }
+
+    .colm3-4 + .colm1-4:nth-child(2n+2) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+
+    /* fixed */
+
+    .colm280-fixed {
+        float: left;
+        width: 280px;
+    }
+
+    .colm280-fixed + .colm280-flex {
+        padding-left: 312px;
+        padding-right: 0;
+    }
+
+    .colm280-fixed-right {
+        float: right;
+        width: 280px;
+    }
+
+    .colm280-fixed-right + .colm280-flex {
+        padding-left: 0;
+        padding-right: 312px;
+    }
+
+    /* colm50-25 */
+
+    .colm50-25 {
+        display: block;
+        float: left;
+        width: 25%;
+        margin-right: 0;
+    }
+
+    .colm50-25:nth-child(4n+1) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    .colm50-25:nth-child(4n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 2;
+    }
+
+    .colm50-25:nth-child(4n+3) {
+        padding-left: @p-gap / 2;
+        padding-right: @p-gap / 4;
+    }
+
+    .colm50-25:nth-child(4n+4) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+}
+
+} // end when common
+
+/* reverse */
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-medium) {
+
+    .colm-grid.reverse {
+
+        /* 1-2 */
+
+        > .colm1-2 {
+            float: right;
+            width: 50%;
+        }
+
+        > .colm1-2:nth-child(odd) {
+            padding-left: @p-gap / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-2:nth-child(even) {
+            padding-left: 0;
+            padding-right: @p-gap / 2;
+        }
+
+        /* 1-3 */
+
+        > .colm1-3 {
+            float: right;
+            width: 33.33%;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: @p-gap * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap / 3;
+            padding-right: @p-gap / 3;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap * 2 / 3;
+        }
+
+        > .colm2-3 {
+            float: right;
+            width: 66.66%;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: @p-gap / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap / 3;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: 0;
+            padding-right: @p-gap * 2 / 3;
+        }
+
+        /* 1-4 */
+
+        > .colm1-4 {
+            float: right;
+            width: 25%;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap / 2;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap / 2;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-left: @p-gap / 4;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        > .colm3-4 {
+            float: right;
+            width: 75%;
+            padding-left: @p-gap / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap / 4;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 4;
+        }
+
+        /* fixed */
+
+        > .colm280-fixed {
+            float: right;
+            width: 280px;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 0;
+            padding-right: 312px;
+        }
+
+        > .colm280-fixed-right {
+            float: left;
+            width: 280px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 312px;
+            padding-right: 0;
+        }
+    }
+}
+
+& when (@media-common = true) {
+
+/* non-responsive reverse */
+
+.colm-grid.reverse.non-responsive {
+
+    /* 1-2 */
+
+    > .colm1-2 {
+        float: right;
+        width: 50%;
+    }
+
+    > .colm1-2:nth-child(odd) {
+        padding-left: @p-gap / 2;
+        padding-right: 0;
+    }
+
+    > .colm1-2:nth-child(even) {
+        padding-left: 0;
+        padding-right: @p-gap / 2;
+    }
+
+    /* 1-3 */
+
+    > .colm1-3 {
+        float: right;
+        width: 33.33%;
+    }
+
+    > .colm1-3:nth-child(3n+1) {
+        padding-left: @p-gap * 2 / 3;
+        padding-right: 0;
+    }
+
+    > .colm1-3:nth-child(3n+2) {
+        padding-left: @p-gap / 3;
+        padding-right: @p-gap / 3;
+    }
+
+    > .colm1-3:nth-child(3n+3) {
+        padding-left: 0;
+        padding-right: @p-gap * 2 / 3;
+    }
+
+    > .colm2-3 {
+        float: right;
+        width: 66.66%;
+    }
+
+    > .colm2-3:nth-child(2n+1) {
+        padding-left: @p-gap / 3;
+        padding-right: 0;
+    }
+
+    > .colm2-3:nth-child(2n+2) {
+        padding-left: 0;
+        padding-right: @p-gap / 3;
+    }
+
+    > .colm2-3 + .colm1-3:nth-child(3n+2) {
+        padding-left: 0;
+        padding-right: @p-gap * 2 / 3;
+    }
+
+    /* 1-4 */
+
+    > .colm1-4 {
+        float: right;
+        width: 25%;
+    }
+
+    > .colm1-4:nth-child(4n+1) {
+        padding-left: @p-gap * 3 / 4;
+        padding-right: 0;
+    }
+
+    > .colm1-4:nth-child(4n+2) {
+        padding-left: @p-gap / 2;
+        padding-right: @p-gap / 4;
+    }
+
+    > .colm1-4:nth-child(4n+3) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 2;
+    }
+
+    > .colm1-4:nth-child(4n+4) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    > .colm1-2 + .colm1-4:nth-child(4n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 2;
+    }
+
+    > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+        padding-left: 0;
+        padding-right: @p-gap / 2;
+    }
+
+    > .colm1-4 + .colm1-2:nth-child(3n+2) {
+        padding-left: @p-gap / 4;
+        padding-right: @p-gap / 4;
+    }
+
+    > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    > .colm3-4 {
+        float: right;
+        width: 75%;
+        padding-left: @p-gap / 4;
+        padding-right: 0;
+    }
+
+    > .colm1-4 + .colm3-4:nth-child(2n+2) {
+        padding-left: 0;
+        padding-right: @p-gap / 4;
+    }
+
+    > .colm3-4 + .colm1-4:nth-child(2n+2) {
+        padding-left: 0;
+        padding-right: @p-gap * 3 / 4;
+    }
+
+    /* fixed */
+
+    > .colm280-fixed {
+        float: right;
+        width: 280px;
+    }
+
+    > .colm280-fixed + .colm280-flex {
+        padding-left: 0;
+        padding-right: 312px;
+    }
+
+    > .colm280-fixed-right {
+        float: left;
+        width: 280px;
+    }
+
+    > .colm280-fixed-right + .colm280-flex {
+        padding-left: 312px;
+        padding-right: 0;
+    }
+}
+
+/* no-padding */
+
+.colm-grid.no-padding,
+.colm-grid.reverse.no-padding,
+.colm-grid.non-responsive.no-padding,
+.colm-grid.reverse.non-responsive.no-padding {
+
+    > .colm1-2,
+    > .colm1-3,
+    > .colm2-3,
+    > .colm1-4,
+    > .colm3-4,
+    > .colm50-25,
+    > .colm1-2:nth-child(odd),
+    > .colm1-2:nth-child(even),
+    > .colm1-3:nth-child(3n+1),
+    > .colm1-3:nth-child(3n+2),
+    > .colm1-3:nth-child(3n+3),
+    > .colm2-3:nth-child(2n+1),
+    > .colm2-3:nth-child(2n+2),
+    > .colm2-3 + .colm1-3:nth-child(3n+2),
+    > .colm1-4:nth-child(4n+1),
+    > .colm1-4:nth-child(4n+2),
+    > .colm1-4:nth-child(4n+3),
+    > .colm1-4:nth-child(4n+4),
+    > .colm1-2 + .colm1-4:nth-child(4n+2),
+    > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3),
+    > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3),
+    > .colm1-4 + .colm1-2:nth-child(3n+2),
+    > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3),
+    > .colm1-4 + .colm3-4:nth-child(2n+2),
+    > .colm3-4 + .colm1-4:nth-child(2n+2) {
+        padding: 0;
+    }
+
+}
+
+.colm-grid.reverse.no-padding > .colm280-fixed-right + .colm280-flex,
+.colm-grid.no-padding > .colm280-fixed + .colm280-flex,
+.colm-grid.reverse.non-responsive.no-padding > .colm280-fixed-right + .colm280-flex,
+.colm-grid.non-responsive.no-padding > .colm280-fixed + .colm280-flex {
+    padding-right: 0;
+    padding-left: 280px;
+}
+
+.colm-grid.reverse.no-padding > .colm280-fixed + .colm280-flex,
+.colm-grid.no-padding > .colm280-fixed-right + .colm280-flex,
+.colm-grid.reverse.non-responsive.no-padding > .colm280-fixed + .colm280-flex,
+.colm-grid.non-responsive.no-padding > .colm280-fixed-right + .colm280-flex {
+    padding-right: 280px;
+    padding-left: 0;
+}
+
+/* no-margin */
+
+.colm-grid.no-margin,
+.colm-grid.no-margin img {
+    margin-bottom: 0;
+}
+
+.colm-grid.no-margin {
+
+    > .colm1-2,
+    > .colm1-3,
+    > .colm2-3,
+    > .colm1-4,
+    > .colm3-4,
+    > .colm50-25,
+    > .colm280-fixed,
+    > .colm280-fixed-right,
+    > .colm280-flex {
+        margin: 0;
+    }
+}
+
+/* lines */
+
+.colm-grid.lines {
+
+    > .colm1-2,
+    > .colm1-3,
+    > .colm2-3,
+    > .colm1-4,
+    > .colm3-4,
+    > .colm50-25,
+    > .colm280-fixed,
+    > .colm280-fixed-right,
+    > .colm280-flex {
+        border-top: 1px @line-color solid;
+        padding-top: @m-bottom;
+        margin-top: @m-bottom;
+    }
+
+    > .colm1-2:first-child,
+    > .colm1-3:first-child,
+    > .colm2-3:first-child,
+    > .colm1-4:first-child,
+    > .colm3-4:first-child,
+    > .colm50-25:first-child,
+    > .colm280-fixed:first-child,
+    > .colm280-fixed-right:first-child,
+    > .colm280-flex:first-child {
+        border-top: 0;
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+} // end when common
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-medium) {
+
+    .pseudo-line {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background: @line-color;
+        top: 0;
+    }
+
+    .colm-grid.lines {
+        position: relative;
+        margin: 0 0 @m-bottom*2 0;
+
+        > .colm1-2,
+        > .colm1-3,
+        > .colm2-3,
+        > .colm1-4,
+        > .colm3-4,
+        > .colm50-25,
+        > .colm280-fixed,
+        > .colm280-fixed-right,
+        > .colm280-flex {
+            position: static;
+            border-top: 0;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        > .colm1-2 *:last-child,
+        > .colm1-3 *:last-child,
+        > .colm2-3 *:last-child,
+        > .colm1-4 *:last-child,
+        > .colm3-4 *:last-child,
+        > .colm50-25:nth-child(4n+3) *:last-child,
+        > .colm50-25:nth-child(4n+4) *:last-child,
+        > .colm280-fixed *:last-child,
+        > .colm280-fixed-right *:last-child,
+        > .colm280-flex *:last-child {
+            margin-bottom: 0;
+        }
+
+        > .colm1-2:nth-child(odd) {
+            padding-left: 0; 
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-2:nth-child(even) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-2:nth-child(even):after {
+            .pseudo-line;
+            left: 50%;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm1-3:nth-child(3n+2):after {
+            .pseudo-line;
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm1-3:nth-child(3n+3):after {
+            .pseudo-line;
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3:nth-child(2n+2):after {
+            .pseudo-line;
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+            .pseudo-line;
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4:nth-child(4n+2):after {
+            .pseudo-line;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3):after {
+            .pseudo-line;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4:nth-child(4n+4):after {
+            .pseudo-line;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+            .pseudo-line;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+            .pseudo-line;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3):after {
+            .pseudo-line;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-right: @p-gap-lines / 4;
+            padding-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+            .pseudo-line;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+            .pseudo-line;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+            .pseudo-line;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm3-4:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+            .pseudo-line;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 332px;
+            padding-right: 0;
+        }
+
+        > .colm280-fixed + .colm280-flex:after {
+            .pseudo-line;
+            left: 306px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 0;
+            padding-right: 332px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex:after {
+            .pseudo-line;
+            right: 306px;
+        }
+
+        > .colm50-25:nth-child(odd) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm50-25:nth-child(even) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm50-25:last-child:after {
+            .pseudo-line;
+            left: 50%;
+            margin-left: 0;
+        }
+
+    }
+
+    .colm-grid.lines.reverse {
+
+        > .colm1-2:nth-child(odd) {
+            padding-left: @p-gap-lines / 2; 
+            padding-right: 0;
+        }
+
+        > .colm1-2:nth-child(even) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm2-3:nth-child(2n+2):after {
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-right: @p-gap-lines / 4;
+            padding-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm3-4:nth-child(2n+1) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 0;
+            padding-right: 332px;
+        }
+
+        > .colm280-fixed + .colm280-flex:after {
+            left: auto;
+            right: 306px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 332px;
+            padding-right: 0;
+        }
+
+        > .colm280-fixed-right + .colm280-flex:after {
+            left: 306px;
+            right: auto;
+        }
+
+        > .colm1-4:nth-child(4n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+4):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+            .pseudo-line;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-large) {
+
+    .pseudo-line-large {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background: @line-color;
+        top: 0;
+    }
+
+    .colm-grid.lines {
+
+        > .colm50-25 *:last-child {
+            margin-bottom: 0;
+        }
+
+        > .colm50-25:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm50-25:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm50-25:nth-child(4n+2):after {
+            .pseudo-line-large;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm50-25:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm50-25:nth-child(4n+3):after {
+            .pseudo-line-large;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm50-25:nth-child(4n+4) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm50-25:nth-child(4n+4):after {
+            .pseudo-line-large;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+    }
+}
+
+& when (@media-common = true) {
+
+/* non-responsive lines */
+
+.pseudo-line-nr {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: @line-color;
+    top: 0;
+}
+
+.colm-grid.non-responsive {
+
+    &.lines {
+        position: relative;
+        margin: 0 0 @m-bottom*2 0;
+
+        > .colm1-2,
+        > .colm1-3,
+        > .colm2-3,
+        > .colm1-4,
+        > .colm3-4,
+        > .colm50-25,
+        > .colm280-fixed,
+        > .colm280-fixed-right,
+        > .colm280-flex {
+            position: static;
+            border-top: 0;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        > .colm1-2 *:last-child,
+        > .colm1-3 *:last-child,
+        > .colm2-3 *:last-child,
+        > .colm1-4 *:last-child,
+        > .colm3-4 *:last-child,
+        > .colm50-25:nth-child(4n+3) *:last-child,
+        > .colm50-25:nth-child(4n+4) *:last-child,
+        > .colm280-fixed *:last-child,
+        > .colm280-fixed-right *:last-child,
+        > .colm280-flex *:last-child {
+            margin-bottom: 0;
+        }
+
+        > .colm1-2:nth-child(odd) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-2:nth-child(even) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-2:nth-child(even):after {
+            .pseudo-line-nr;
+            left: 50%;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm1-3:nth-child(3n+2):after {
+            .pseudo-line-nr;
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm1-3:nth-child(3n+3):after {
+            .pseudo-line-nr;
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3:nth-child(2n+2):after {
+            .pseudo-line-nr;
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+            .pseudo-line-nr;
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4:nth-child(4n+2):after {
+            .pseudo-line-nr;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3):after {
+            .pseudo-line-nr;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4:nth-child(4n+4):after {
+            .pseudo-line-nr;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+            .pseudo-line-nr;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+            .pseudo-line-nr;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3):after {
+            .pseudo-line-nr;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-right: @p-gap-lines / 4;
+            padding-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+            .pseudo-line-nr;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+            .pseudo-line-nr;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+            .pseudo-line-nr;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm3-4:nth-child(2n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+            .pseudo-line-nr;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 332px;
+            padding-right: 0;
+        }
+
+        > .colm280-fixed + .colm280-flex:after {
+            .pseudo-line-nr;
+            left: 306px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 0;
+            padding-right: 332px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex:after {
+            .pseudo-line-nr;
+            right: 306px;
+        }
+
+    }
+
+    &.lines.reverse {
+
+        > .colm1-2:nth-child(odd) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: 0;
+        }
+
+        > .colm1-2:nth-child(even) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-3:nth-child(3n+1) {
+            padding-left: @p-gap-lines * 2 / 3;
+            padding-right: 0;
+        }
+
+        > .colm1-3:nth-child(3n+2) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm1-3:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm2-3:nth-child(2n+1) {
+            padding-left: @p-gap-lines / 3;
+            padding-right: 0;
+        }
+
+        > .colm2-3:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 3;
+        }
+
+        > .colm2-3:nth-child(2n+2):after {
+            left: 66.66%;
+            margin-left: @p-gap-lines / 6;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 2 / 3;
+        }
+
+        > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+            left: 33.33%;
+            margin-left: - @p-gap-lines / 6;
+        }
+
+        > .colm1-4:nth-child(4n+1) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4:nth-child(4n+4) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2) {
+            padding-right: @p-gap-lines / 4;
+            padding-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm3-4:nth-child(2n+1) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: 0;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm280-fixed + .colm280-flex {
+            padding-left: 0;
+            padding-right: 332px;
+        }
+
+        > .colm280-fixed + .colm280-flex:after {
+            left: auto;
+            right: 306px;
+        }
+
+        > .colm280-fixed-right + .colm280-flex {
+            padding-left: 332px;
+            padding-right: 0;
+        }
+
+        > .colm280-fixed-right + .colm280-flex:after {
+            left: 306px;
+            right: auto;
+        }
+
+        > .colm1-4:nth-child(4n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4:nth-child(4n+4):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+            .pseudo-line-nr;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+
+        > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+    }
+
+    &.lines {
+
+        > .colm50-25 *:last-child {
+            margin-bottom: 0;
+        }
+
+        > .colm50-25:nth-child(4n+1) {
+            padding-left: 0;
+            padding-right: @p-gap-lines * 3 / 4;
+        }
+
+        > .colm50-25:nth-child(4n+2) {
+            padding-left: @p-gap-lines / 4;
+            padding-right: @p-gap-lines / 2;
+        }
+
+        > .colm50-25:nth-child(4n+2):after {
+            .pseudo-line-nr;
+            left: 25%;
+            margin-left: -@p-gap-lines / 4;
+        }
+
+        > .colm50-25:nth-child(4n+3) {
+            padding-left: @p-gap-lines / 2;
+            padding-right: @p-gap-lines / 4;
+        }
+
+        > .colm50-25:nth-child(4n+3):after {
+            .pseudo-line-nr;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        > .colm50-25:nth-child(4n+4) {
+            padding-left: @p-gap-lines * 3 / 4;
+            padding-right: 0;
+        }
+
+        > .colm50-25:nth-child(4n+4):after {
+            .pseudo-line-nr;
+            left: 75%;
+            margin-left: @p-gap-lines / 4;
+        }
+    }
+}
+
+} // end when common
