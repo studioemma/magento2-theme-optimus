@@ -1,0 +1,18 @@
+<?php 
+    $_helper    = $this->helper('Magento\Catalog\Helper\Output');
+    $_category  = $block->getCurrentCategory();
+?>
+<meta property="og:type" content="product.group" />
+<?php if ($_name = $block->getCurrentCategory()->getName()): ?>
+    <meta property="og:title" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_name, 'name')) ?>" />
+<?php endif; ?>
+<meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/icons/se-optimus.jpg') ?>" />
+<meta property="og:image:secure_url" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/icons/se-optimus.jpg') ?>" />
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
+<?php if ($_description = $block->getCurrentCategory()->getDescription()): ?>
+    <meta property="og:description" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_description, 'description')) ?>" />
+<?php endif; ?>
+<meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
+<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
