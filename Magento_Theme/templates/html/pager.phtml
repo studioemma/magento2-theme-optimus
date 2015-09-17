@@ -37,7 +37,7 @@
         <?php if ($block->getLastPageNum()>1): ?>
         <div class="pages">
             <strong class="label pages-label" id="paging-label"><?php echo __('Page') ?></strong>
-            <ul class="items pages-items" aria-labelledby="paging-label">
+            <ul class="items pages-items hide-xs" aria-labelledby="paging-label">
             <?php if (!$block->isFirstPage()): ?>
                 <li class="item pages-item-previous">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
@@ -111,7 +111,7 @@
             <?php endif;?>
             </ul>
 
-            <div class="mobile-pager">
+            <div class="mobile-pager show-xs">
                 <select onchange="location = this.options[this.selectedIndex].value;">
                     <?php if ($block->canShowFirst()): ?>
                         <option value="<?php echo $block->getFirstPageUrl() ?>">1</option>

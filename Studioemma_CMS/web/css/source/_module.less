@@ -3,46 +3,126 @@
 //  * See ... for license details.
 //  */
 
-//
-//  CMS
-//  Usefull classes for static-blocks, pages and general use
-//  _____________________________________________
 
-// this code is common so use only once in mobile css
-& when (@media-common = true) {
+    /* pim debug boxes */
+    body.pim-debug {
 
-/* pim debug boxes */
-body.pim-debug {
-
-    .pim-outline {
-        border: 1px blue dashed;
+        .pim-outline {
+            border: 1px blue dashed;
+        }
     }
-}
 
-/* CMS styling */
+    /* CMS styling */
 
-/* figures and images */
+    /* figures and images */
 
-figure.right,
-img.right,
-img.align-right {
-    float: right;
-    margin: 0 0 1em 1.5em;
-}
+    figure.right,
+    img.right,
+    img.align-right {
+        float: right;
+        margin: 0 0 1em 1.5em;
+    }
 
-figure.left,
-img.left,
-img.align-left {
-    float: left;
-    margin: 0 1.5em 1em 0;
-}
+    figure.left,
+    img.left,
+    img.align-left {
+        float: left;
+        margin: 0 1.5em 1em 0;
+    }
 
-figcaption {
-    font-size: .9em;
-}
+    figcaption {
+        font-size: .9em;
+    }
 
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
-    
+    img.wide {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1.5em;
+    }
+
+    figure.wide {
+        margin-bottom: 1.5em;
+    }
+
+    figure.wide img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Resposive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px; height: 0; overflow: hidden;
+    }
+     
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* tables */
+
+    table.cms {
+        border: 1px solid #ccc;
+        margin: 0 0 2em 0;
+    }
+
+    table.cms thead th,
+    table.cms tbody td {
+        padding: .3em .5em;
+    }
+
+    table.cms.half {
+        max-width: 500px;
+    }
+
+    table.cms.center {
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    table.no-cycle tr:nth-child(even) td {
+        background-color: transparent;
+    }
+
+    table.no-cycle tbody tr td {
+        border: 1px solid #dcdcdc;
+    }
+
+    table.no-cycle th {
+        border-bottom-color: #666;
+    }
+
+    /* side-blocks */
+
+    .side-block {
+        padding:  1em;
+        border: 1px #676767 solid;
+        border-radius: 2px;
+        margin: 0 0 1em 0;
+    }
+
+    .side-block *:first-child {
+        margin-top: 0;
+    }
+
+    .side-block *:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Visibility toggle */
+    .hide-xs {
+        display: none !important;
+    }
+
+@media screen and (max-width: 480px) {
     img.right,
     img.left {
         display: block;
@@ -65,77 +145,27 @@ figcaption {
         max-width: 100%;
         height: auto;
     }
-
 }
 
-img.wide {
-    width: 100%;
-    height: auto;
-    margin-bottom: 1.5em;
+//
+//    Desktop
+//--------------------------------------
+
+@media screen and (min-width: 480px) {
+    /* Visibility toggle */
+    .show-xs {
+        display: none !important;
+    }
+    .hide-xs {
+        display: block !important;
+    }
+    .hide-xs.inline {
+        display: inline-block !important;
+    }
 }
 
-figure.wide {
-    margin-bottom: 1.5em;
-}
-
-figure.wide img {
-    width: 100%;
-    height: auto;
-}
-
-/* Resposive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
-}
- 
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* tables */
-
-table.cms {
-    border: 1px solid #ccc;
-    margin: 0 0 2em 0;
-}
-
-table.cms thead th,
-table.cms tbody td {
-    padding: .3em .5em;
-}
-
-table.cms.half {
-    max-width: 500px;
-}
-
-table.cms.center {
-    margin-left:auto;
-    margin-right:auto;
-}
-
-table.no-cycle tr:nth-child(even) td {
-    background-color: transparent;
-}
-
-table.no-cycle tbody tr td {
-    border: 1px solid #dcdcdc;
-}
-
-table.no-cycle th {
-    border-bottom-color: #666;
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-
+@media screen and (min-width: 769px) {
+    /* tables */
     table.cms{
         border: 0;
     }
@@ -144,27 +174,7 @@ table.no-cycle th {
         border-right: 0;
     }
 
-}
-
-/* side-blocks */
-
-.side-block {
-    padding:  1em;
-    border: 1px #676767 solid;
-    border-radius: 2px;
-    margin: 0 0 1em 0;
-}
-
-.side-block *:first-child {
-    margin-top: 0;
-}
-
-.side-block *:last-child {
-    margin-bottom: 0;
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-
+    /* side-blocks */
     .side-block {
         width: 240px;
     }
@@ -179,71 +189,3 @@ table.no-cycle th {
         margin: 0 1.5em 1em 0;
     }
 }
-
-/* Mobile/desktop only visible/invisble */
-
-.hide-mobile {
-    display: none;
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = 1025px) {
-    
-    .hide-desktop {
-        display: none;
-    }
-
-    .hide-mobile {
-        display: block;
-    }
-
-}
-
-.hide-phone-only {
-    display: none;
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = 768px) {
-
-    .hide-tablet {
-        display: none;
-    }
-}
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = 769px) {
-
-    .hide-phone-only {
-        display: block;
-    }
-}
-
-/* Clearfix */
-
-.cf:before,
-.cf:after {
-    content: " "; 
-    display: table; 
-}
-
-.cf:after {
-    clear: both;
-}
-
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.cf {
-    *zoom: 1;
-}
-
-/* Sometimes it is handy to add an extra clear element at the end */
-
-.clear {
-    height: 0;
-    clear: both;
-}
-
-} // end when common
-
-
-
