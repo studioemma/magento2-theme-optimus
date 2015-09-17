@@ -1,0 +1,65 @@
+// /**
+//  * Copyright © 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  */
+
+.toolbar.toolbar-products {
+    .block.filter {
+        clear: left;
+        float: left;
+        text-align: left;
+        margin-top: 4px;
+        
+        .block-content.filter-content {
+            display: none;
+        }
+
+        .block-title {
+            cursor: pointer;
+            
+           .icon-font(
+                @icon-next,
+                @_icon-font-position: after,
+                @_icon-font-color: @primary__color,
+                @_icon-font-size: 34px,
+                @_icon-font-text-hide: true
+            );
+            
+            &:after {
+                line-height: 34px;
+            }
+        }
+
+        &.opened {
+            .block-title {
+                .icon-font(
+                    @icon-down,
+                    @_icon-font-position: after,
+                    @_icon-font-color: @primary__color,
+                    @_icon-font-size: 34px,
+                    @_icon-font-text-hide: true
+                );  
+                
+                &:after {
+                    line-height: 34px;
+                }  
+            } 
+
+            .block-content.filter-content {
+                display: block;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 99;
+                width: calc(~"100vw - 25px");
+                background-color: #fff;
+                border: 1px solid #d1d1d1;
+                padding: 10px;
+            }
+        }
+    }
+
+    .sorter {
+        float: right;
+    }
+}

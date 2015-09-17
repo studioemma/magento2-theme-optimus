@@ -42,6 +42,9 @@ define([
             setTimeout(function () {
                 $('.product.data.items').tabs('option', 'openOnFocus', true);
             }, 500);
+
+            /* Move layered navigation back to sidebar */
+            $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
         },
         // Switch to Mobile Version
         exit: function () {
@@ -76,6 +79,15 @@ define([
             setTimeout(function () {
                 $('.product.data.items').tabs('option', 'openOnFocus', false);
             }, 500);
+
+            /* Move layered navigation to top */
+            $(".sidebar.sidebar-main .block.filter").detach().insertBefore($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
         }
+    });
+
+    $(document).ready(function () {
+        $(".catalog-category-view .block.filter .block-title").click(function() {
+            $(this).parent().toggleClass('opened');
+        }); 
     });
 });
