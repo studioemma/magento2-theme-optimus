@@ -1,0 +1,39 @@
+// /**
+//  * Copyright © 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  * Enable one-column layout for category grid on mobile
+//  */
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .product {
+        &-item {
+            .products-grid & {
+                width: 100%;
+                
+                &-info {
+                    .page-products & {
+                        width: 100%;
+                    }
+                }
+
+                .product-item-photo {
+                    width: 110px;
+                    float: left;
+                    
+                    .product-image-container {
+                        width: 100% !important;
+                    }
+                }
+
+                .product-item-details {
+                    overflow: hidden;
+                    padding-left: 10px;
+                }
+            }            
+        }
+    } 
+}
