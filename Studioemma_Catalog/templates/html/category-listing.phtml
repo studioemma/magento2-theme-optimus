@@ -1,0 +1,71 @@
+<!--
+/**
+ * Category listing template
+ * Copyright © 2015 Studio Emma. All rights reserved.
+ * 
+ */
+-->
+
+<?php
+
+//Get current category
+$currentCategory = $block->getCurrentCategory();
+//Declare filtered category array
+$categories = array();
+
+//Check to see if only selected categories should be shown, or all children from the current category
+if(empty($this->getSelectedCategoryIds())){
+    if($currentCategory->hasChildren()){
+        foreach ($currentCategory->getChildrenCategories() as $category)
+        {
+            //Add category to array
+            $categories[] = $category;
+        }
+    }
+}else{
+
+    $selected_categories = explode(',',$this->getSelectedCategoryIds());
+    $manager = Magento\Framework\App\ObjectManager::getInstance();
+
+    foreach ($selected_categories as $category)
+    {
+        //Add category to array
+        $cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
+        $categories[] = $cat; 
+
+    }
+
+}
+
+?>
+<?php if(count($categories) > 0): 
+$cssClasses = "";
+
+if(!empty($this->getCssClass())): ?>
+<div class='<?php echo $this->getCssClass()?>'>
+<?php endif; ?>
+    <?php if($block->getTitle() != ''): ?>
+    <h2><?php echo $block->getTitle(); ?></h2>
+    <?php endif; ?>
+
+    <nav role="navigation">
+        <ul class="catalog-navigation">
+        <?php 
+        for($i=0;$i<count($categories);$i++):
+            if(isset($categories[$i])): 
+            ?>
+                <li class='category category-<?php echo $categories[$i]->getId(); ?>'><a class="category-link" href="<?php echo $categories[$i]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]->getName());?>">
+                    <span><?php echo $this->escapeHtml($categories[$i]->getName()); ?></span>
+                    </a>
+                </li>
+
+            <?php endif; ?>
+        <?php endfor; ?>
+        </ul>
+    </nav>
+<?php if(!empty($this->getCssClass())): ?>
+</div>
+<?php endif; ?>
+
+<?php endif; ?>
+
