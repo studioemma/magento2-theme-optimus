@@ -33,7 +33,23 @@
                     overflow: hidden;
                     padding-left: 10px;
                 }
-            }            
+            }                 
         }
     } 
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .product {
+        &-item {
+            &-actions {
+                display: block;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .product-item-actions .actions-secondary > .action.tocompare {
+        display: inline-block;
+    }
 }
