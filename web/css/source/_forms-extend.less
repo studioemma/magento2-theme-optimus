@@ -1,1 +1,14 @@
 @form-field-label-asterisk__color: @primary__color;
+@form-field-type-label-inline__align: left;
+
+//
+//  Desktop
+//  ---------------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .actions-toolbar {
+        .secondary {
+            float: left;
+            margin-left: @indent__m;
+        }
+    }
+}
