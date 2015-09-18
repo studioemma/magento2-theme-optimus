@@ -14,6 +14,28 @@
     );
 }
 
-.cart-container .form-cart #empty_cart_button {
+.col.qty {
+    min-width: 150px;
+    
+    .select-qty {
+        min-width: 50px;
+        max-width: 50px;
+    }
+
+    .small-save-button {
+        padding: 7px 4px;
+        
+        .icon-font (
+            @icon-checkmark,
+            @_icon-font-position: after,
+            @_icon-font-color: @primary__color,
+            @_icon-font-size: 23px,
+            @_icon-font-text-hide: true
+        );
+    }
+}
+
+.cart-container .form-cart #empty_cart_button,
+.control.qty .small-save-button {
     display: none;
 }

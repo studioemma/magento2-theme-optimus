@@ -86,8 +86,34 @@ define([
     });
 
     $(document).ready(function () {
+        /* Mobile layered nav toggle */
         $(".catalog-category-view .block.filter .block-title").click(function() {
             $(this).parent().toggleClass('opened');
         }); 
+
+        /* Cart quantity override */
+        $("#shopping-cart-table .col.qty .select-qty").change(function() {
+            if($(this).val() == "more") {
+                $(this).hide();
+                $(this).next(".qty").css('display', 'inline-block');
+                $(this).next(".qty").focus();
+                $(this).next(".qty").select();
+            } else {
+                $(this).next(".qty").val($(this).val());
+            }
+            $(this).siblings('.small-save-button').css('display','inline-block');
+        });
+
+        /* PDP quantity override */
+        $(".box-tocart .select-qty").change(function() {
+            if($(this).val() == "more") {
+                $(this).hide();
+                $(this).next(".qty").css('display', 'inline-block');
+                $(this).next(".qty").focus();
+                $(this).next(".qty").select();
+            } else {
+                $(this).next(".qty").val($(this).val());
+            }
+        });
     });
 });

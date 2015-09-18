@@ -1,0 +1,97 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="box-tocart">
+    <fieldset class="fieldset">
+        <?php if ($block->shouldRenderQuantity()): ?>
+        <div class="field qty">
+            <label class="label" for="qty"><span><?php echo __('Qty') ?></span></label>
+            <div class="control">
+                <select class="select-qty">
+                        <option value="<?php echo $block->getProductDefaultQty() ?>"><?php echo $block->getProductDefaultQty() ?></option>
+                        <?php if ($block->getProductDefaultQty() != 1 ): ?>
+                        <option value="1">1</option>
+                        <?php endif; ?>
+                        <?php if ($block->getProductDefaultQty() != 2 ): ?>
+                        <option value="2">2</option>
+                        <?php endif; ?>
+                        <?php if ($block->getProductDefaultQty() != 3 ): ?>
+                        <option value="3">3</option>
+                        <?php endif; ?>
+                        <?php if ($block->getProductDefaultQty() != 4 ): ?>
+                        <option value="4">4</option>
+                        <?php endif; ?>
+                        <?php if ($block->getProductDefaultQty() != 5 ): ?>
+                        <option value="5">5</option>
+                        <?php endif; ?>
+                        <option value="more"><?php echo __('More') ?></option>
+                    </select>
+                <input type="number"
+                       name="qty"
+                       id="qty"
+                       maxlength="12"
+                       value="<?php echo $block->getProductDefaultQty() * 1 ?>"
+                       title="<?php echo __('Qty') ?>" class="input-text qty"
+                       data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                       style="display: none;"
+                       />
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="actions">
+            <button type="submit"
+                    title="<?php echo $buttonTitle ?>"
+                    class="action primary tocart"
+                    id="product-addtocart-button">
+                <span><?php echo $buttonTitle ?></span>
+            </button>
+            <?php echo $block->getChildHtml('', true) ?>
+        </div>
+    </fieldset>
+</div>
+<?php endif; ?>
+<?php if ($block->isRedirectToCartEnabled()) : ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+</script>
+<?php else : ?>
+<script>
+    require([
+        'jquery',
+        'mage/mage',
+        'Magento_Catalog/product/view/validation',
+        'Magento_Catalog/js/catalog-add-to-cart'
+    ], function ($) {
+        'use strict';
+
+        $('#product_addtocart_form').mage('validation', {
+            radioCheckboxClosest: '.nested',
+            submitHandler: function (form) {
+                var widget = $(form).catalogAddToCart({
+                    bindSubmit: false
+                });
+
+                widget.catalogAddToCart('submitForm', $(form));
+
+                return false;
+            }
+        });
+    });
+</script>
+<?php endif; ?>
