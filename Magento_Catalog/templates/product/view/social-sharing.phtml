@@ -1,9 +1,15 @@
+<?php
+    $_product = $block->getProduct();
+    $_productName = $_product->getName();
+    $_productUrl = $_product->getProductUrl();
+?>
+
 <div class="social-sharing">
     <a href="#" title="" class="hover-action">share</a>
     <div class="hover-action-content">
         <ul>
             <li>
-                <a href="#" title="" class="social-facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=440,width=600');return false;" title="" class="social-facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="19" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -14,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" title="" class="social-gplus">
+                <a href="https://plus.google.com/share?url=<?php echo $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=800,width=600');return false;" title="" class="social-gplus">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="20" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -26,18 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" title="" class="social-instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="20" viewBox="0 0 128 128">
-                      <g>
-                        <g>
-                          <path fill="#517fa4" fill-rule="evenodd" clip-rule="evenodd" d="M16.429 0h95.142c9.036 0 16.429 7.393 16.429 16.429v95.142c0 9.036-7.393 16.429-16.429 16.429h-95.142c-9.036 0-16.429-7.393-16.429-16.429v-95.142c0-9.036 7.393-16.429 16.429-16.429zm76.814 14.222c-3.17 0-5.763 2.593-5.763 5.763v13.793c0 3.17 2.593 5.763 5.763 5.763h14.468c3.169 0 5.762-2.593 5.762-5.763v-13.793c0-3.17-2.593-5.763-5.762-5.763h-14.468zm20.29 39.909h-11.266c1.066 3.481 1.641 7.166 1.641 10.983 0 21.291-17.813 38.55-39.786 38.55-21.973 0-39.785-17.259-39.785-38.55 0-3.816.575-7.502 1.641-10.983h-11.756v54.069c0 2.799 2.29 5.088 5.088 5.088h89.134c2.799 0 5.088-2.29 5.088-5.088v-54.07zm-49.411-15.316c-14.197 0-25.707 11.152-25.707 24.908 0 13.757 11.51 24.909 25.707 24.909 14.198 0 25.707-11.152 25.707-24.909 0-13.756-11.509-24.908-25.707-24.908z"></path>
-                        </g>
-                      </g>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" title="" class="social-pinterest">
+                <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($block->getProduct(), 'image', $block->getImageFile()); ?>&description=<?php echo $_productName; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" title="" class="social-pinterest">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="20" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -48,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" title="" class="social-twitter">
+                <a href="https://twitter.com/intent/tweet?text=<?php echo $_productName . '+' . $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=440,width=600');return false;" title="" class="social-twitter twitter-share-button">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="20" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -61,3 +56,4 @@
         </ul>
     </div>
 </div>
+
