@@ -10,6 +10,10 @@
         <remove name="paypal.partner.right.logo" />
         <remove name="bml.right.logo" />
         <remove name="bml.center.logo" />
+        <remove name="wish-list-link" />
+        <remove name="customer-account-navigation-billing-agreements-link" />
+        <remove name="customer-account-navigation-downloadable-products-link" />
+        <remove name="sale.reorder.sidebar" />
 
         <referenceBlock name="head.additional">
             <block class="Magento\Framework\View\Element\Template" name="opengraph.general" template="Magento_Theme::html/opengraph/general.phtml" />
