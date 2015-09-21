@@ -27,6 +27,21 @@
     display: none;
 }
 
+//
+//  Sidebar product view
+//  ---------------------------------------------
+
+.sidebar {
+    .product-items {
+        .product-item {
+            margin-bottom: 40px;
+            
+            &-info {
+                &:extend(.abs-add-clearfix all);
+            }
+        }
+    }
+}
 
 //
 //  Mobile
@@ -75,5 +90,19 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .product-item-actions .actions-secondary > .action.tocompare {
         display: inline-block;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sidebar {
+        .product-items {
+            .product-item {
+                &-info {
+                    .product-item-photo {
+                        float: none;
+                    }
+                }
+            }
+        }
     }
 }
