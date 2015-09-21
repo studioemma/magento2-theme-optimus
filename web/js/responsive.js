@@ -115,5 +115,15 @@ define([
                 $(this).next(".qty").val($(this).val());
             }
         });
+
+        /* General dropdown from regular anchor */
+        $('.hover-action').toggle(function() {
+            $(this).next('.hover-action-content').andSelf().wrapAll("<div class='hover-action-container' />");
+            $(this).next('.hover-action-content').addClass('open');
+            return false;
+        }, function(){
+            $(this).next('.hover-action-content').andSelf().unwrap();
+            $(this).next('.hover-action-content').removeClass('open');
+        });
     });
 });
