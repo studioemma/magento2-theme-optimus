@@ -3,8 +3,6 @@
 //  * See ... for license details.
 //  */
 
-/* Replace breadcrumbs on mobile with previous category link */
-
 html {
   box-sizing: border-box;
 }
@@ -13,6 +11,7 @@ html {
   box-sizing: inherit;
 }
 
+/* Replace breadcrumbs on mobile with previous category link */
 .breadcrumbs {
     display: none;
 }
@@ -25,4 +24,77 @@ html {
     .breadcrumbs {
         display: block;
     }    
+}
+
+.footer.content {
+    /* Newsletter */
+    .block.newsletter {
+        float: none;
+        width: auto;
+    }
+
+    /* Social */
+    .social {
+        ul {
+            font-size: 0;
+            text-align: left;
+
+            li {
+                display: inline-block;
+                font-size: 1rem;
+                margin: 0 5px 5px 0;
+            }
+        }
+    }
+
+    /* About store */
+    .about-store {
+        text-align: center;
+    }
+
+    /* Payment methods */
+    .payment-methods {
+        ul {
+            font-size: 0;
+            text-align: center;
+            
+            li {
+                display: inline-block;
+                font-size: 1rem;
+                margin: 0 10px 5px 0;
+                
+                svg {
+                    width: 70px;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .footer.content {
+        /* Social */
+        .social {            
+            ul {
+                text-align: right;
+            }
+        }
+
+        /* About store */
+        .about-store {
+            text-align: left;
+        }
+
+        /* Payment methods */
+        .payment-methods {
+            ul {
+                text-align: right;
+            }
+        }
+    }
 }

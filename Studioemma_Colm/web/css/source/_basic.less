@@ -16,7 +16,8 @@
 @brp-large: 1024px;
 
 /* Magento 2 responsive variables */
-@brp-small: @screen__xs;
+@brp-xsmall: @screen__xs;
+@brp-small: @screen__s;
 @brp-medium: @screen__m;
 @brp-large: @screen__l;
 
@@ -85,7 +86,7 @@
 
 } // end when common
 
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-small) {
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-xsmall) {
     .colm-grid {
         > .colm1-2-pim {
             margin: 0;
@@ -104,6 +105,7 @@
         }
     }
 }
+
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-medium) {
 

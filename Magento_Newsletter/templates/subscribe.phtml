@@ -1,15 +1,42 @@
 <?php
-    $_product = $block->getProduct();
-    $_productName = $_product->getName();
-    $_productUrl = $_product->getProductUrl();
-?>
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
-<div class="social-sharing">
-    <a href="#" title="" class="hover-action">share</a>
-    <div class="hover-action-content">
+// @codingStandardsIgnoreFile
+
+?>
+<div class="colm1-4">
+    <div class="block newsletter">
+        <div class="title"><strong>Newsletter</strong></div>
+        <div class="content">
+            <form class="form subscribe"
+                novalidate
+                action="<?php echo $block->getFormActionUrl() ?>"
+                method="post"
+                data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                id="newsletter-validate-detail">
+                <div class="field newsletter">
+                    <label class="label" for="newsletter"><span><?php echo __('Sign Up for Our Newsletter:') ?></span></label>
+                    <div class="control">
+                        <input name="email" type="email" id="newsletter"
+                                    placeholder="<?php echo __('Enter your email address') ?>"
+                                    data-validate="{required:true, 'validate-email':true}"/>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="action subscribe primary" title="<?php echo __('Subscribe') ?>" type="submit">
+                        <span><?php echo __('Subscribe') ?></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="social">
         <ul>
             <li>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=440,width=600');return false;" title="" class="social-facebook">
+                <a href="#" title="" class="social-facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="19" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -20,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://plus.google.com/share?url=<?php echo $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=800,width=600');return false;" title="" class="social-gplus">
+                <a href="#" class="social-gplus">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="20px" viewBox="0 0 128 128"  xml:space="preserve">
                         <g>
                             <path fill="#DC4A38" d="M126.515,4.109H8.144c-2.177,0-3.94,1.763-3.94,3.938v115.546c0,2.179,1.763,3.942,3.94,3.942h118.371   c2.177,0,3.94-1.764,3.94-3.942V8.048C130.455,5.872,128.691,4.109,126.515,4.109z"/>
@@ -33,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($block->getProduct(), 'image', $block->getImageFile()); ?>&description=<?php echo $_productName; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" title="" class="social-pinterest">
+                <a href="#" title="" class="social-pinterest">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="20" height="20" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -44,7 +71,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://twitter.com/intent/tweet?text=<?php echo $_productName . '+' . $_productUrl; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=440,width=600');return false;" title="" class="social-twitter twitter-share-button">
+                <a href="#" class="social-twitter twitter-share-button">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="20" viewBox="0 0 128 128">
                       <g>
                         <g>
@@ -57,4 +84,3 @@
         </ul>
     </div>
 </div>
-
