@@ -98,3 +98,21 @@ html {
         }
     }
 }
+
+
+/* Collapsible nav */
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .abs-toggling-title-mobile, .block-collapsible-nav .title {
+        margin: 15px (@indent__base - 5px) 0 (@indent__base - 5px);
+        border: 1px solid @color-gray82;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    .block-collapsible-nav {
+        .content {
+            margin: 0 (@indent__base - 5px);
+        }
+    }
+}
