@@ -45,6 +45,9 @@ define([
 
             /* Move layered navigation back to sidebar */
             $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
+
+            /* Move store USP block to header */
+            $("footer .footer .store-usp").detach().prependTo($('.panel.header'));
         },
         // Switch to Mobile Version
         exit: function () {
@@ -82,6 +85,9 @@ define([
 
             /* Move layered navigation to top */
             $(".sidebar.sidebar-main .block.filter").detach().insertBefore($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
+            
+            /* Move store USP block to footer */
+            $(".panel.header .store-usp").detach().prependTo($('footer .footer'));
         }
     });
 

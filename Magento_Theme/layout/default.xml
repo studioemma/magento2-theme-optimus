@@ -23,6 +23,10 @@
             <block class="Magento\Framework\View\Element\Template" name="opengraph.general" template="Magento_Theme::html/opengraph/general.phtml" />
             <block class="Magento\Framework\View\Element\Template" name="favicons" template="Magento_Theme::html/favicons/favicons.phtml" />
         </referenceBlock>
+
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="store.usp" template="Magento_Theme::html/store-usp.phtml" />
+        </referenceContainer>
         
         <!-- Footer (containing user content, newsletter and social -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">

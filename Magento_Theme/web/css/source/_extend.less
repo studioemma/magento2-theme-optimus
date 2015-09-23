@@ -116,3 +116,50 @@ html {
         }
     }
 }
+
+/* Store USPs */
+.store-usp {
+    ul {
+        font-size: 0;
+        margin: 0;
+        padding: 0;
+        
+        li {
+            display: inline-block;
+            font-size: 1.4rem;
+            margin: 0 10px 0 0;
+            
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    &.icons {
+        ul {
+            li {                    
+                &:before {
+                    content: "\f00c";
+                    font-family: "FontAwesome";
+                    display: inline-block;
+                    padding-right: 7px;
+                    color: @color-gray68;
+                }
+            }
+        }
+    }
+}
+
+.footer.content .store-usp {
+    margin-bottom: 20px;
+    
+    ul li {
+        margin: 0 10px 5px 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .store-usp {
+        float: left;
+    }
+}
