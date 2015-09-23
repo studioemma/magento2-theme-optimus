@@ -1,0 +1,133 @@
+// /**
+//  * Copyright © 2015 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//    Common
+//--------------------------------------
+
+& when (@media-common = true) {
+
+.product.data.items {
+    .data-accordion();
+    > .item.title {
+        > .switch {
+            position: relative;
+            font-size: 1.4rem;
+            padding: 10px 20px;
+            height: auto;
+            line-height: inherit;
+            
+            .icon-font(
+                @_icon-font-content: @icon-down,
+                @_icon-font-size: 34px,
+                @_icon-font-line-height: @icon-font__line-height,
+                @_icon-font-color: @icon-font__color,
+                @_icon-font-color-hover: @icon-font__color-hover,
+                @_icon-font-color-active: @icon-font__color-active,
+                @_icon-font-margin: @icon-font__margin,
+                @_icon-font-vertical-align: @icon-font__vertical-align,
+                @_icon-font-position: after,
+                @_icon-font-display: false
+            );
+            &:after {
+                position: absolute;
+                right: @accordion-control__padding-right;
+                top: 50%;
+                margin-top: -4px;
+                line-height: 10px;
+            }
+        }
+
+        &:not(.disabled) > .switch:active,
+        &.active > .switch,
+        &.active > .switch:focus,
+        &.active > .switch:hover {
+            padding-bottom: 10px;
+        }
+
+        &.active a:after {
+            content: @icon-up;
+        }
+    }
+    .value p:last-child {
+        margin-bottom: 0;
+    }
+    .table-wrapper {
+        margin: 0;
+    }
+}
+
+}
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product.data.items {
+        /* Remove .data-tabs(); if you want accordion on desktop */
+        .data-tabs();
+        border-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        
+        > .item.title {
+            > .switch {
+                height: auto;
+                line-height: inherit;
+                
+                /* Remove &:after if you want accordion on desktop */
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
+        /* Add below if you want regular blocks on desktop 
+        > .item.title {
+            > .switch {
+                border: none;
+                cursor: default;
+                background: transparent;
+                pointer-events: none;
+                padding: 0;
+                margin-bottom: 10px;
+                color: @primary__color;
+                
+                font-size: 2.6rem;
+                font-weight: 300;
+                line-height: 1.1;
+                margin-top: 2.5rem;
+                margin-bottom: 2rem;
+                        
+                &:after {
+                    display: none;
+                }
+
+                &:visited {
+                    color: @primary__color;
+                }
+            }
+
+            &:not(.disabled) > .switch:active,
+            &.active > .switch,
+            &.active > .switch:focus,
+            &.active > .switch:hover {
+                padding-bottom: 0;
+            }
+
+            &:not(.disabled) > .switch:focus,
+            &:not(.disabled) > .switch:hover {
+                background: transparent;
+            }
+        }
+
+        > .item.content {
+            display: block !important;
+            border: 0;
+            padding: 0;
+        }*/
+
+    }
+}
