@@ -9,5 +9,11 @@
     <body>
         <remove name="wishlist_sidebar" />
         <remove name="catalog.compare.sidebar" />
+
+        <referenceBlock name="customer_account_navigation_block">
+            <arguments>
+                <argument name="block_title" translate="true" xsi:type="string">Account menu</argument>
+            </arguments>
+        </referenceBlock>
     </body>
 </page>

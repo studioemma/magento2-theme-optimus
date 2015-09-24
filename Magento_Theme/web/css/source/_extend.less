@@ -88,6 +88,15 @@ html {
     }
 
     .footer.content {
+        /* Newsletter */
+        .block.newsletter {
+            .actions {
+                display: block;
+                width: auto;
+                margin-top: 5px;
+            }
+        }
+
         /* Social */
         .social {            
             ul {
@@ -104,6 +113,19 @@ html {
         .payment-methods {
             ul {
                 text-align: right;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .footer.content {
+        /* Newsletter */
+        .block.newsletter {
+            .actions {
+                display: table-cell;
+                width: 1%;
+                margin-top: 0;
             }
         }
     }
