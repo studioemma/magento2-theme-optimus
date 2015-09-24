@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if (count($block->getStores())>1): ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : ''?>
+    <div class="language-footer">
+        <strong class="label switcher-label"><span><?php echo __('Change language') ?></span></strong>
+        <ul class="dropdown switcher-dropdown">
+            <?php foreach ($block->getStores() as $_lang): ?>
+                <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
+                    <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">
+                        <a href="#" data-post='<?php echo $block->getTargetStorePostData($_lang); ?>'>
+                            <?php echo $block->escapeHtml($_lang->getName()) ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

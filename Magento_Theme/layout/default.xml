@@ -35,7 +35,7 @@
             <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" after="-" template="subscribe.phtml"/>
         </referenceContainer>
 
-        <!-- After footer (containing copyright, address and payment -->
+        <!-- After footer (containing copyright, address, payment and languages -->
         <container name="after.footer" htmlTag="div" htmlClass="page bottom" after="footer">
             <container name="after.footer.content" htmlTag="div" htmlClass="footer content colm-grid">
                 <container name="about.store" htmlTag="div" htmlClass="about-store colm1-2">
@@ -45,6 +45,7 @@
                 <container name="payment.methods" htmlTag="div" htmlClass="payment-methods colm1-2">
                     <block class="Magento\Theme\Block\Html\Footer" name="payment.icons" template="html/payment.phtml"/>
                 </container>
+                <block class="Magento\Store\Block\Switcher" name="store_language_footer" template="Magento_Theme::html/languages_footer.phtml" after="-" />
             </container>
         </container>
     </body>

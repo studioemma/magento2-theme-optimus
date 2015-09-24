@@ -47,7 +47,7 @@ define([
             $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
 
             /* Move store USP block to header */
-            $("footer .footer .store-usp").detach().prependTo($('.panel.header'));
+            $("footer .footer .store-usp").detach().insertAfter($('.panel.header .switcher-language'));
         },
         // Switch to Mobile Version
         exit: function () {
@@ -131,5 +131,10 @@ define([
             $(this).next('.hover-action-content').andSelf().unwrap();
             $(this).next('.hover-action-content').removeClass('open');
         });
+
+        /* Footer language dropdown */
+        $(".page.bottom .language-footer .switcher-label").click(function() {
+            $(this).parent().toggleClass('open');
+        })
     });
 });
