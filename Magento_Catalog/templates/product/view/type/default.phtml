@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
+
+<?php if ($block->displayProductStockStatus()): ?>
+    <?php if ($_product->isAvailable()): ?>
+        <div class="stock available" title="<?php echo __('Availability') ?>">
+            <span><?php echo __('In stock') ?></span>
+        </div>
+    <?php else: ?>
+        <div class="stock unavailable" title="<?php echo __('Availability') ?>">
+            <span><?php echo __('Out of stock') ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
