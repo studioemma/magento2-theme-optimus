@@ -136,5 +136,18 @@ define([
         $(".page.bottom .language-footer .switcher-label").click(function() {
             $(this).parent().toggleClass('open');
         })
+
+        /* Related products: visual buttons checkbox toggle functionality */
+        $(".block.related .item button").on("click", function() {
+            $(this).next().find('input[type=checkbox]').trigger('click');
+            $(this).toggleClass('toggled');
+
+        });
+
+        /*$(".block.related .item button").toggle(function() {
+            $(this).append("<php echo __('Added to order') ?>");
+        }, function(){
+            $(this).append("<?php echo __('Add to order?') ?>");
+        });*/
     });
 });

@@ -10,5 +10,12 @@
         <referenceContainer name="product.info.social">
             <block class="Magento\Catalog\Block\Product\View" name="product.info.socialsharing" template="product/view/social-sharing.phtml" after="product.info.mailto" />
         </referenceContainer>
+
+        <referenceBlock name="catalog.product.related">
+            <arguments>
+                <!-- Activate below for visual buttons on related products -->
+                <argument name="css_class" xsi:type="string">visual-buttons</argument>
+            </arguments>
+        </referenceBlock>
     </body>
 </page>

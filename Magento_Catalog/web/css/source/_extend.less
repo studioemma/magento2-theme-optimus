@@ -123,3 +123,38 @@
         }
     }
 }
+
+/* Related products: visual buttons instead of good ol' boring checkboxes */
+.block.related {
+    .item {
+        button {
+            position: relative;
+            
+            &:after {
+                font-family: "FontAwesome";
+                padding-left: @indent__s;
+                position: absolute;
+                top: 50%;
+                right: 8px;
+                margin-top: -8px;
+            }
+
+            &.toggled {
+                padding-right: 30px;
+                
+                &:after {
+                    content: "\f00c";
+                }
+            }
+        }
+
+        .field.choice.related {
+            &.hidden {
+                display: none;
+            }
+        }
+    }
+    
+}
+
+
