@@ -1,0 +1,23 @@
+<?php
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $_product = $block->getProduct();
+
+    $_code = $block->getAtCode();
+    $_className = $block->getCssClass();
+    $_attributeLabel = $block->getAtLabel();
+    $_attributeType = $block->getAtType();
+    $_attributeAddAttribute = $block->getAddAttribute();
+
+    if ($_attributeLabel && $_attributeLabel == 'default') {
+        $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
+    }
+
+    $_attributeValue =$_product->getResource()->getAttribute($_code)->getFrontend()->getValue($_product);
+?>
+
+<?php if ($_attributeValue): ?>
+    <div class="product attibute <?php echo $_className?>">
+        <?php if ($_attributeLabel != 'none'): ?><strong class="type"><?php echo $_attributeLabel?></strong><?php endif; ?>
+        <div class="value" <?php echo $_attributeAddAttribute;?>><?php echo $_attributeValue; ?></div>
+    </div>
+<?php endif; ?>
