@@ -137,17 +137,14 @@ define([
             $(this).parent().toggleClass('open');
         })
 
+        var translateAdd = $.mage.translate.add('Added to order');
+        var translateAdded = $.mage.translate.add('Add to order?');
+
         /* Related products: visual buttons checkbox toggle functionality */
         $(".block.related .item button").on("click", function() {
             $(this).next().find('input[type=checkbox]').trigger('click');
             $(this).toggleClass('toggled');
-
+            $(this).html($(this).html() == translateAdd ? translateAdded : translateAdd);
         });
-
-        /*$(".block.related .item button").toggle(function() {
-            $(this).append("<php echo __('Added to order') ?>");
-        }, function(){
-            $(this).append("<?php echo __('Add to order?') ?>");
-        });*/
     });
 });
