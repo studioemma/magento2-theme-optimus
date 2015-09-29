@@ -18,24 +18,29 @@
         <remove name="report.bugs" />
         <remove name="footer_links" />
 
-        <!-- Head (containing meta tags and favicons -->
+        <!-- Head (containing meta tags and favicons) -->
         <referenceBlock name="head.additional">
             <block class="Magento\Framework\View\Element\Template" name="opengraph.general" template="Magento_Theme::html/opengraph/general.phtml" />
             <block class="Magento\Framework\View\Element\Template" name="favicons" template="Magento_Theme::html/favicons/favicons.phtml" />
         </referenceBlock>
 
-        <referenceContainer name="header.panel">
-            <block class="Magento\Framework\View\Element\Template" name="store.usp" template="Magento_Theme::html/store-usp.phtml" />
+        <!-- Header (containing USP's -->
+        <referenceContainer name="header.container">
+            <container name="header.top.panel" htmlTag="div" htmlClass="top panel wrapper" before="-">
+                <container name="store.usp.container" htmlTag="div" htmlClass="panel header">
+                    <block class="Magento\Framework\View\Element\Template" name="store.usp" template="Magento_Theme::html/store-usp.phtml" />
+                </container>
+            </container>
         </referenceContainer>
         
-        <!-- Footer (containing user content, newsletter and social -->
+        <!-- Footer (containing user content, newsletter and social) -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">
             <block class="Magento\Catalog\Block\Navigation" name="footer.sitemap" template="Magento_Catalog::navigation/sitemap-one-level.phtml" before="footer.user.content" />
             <block class="Magento\Theme\Block\Html\Footer" name="footer.user.content" template="html/footer-user-content.phtml" before="form.subscribe" />
             <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" after="-" template="subscribe.phtml"/>
         </referenceContainer>
 
-        <!-- After footer (containing copyright, address, payment and languages -->
+        <!-- After footer (containing copyright, address, payment and languages) -->
         <container name="after.footer" htmlTag="div" htmlClass="page bottom" after="footer">
             <container name="after.footer.content" htmlTag="div" htmlClass="footer content colm-grid">
                 <container name="about.store" htmlTag="div" htmlClass="about-store colm1-2">

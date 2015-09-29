@@ -1,9 +1,12 @@
-<div class="store-usp icons">
-    <ul>
-        <li><a href="#" title="">USP 1</a></li>
-        <li><a href="#" title="">USP 2</a></li>
-        <li><a href="#" title="">USP 3</a></li>
-        <li><a href="#" title="">USP 4</a></li>
-        <li><a href="#" title="">USP 5</a></li>
-    </ul>
-</div>
+<?php if ($sb = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('store-usp')->toHtml()) { ?>
+    <?php echo $sb; ?>
+<?php } else { ?>
+    <div class="store-usp icons">
+        <ul>
+        <li><a title="" href="#"><strong>Advies nodig?</strong> Bel 015/22.22.22 (ma - vrij 9:00 - 18:00)</a></li>
+        <li><a title="" href="#"><strong>Gratis levering</strong> vanaf &euro; 40</a></li>
+        <li><a title="" href="#">Erkende winkel</a></li>
+        <li><a title="" href="#">Voor 16u besteld, <strong>morgen geleverd</strong></a></li>
+        </ul>
+    </div>
+<?php } ?>

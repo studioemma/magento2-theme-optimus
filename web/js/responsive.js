@@ -47,7 +47,7 @@ define([
             $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
 
             /* Move store USP block to header */
-            $("footer .footer .store-usp").detach().insertAfter($('.panel.header .switcher-language'));
+            $("footer .footer .store-usp").detach().prependTo($('.top.panel.wrapper .panel.header'));
         },
         // Switch to Mobile Version
         exit: function () {
