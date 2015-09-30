@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php 
+    $columnsLimit = $block->getColumnsLimit() ?: 0;
+    $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
+    $manager = Magento\Framework\App\ObjectManager::getInstance();;
+    $url = $manager->create('\Magento\Framework\UrlInterface');
+    $currentUrl = parse_url($url->getCurrentUrl())['path'];
+?>
+
+<nav class="navigation" role="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <li class="level0 home <?php if($currentUrl == '/'): ?>active<?php endif; ?>"><a href="/" title="<?php echo __('Home') ?>" class="level-top"><span></span></a></li>
+        <?php echo $_menu; ?>
+    </ul>
+</nav>

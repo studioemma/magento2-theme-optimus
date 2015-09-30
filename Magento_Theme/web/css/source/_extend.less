@@ -11,6 +11,20 @@ html {
   box-sizing: inherit;
 }
 
+/* Nav home link */
+.navigation {
+    li.home {
+        a {
+            &:before {
+                content: "\f015";
+                font-family: "FontAwesome";
+                font-weight: normal;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
 /* Replace breadcrumbs on mobile with previous category link */
 .breadcrumbs {
     display: none;
