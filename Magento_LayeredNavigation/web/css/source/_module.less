@@ -3,6 +3,7 @@
 //  * See ... for license details.
 //  */
 
+/* Mobile layered nav */
 .toolbar.toolbar-products {
     .block.filter {
         clear: left;
@@ -61,5 +62,38 @@
 
     .sorter {
         float: right;
+    }
+}
+
+/* Checkboxes addon */
+.block.filter {
+    &.checkbox {
+        .filter-options {
+            li.item {
+                a {
+                    &:before {
+                        content: "\f096";
+                        font-family: "FontAwesome";
+                        font-size: 13px;
+                        padding-right: 6px;
+                        position: relative;
+                        top: 1px;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        &:before {
+                            content: "\f046";
+                            padding-right: 8px;
+                        }
+                    }
+                }            
+            }
+        }  
     }
 }
