@@ -157,4 +157,19 @@
     
 }
 
+/* Product stock info */
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .product-info-main .box-tocart, .product-options-bottom .box-tocart {
+        float: left;
+        width: 220px;
+    }
 
+    .product-info-stock {
+        padding: 20px 0 0 20px;
+        overflow: hidden;
+    }
+
+    #product_addtocart_form {
+        .clearer();
+    }
+}

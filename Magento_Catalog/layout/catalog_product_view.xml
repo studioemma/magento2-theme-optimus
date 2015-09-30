@@ -24,6 +24,11 @@
             </block> -->
         </referenceContainer> 
 
+        <referenceContainer name="product.info.form.content">
+            <!-- Uncomment below to show stock information and stock USP information on PDP -->
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.stock" template="product/view/stock.phtml" after="product.info.addtocart" />
+        </referenceContainer>
+
         <referenceBlock name="catalog.product.related">
             <arguments>
                 <!-- Activate below for visual buttons on related products -->
