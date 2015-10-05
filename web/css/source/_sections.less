@@ -10,7 +10,7 @@
 & when (@media-common = true) {
 
 .product.data.items {
-    .data-accordion();
+    .lib-data-accordion();
     > .item.title {
         > .switch {
             position: relative;
@@ -19,7 +19,7 @@
             height: auto;
             line-height: inherit;
             
-            .icon-font(
+            .lib-icon-font(
                 @_icon-font-content: @icon-down,
                 @_icon-font-size: 34px,
                 @_icon-font-line-height: @icon-font__line-height,
@@ -66,8 +66,8 @@
 //--------------------------------------
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .product.data.items {
-        /* Remove .data-tabs(); if you want accordion on desktop */
-        .data-tabs();
+        /* Remove .lib-data-tabs(); if you want accordion on desktop */
+        .lib-data-tabs();
         border-bottom: 0;
         margin-left: 0;
         margin-right: 0;

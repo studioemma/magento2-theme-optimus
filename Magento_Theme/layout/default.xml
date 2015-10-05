@@ -8,15 +8,15 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
         <!-- Add your removes here -->
-        <remove name="paypal.partner.right.logo" />
-        <remove name="bml.right.logo" />
-        <remove name="bml.center.logo" />
-        <remove name="wish-list-link" />
-        <remove name="customer-account-navigation-billing-agreements-link" />
-        <remove name="customer-account-navigation-downloadable-products-link" />
-        <remove name="sale.reorder.sidebar" />
-        <remove name="report.bugs" />
-        <remove name="footer_links" />
+        <referenceBlock name="paypal.partner.right.logo" remove="true"/>
+        <referenceBlock name="bml.right.logo" remove="true"/>
+        <referenceBlock name="bml.center.logo" remove="true"/>
+        <referenceBlock name="wish-list-link" remove="true"/>
+        <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true"/>
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
 
         <!-- Head (containing meta tags and favicons) -->
         <referenceBlock name="head.additional">
