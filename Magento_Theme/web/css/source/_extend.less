@@ -277,3 +277,27 @@ html {
         }
     }
 }
+
+/* Mobile pager */
+.mobile-pager {
+    &:extend(.abs-add-clearfix all);
+    text-align: left;
+    
+    select {
+        width: auto;
+        margin-right: @indent__base;
+    }
+
+    a {
+        float: right;
+        line-height: 30px;
+        
+        &.action.next {
+            margin-left: @indent__xs;
+        }
+
+        &.action.previous {
+            margin-right: 0;
+        }
+    }
+}
