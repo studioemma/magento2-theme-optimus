@@ -36,8 +36,11 @@
         <!-- Footer (containing user content, newsletter and social) -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">
             <block class="Magento\Catalog\Block\Navigation" name="footer.sitemap" template="Magento_Catalog::navigation/sitemap-one-level.phtml" before="footer.user.content" />
-            <block class="Magento\Theme\Block\Html\Footer" name="footer.user.content" template="html/footer-user-content.phtml" before="form.subscribe" />
-            <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" after="-" template="subscribe.phtml"/>
+            <block class="Magento\Theme\Block\Html\Footer" name="footer.user.content" template="html/footer-user-content.phtml" before="newsletter.container" />
+            <container name="newsletter.container" htmlTag="div" htmlClass="colm1-4" after="-">
+                <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" template="subscribe.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="social" template="Magento_Theme::html/social.phtml" after="-" />
+            </container>
         </referenceContainer>
 
         <!-- After footer (containing copyright, address, payment and languages) -->
