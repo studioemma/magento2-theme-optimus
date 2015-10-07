@@ -7,11 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="catalog.leftnav">
-            <arguments>
-                <!-- Activate below for visual checkboxes in layered navigation -->
-                <argument name="show_checkbox" xsi:type="boolean">true</argument>
-            </arguments>
-        </referenceBlock>
+        <!-- Activate below for visual checkboxes in layered navigation -->
+        <attribute name="class" value="filter-with-checkbox"/>
     </body>
 </page>
