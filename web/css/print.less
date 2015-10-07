@@ -84,13 +84,47 @@
     .nav-sections,
     .header.content > *[class],
     .panel.wrapper > *[class],
-    .footer.content > *[class] {
+    .footer.content > *[class],
+    .toolbar,
+    .product-item-inner,
+    .product-options-wrapper,
+    .reviews-actions,
+    .product-options-bottom,
+    .product-social-links,
+    .product.photo.thumbs,
+    .block.related {
         display: none;
     }
+
+    .footer.content {
+        border-top: none !important;
+    }
+
+    .footer .about-store {
+        display: block !important;
+        text-align: left !important;
+    }
+
     .logo,
     .footer .copyright {
         display: block !important;
         margin: 10px 0;
+    }
+
+    .product.photo.main .product.photo img{
+        width: 25% !important;
+    }
+
+    #tab-label-reviews {
+        display: none !important;
+    }
+
+    .product.data.items .data.item.content {
+        display: block !important;
+        
+        &#reviews {
+            display: none !important;
+        }
     }
 
     .order-details-items {
@@ -106,6 +140,9 @@
     .column.main {
         width: 100% !important;
         float: none !important;
+    }
+    .page-products .products-grid .product-item {
+        width: 25%;
     }
     .breadcrumbs {
         margin: 0 auto;
