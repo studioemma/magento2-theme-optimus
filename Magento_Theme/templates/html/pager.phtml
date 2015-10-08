@@ -114,19 +114,19 @@
             <div class="mobile-pager show-xs">
                 <select onchange="location = this.options[this.selectedIndex].value;">
                     <?php if ($block->canShowFirst()): ?>
-                        <option value="<?php echo $block->getFirstPageUrl() ?>">1</option>
+                        <option value="<?php echo $block->getFirstPageUrl() ?>"><?php echo __('Page') ?> 1</option>
                     <?php endif;?>
 
                     <?php foreach ($block->getFramePages() as $_page): ?>
                         <?php if ($block->isPageCurrent($_page)): ?>
-                            <option value="<?php echo $_page ?>" selected="selected"><?php echo $_page ?></option>
+                            <option value="<?php echo $_page ?>" selected="selected"><?php echo __('Page') ?> <?php echo $_page ?></option>
                         <?php else: ?>
-                            <option value="<?php echo $block->getPageUrl($_page) ?>"><?php echo $_page ?></option>
+                            <option value="<?php echo $block->getPageUrl($_page) ?>"><?php echo __('Page') ?> <?php echo $_page ?></option>
                         <?php endif;?>
                     <?php endforeach;?>
 
                     <?php if ($block->canShowLast()): ?>
-                      <option value="<?php echo $block->getLastPageUrl() ?>"><?php echo $block->getLastPageNum() ?></option>
+                      <option value="<?php echo $block->getLastPageUrl() ?>"><?php echo __('Page') ?> <?php echo $block->getLastPageNum() ?></option>
                     <?php endif;?>
                 </select>
 
