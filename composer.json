@@ -20,5 +20,8 @@
                 "frontend/Studioemma/optimus"
             ]
         ]
+    },
+    "autoload": {
+        "files": [ "registration.php" ]
     }
 }
