@@ -35,7 +35,18 @@
         
         <!-- Footer (containing user content, newsletter and social) -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">
-            <block class="Magento\Catalog\Block\Navigation" name="footer.sitemap" template="Magento_Catalog::navigation/sitemap-one-level.phtml" before="footer.user.content" />
+            <container name="sitemap" htmlTag="div" htmlClass="colm1-4" before="-">
+                <!-- 
+                Add the first level of categories in 2 columns to the footer menu on all pages
+                -->
+                <block class="Magento\Catalog\Block\Navigation" name="category_listing_footer" as="category_listing_footer" template="Magento_Catalog::navigation/category-listing.phtml">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">Discover our catalog</argument>
+                        <argument name="column_count" xsi:type="number">2</argument>
+                        <!-- <argument name="selected_category_ids" xsi:type="string">4,8</argument> -->
+                    </arguments>
+                </block>
+            </container>
             <block class="Magento\Theme\Block\Html\Footer" name="footer.user.content" template="html/footer-user-content.phtml" before="newsletter.container" />
             <container name="newsletter.container" htmlTag="div" htmlClass="colm1-4" after="-">
                 <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" template="subscribe.phtml"/>
