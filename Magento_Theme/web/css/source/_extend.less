@@ -45,10 +45,46 @@ html {
     }    
 }
 
+/* Cookie module */
 
-/* Footer */
-.page.bottom .footer {
-    text-align: center;    
+.message.global {
+    &.cookie {
+        background: #fffbcd;
+        border-top: 1px solid #e2cd7b;
+        color: #52575a;
+        line-height: 1.5em;
+        font-size: 1.4rem;
+        
+        #btn-cookie-allow {
+            color: #222;
+            display: inline-block;
+            background-color: #ececec;
+            background-image: linear-gradient(#f4f4f4, #ececec);
+            border: 1px solid #d4d4d4;
+            padding: 4px 10px;
+            text-decoration: none;
+            text-shadow: 1px 1px 0 #fff;
+            border-radius: 2px;
+            font-weight: normal;
+            
+            &:before {
+                font-family: "FontAwesome";
+                content: "\f00c";
+                padding-right: @indent__xs;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .message.global {
+        &.cookie {
+            .content {
+                max-width: @layout__max-width;
+                margin: 0 auto;
+            }
+        }
+    }
 }
 
 .footer.content {
