@@ -1,0 +1,212 @@
+// /**
+//  * Copyright Â© 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  */
+
+//
+//  Grid
+//  Flexible responsive content grid
+//  _____________________________________________
+
+// this code is common so use only once in mobile css
+& when (@media-common = true) {
+
+.se-grid{
+    margin-left: -3%;
+    max-width: 105%;
+}
+.se-col,
+.se-grid{
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+.se-grid50-25 .se-col,
+.se-grid50-33 .se-col,
+.se-grid100-50 .se-col,
+.se-grid50-100 .se-col,
+.se-col {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+    margin-left: 3%;
+    margin-right: -.25em;
+}
+
+.se-grid .se-col:last-child{
+    margin-bottom: 0;
+}
+
+/* Grid with cols starting at 100% width, ending at 25% of width */
+.se-grid25 .se-col{
+    /*nothing*/
+}
+
+/* Grid with cols starting at 100% width, ending at 25% of width */
+.se-grid33 .se-col{
+    /*nothing*/
+}
+
+/* Grid with cols starting at 100% width, ending at 50% of width */
+.se-grid100-50 .se-col{
+    width: 100%;
+}
+
+/* Grid with cols starting at 50% width, ending at 100% of width */
+.se-grid50-100 .se-col{
+    width: 47%;
+}
+
+.se-grid.no-margins{
+    margin-left: 0;
+    max-width: none;
+}
+.se-grid.no-margins .se-col,
+.se-grid50-25.no-margins .se-col,
+.se-grid50-33.no-margins .se-col,
+.se-grid100-50.no-margins .se-col {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+@media screen and (min-width: 499px) {
+    .se-grid100-50 .se-col {
+        width: 47%;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .se-grid .se-col1-2 { width: 47%; }
+
+    .se-grid .se-col1-3 { width: 30.36%; }
+    .se-grid .se-col2-3 { width: 63.6666666%; }
+
+    .se-grid .se-col1-4 { width: 22%; }
+    .se-grid .se-col3-4 { width: 72%; }
+
+    .se-grid .se-col1-5 { width: 17.07%; }
+    .se-grid .se-col2-5 { width: 37%; }
+    .se-grid .se-col3-5 { width: 57%; }
+    .se-grid .se-col4-5 { width: 77%; }
+
+    .se-grid.no-margins .se-col1-2 { width: 50%; }
+
+    .se-grid.no-margins .se-col1-3 { width: 33.3%; }
+    .se-grid.no-margins .se-col2-3 { width: 66.6%; }
+
+    .se-grid.no-margins .se-col1-4 { width: 25%; }
+    .se-grid.no-margins .se-col3-4 { width: 75%; }
+
+    .se-grid.no-margins .se-col1-5 { width: 20%; }
+    .se-grid.no-margins .se-col2-5 { width: 40%; }
+    .se-grid.no-margins .se-col3-5 { width: 60%; }
+    .se-grid.no-margins .se-col4-5 { width: 80%; }
+
+
+    /* Fixed flexible */
+
+    .se-grid50-25 .se-col{
+        width: 30.36%;
+    }
+    .se-grid50-33 .se-col{
+        width: 30.36%;
+    }
+    .se-grid25 .se-col{
+        width: 47%;
+    }
+    .se-grid33 .se-col{
+        width: 47%;
+    }
+
+    .se-grid100-50 .se-col {
+        width: 47%;
+    }
+
+    .se-grid50-100 .se-col {
+        width: 100%;
+    }
+
+    .se-grid50-25.no-margins .se-col{
+        width: 33.3%;
+    }
+    .se-grid50-33.no-margins .se-col{
+        width: 33.3%;
+    }
+    .se-grid25.no-margins .se-col{
+        width: 50%;
+    }
+    .se-grid33.no-margins .se-col{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+
+    /* Fixed flexible */
+    .se-grid50-25 .se-col{
+        /*width: 22.05%;*/ /* seems to give problems from time to time */
+        width: 22.00%;
+    }
+
+    .se-grid25 .se-col{
+        width: 22.05%;
+    }
+
+    .se-grid33 .se-col{
+        width: 30.36%;
+    }
+
+    .se-grid50-25.no-margins .se-col{
+        width: 25%;
+    }
+    .se-grid25.no-margins .se-col{
+        width: 25%;
+    }
+    .se-grid33.no-margins .se-col{
+        width: 33.33%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .se-grid {
+        margin-left: 0;
+        max-width: none;
+    }
+    .se-grid50-25{
+        margin-left: -3%;
+        max-width: 105%;
+    }
+    .se-grid50-25.no-margins{
+        margin-left: 0;
+        max-width: none;
+    }
+
+    .se-col {
+        width: auto;
+        margin-left: 0;
+        display: block;
+    }
+
+    .se-grid50-25 .se-col{
+        width: 47%;
+    }
+
+    .se-grid50-33 .se-col{
+        width: 47%;
+    }
+    .se-grid50-25.no-margins .se-col{
+        margin-left: 0;
+        width: 50%;
+    }
+    .se-grid50-33.no-margins .se-col{
+        margin-left: 0;
+        width: 50%;
+    }
+}
+
+
+} // end when common
