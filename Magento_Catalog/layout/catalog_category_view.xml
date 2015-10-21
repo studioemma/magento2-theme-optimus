@@ -7,4 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <update handle="catalog_category_opengraph" />
+    <body>
+        <move element="catalog.compare.sidebar" destination="columns.top" as="catalog.compare.top" before="-" />
+    </body>
 </page>
