@@ -11,7 +11,20 @@
             <block class="Magento\Catalog\Block\Product\View" name="product.info.socialsharing" template="product/view/social-sharing.phtml" after="product.info.mailto" />
         </referenceContainer>
 
-        <move element="catalog.compare.link" destination="columns.top" as="catalog.compare.top" before="-" />
+        <referenceContainer name="columns.top">
+            <block class="Magento\Framework\View\Element\Template" name="catalog.compare.sidebar"
+                   template="Magento_Catalog::product/compare/sidebar.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="compareProducts" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
 
         <referenceBlock name="top.links">
             <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" before="-"
