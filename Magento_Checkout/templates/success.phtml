@@ -8,7 +8,20 @@
 
 ?>
 <?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+
+<?php
+
+$contentblock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('checkout-success')->toHtml();
+
+?>
+
 <div class="checkout-success">
+
+    <?php if(!empty($contentblock)): ?>
+    <div class="colm-grid">
+    <div class="colm1-2">
+    <?php endif; ?>
+
     <?php if ($block->getOrderId()):?>
         <?php if ($block->getCanViewOrder()) :?>
             <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
@@ -25,4 +38,15 @@
             <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
         </div>
     </div>
+
+    <?php echo $block->getChildHtml('checkout.registration'); ?>
+
+    <?php if(!empty($contentblock)): ?>
+    </div>
+    <div class="colm1-2">
+        <?php echo $contentblock; ?>
+    </div>
+    </div>
+    <?php endif; ?>
+
 </div>
