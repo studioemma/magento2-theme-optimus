@@ -1,0 +1,156 @@
+<?php
+/**
+ * Category listing template
+ * Copyright © 2015 Studio Emma. All rights reserved.
+ * 
+ * Usage in a cms block or page
+ *
+ * {{block class="Magento\\Catalog\\Block\\Navigation" template="Magento_Catalog::navigation/category-listing-two-levels.phtml" title="Lorem ipsum" column_count="4" selected_parent_category_id="3"}}
+ *
+ * {{block class="Magento\\Catalog\\Block\\Navigation" template="Magento_Catalog::navigation/category-listing-two-levels.phtml" title="Lorem ipsum" column_count="3" selected_category_ids="3,4,5" }}
+ *
+ *
+ */
+?>
+
+<?php
+
+//Get current category
+$currentCategory = $block->getCurrentCategory();
+//Declare filtered category array
+$categories = array();
+
+//Check to see if only selected categories should be shown, or all children from the current category
+if(empty($this->getSelectedCategoryIds())){
+
+    if (!empty($this->getSelectedParentCategoryId())){
+        $manager = Magento\Framework\App\ObjectManager::getInstance();
+        $currentCategory = $manager->create('Magento\Catalog\Model\Category')->load($this->getSelectedParentCategoryId());
+    }
+
+    if($currentCategory->hasChildren()){
+        foreach ($currentCategory->getChildrenCategories() as $category)
+        {
+            //Add category and children to array
+            $childCategories = array();
+            if ($category->hasChildren()) {
+                foreach ($category->getChildrenCategories() as $childCategory) {
+                    $childCategories[] = $childCategory;
+                }
+            }
+            $categories[] = array("cat" => $category, "subcats" => $childCategories);
+        }
+    }
+}else{
+
+    $selected_categories = explode(',',$this->getSelectedCategoryIds());
+    $manager = Magento\Framework\App\ObjectManager::getInstance();
+
+    foreach ($selected_categories as $category)
+    {
+        //Add category and children to array
+        $cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
+        $childCategories = array();
+        if ($cat->hasChildren()) {
+            foreach ($cat->getChildrenCategories() as $childCategory) {
+                $childCategories[] = $childCategory;
+            }
+        }
+        $categories[] = array("cat" => $cat, "subcats" => $childCategories);
+    }
+}
+$bShowColumns = false;
+$nofItemsPerColumn = count($categories);
+$columnCount = (int)$block->getColumnCount();
+
+
+//When no columncount has been requested, there's only 1 column
+if($columnCount == 0){
+    $columnCount = 1;
+}
+
+//When requested column count exceeds number of items in total, set the requested columns to the number of items
+if($columnCount > $nofItemsPerColumn){
+    $columnCount = $nofItemsPerColumn;
+}
+
+// At least 1 item per column should be available, otherwise, lower the columncount
+// When columnCount > 1 -> show colm-grid and set nofItemsPerColumn
+if($columnCount > 1){
+    $bShowColumns = true;
+    $nofItemsPerColumn = ceil($nofItemsPerColumn/$columnCount);
+
+    $totalCount = $columnCount * $nofItemsPerColumn;
+    $diff = abs(count($categories) - $totalCount);
+    if($diff > $nofItemsPerColumn){
+        $columnCount--;
+    }
+
+}
+
+
+
+
+
+
+?>
+<?php if(count($categories) > 0): 
+$cssClasses = "";
+
+if(!empty($this->getCssClass())): ?>
+<div class='<?php echo $this->getCssClass()?>'>
+<?php endif; ?>
+    <?php if($block->getTitle() != ''): ?>
+    <h2><?php echo $block->getTitle(); ?></h2>
+    <?php endif; ?>
+
+    <nav role="navigation">
+        <?php if($bShowColumns): ?>
+        <div class="colm-grid">
+            <div class="colm colm1-<?php echo $columnCount?>">
+        <?php endif; ?>
+        <?php 
+        $k = 0;
+        for($i=0;$i<count($categories);$i++):
+            if(isset($categories[$i]["cat"])): 
+            $k++;
+            ?>
+                <h3 class='category category-<?php echo $categories[$i]["cat"]->getId(); ?>'><a class="category-link" href="<?php echo $categories[$i]["cat"]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["cat"]->getName());?>">
+                    <span><?php echo $this->escapeHtml($categories[$i]["cat"]->getName()); ?></span>
+                    </a>
+                </h3>
+                <ul class="catalog-navigation">
+                <?php 
+                for($j=0;$j<count($categories[$i]["subcats"]);$j++):
+                    if(isset($categories[$i]["subcats"][$j])): 
+                ?>
+                    <li class='subcategory subcategory-<?php echo $categories[$i]["subcats"][$j]->getId(); ?>'><a class="subcategory-link" href="<?php echo $categories[$i]["subcats"][$j]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName());?>">
+                    <span><?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName()); ?></span>
+                    </a></li>
+                <?php endif;
+                endfor; 
+                ?>
+                </ul>
+            <?php 
+                if($k == $nofItemsPerColumn && $i != (count($categories)-1) && $bShowColumns): 
+                    $k = 0;
+                    ?>
+                    </div>
+                    <div class="colm colm1-<?php echo $columnCount?>">
+                        <ul class="catalog-navigation">
+                <?php
+                endif;
+            endif; ?>
+        <?php endfor; ?>
+        <?php if($bShowColumns): ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+    </nav>
+<?php if(!empty($this->getCssClass())): ?>
+</div>
+<?php endif; ?>
+
+<?php endif; ?>
+
