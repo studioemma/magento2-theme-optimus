@@ -15,6 +15,12 @@ $categories = array();
 
 //Check to see if only selected categories should be shown, or all children from the current category
 if(empty($this->getSelectedCategoryIds())){
+
+    if (!empty($this->getSelectedParentCategoryId())){
+        $manager = Magento\Framework\App\ObjectManager::getInstance();
+        $currentCategory = $manager->create('Magento\Catalog\Model\Category')->load($this->getSelectedParentCategoryId());
+    }
+
     if($currentCategory->hasChildren()){
         foreach ($currentCategory->getChildrenCategories() as $category)
         {

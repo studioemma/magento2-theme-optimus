@@ -43,6 +43,8 @@
                     <arguments>
                         <argument name="title" translate="true" xsi:type="string">Discover our catalog</argument>
                         <argument name="column_count" xsi:type="number">2</argument>
+                        <!-- Change selected parent to id of root category! --> 
+                        <!-- <argument name="selected_parent_category_id" xsi:type="string">3</argument> -->
                         <!-- <argument name="selected_category_ids" xsi:type="string">4,8</argument> -->
                     </arguments>
                 </block>

@@ -16,6 +16,7 @@
                 <arguments>
                     <argument name="css_class" xsi:type="string">mobile-nav-homepage show-xs</argument>
                     <argument name="title" translate="true" xsi:type="string">Discover our catalog</argument>
+                    <!-- <argument name="selected_parent_category_id" xsi:type="string">3</argument> -->
                     <!-- <argument name="column_count" xsi:type="number">2</argument> -->
                     <!-- <argument name="selected_category_ids" xsi:type="string">4,8</argument> -->
                     <!-- 
