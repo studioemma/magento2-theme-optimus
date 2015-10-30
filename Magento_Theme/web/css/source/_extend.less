@@ -344,4 +344,23 @@ html {
     }
 }
 
+//
+//    Mobile
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-main {
+        .account &,
+        .cms-privacy-policy & {
+            padding-top: 50px;
+        }
+    }
+}
+
+@import '_forms-extend.less';
+@import '_utilities-extend.less';
+@import '_font-awesome.less'; //Standard font-awesome
+@import '_cms-styles.less';  //Some handy styles for use in content
+@import '_colm-basic.less'; //Basic Colm css (no mixin)
+@import '_grid-basic.less'; //Basic Grid css (no mixin)
+
 @import '_extend-custom.less'; // Local theme print extend
