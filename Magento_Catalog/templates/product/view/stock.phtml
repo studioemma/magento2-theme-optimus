@@ -1,17 +1,15 @@
 <!-- This template is meant for stock information: be it dynamic or static (CMS block) -->
 
 <?php 
-    //Load objectmanager instance
-    $manager = Magento\Framework\App\ObjectManager::getInstance();
 
     //Load block            
-    $contentblock = $manager->create('Magento\Cms\Model\Block')->load('product_info_stock');
-    //Check to see if block is active
-    if($contentblock->isActive()): 
-        //If active -> output block
-        echo $contentblock->getContent();
+    $contentblock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_info_stock')->toHtml();
+    //Check to see if block is empty
+    if(!empty($contentblock)): 
+        //If not empty -> output block
+        echo $contentblock;
     else:
-        //If not active -> output static content with outline
+        //If empty -> output static content with outline
         ?>
         <div class="product-info-stock">
             <ul>
