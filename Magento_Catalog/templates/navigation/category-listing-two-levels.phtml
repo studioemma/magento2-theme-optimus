@@ -106,8 +106,8 @@ if(!empty($this->getCssClass())): ?>
 
     <nav role="navigation">
         <?php if($bShowColumns): ?>
-        <div class="colm-grid">
-            <div class="colm colm1-<?php echo $columnCount?>">
+        <div class="se-grid">
+            
         <?php endif; ?>
         <?php 
         $k = 0;
@@ -115,38 +115,30 @@ if(!empty($this->getCssClass())): ?>
             if(isset($categories[$i]["cat"])): 
             $k++;
             ?>
-                <h3 class='category category-<?php echo $categories[$i]["cat"]->getId(); ?>'><a class="category-link" href="<?php echo $categories[$i]["cat"]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["cat"]->getName());?>">
-                    <span><?php echo $this->escapeHtml($categories[$i]["cat"]->getName()); ?></span>
-                    </a>
-                </h3>
-                <ul class="catalog-navigation">
-                <?php 
-                for($j=0;$j<count($categories[$i]["subcats"]);$j++):
-                    if(isset($categories[$i]["subcats"][$j])): 
-                ?>
-                    <li class='subcategory subcategory-<?php echo $categories[$i]["subcats"][$j]->getId(); ?>'><a class="subcategory-link" href="<?php echo $categories[$i]["subcats"][$j]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName());?>">
-                    <span><?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName()); ?></span>
-                    </a></li>
-                <?php endif;
-                endfor; 
-                ?>
-                </ul>
-            <?php 
-                if($k == $nofItemsPerColumn && $i != (count($categories)-1) && $bShowColumns): 
-                    $k = 0;
+                <div class="se-col se-col1-<?php echo $columnCount?>">
+                    <h3 class='category category-<?php echo $categories[$i]["cat"]->getId(); ?>'><a class="category-link" href="<?php echo $categories[$i]["cat"]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["cat"]->getName());?>">
+                        <span><?php echo $this->escapeHtml($categories[$i]["cat"]->getName()); ?></span>
+                        </a>
+                    </h3>
+                    <ul class="catalog-navigation">
+                    <?php 
+                    for($j=0;$j<count($categories[$i]["subcats"]);$j++):
+                        if(isset($categories[$i]["subcats"][$j])): 
                     ?>
-                    </div>
-                    <div class="colm colm1-<?php echo $columnCount?>">
-                        <ul class="catalog-navigation">
-                <?php
-                endif;
+                        <li class='subcategory subcategory-<?php echo $categories[$i]["subcats"][$j]->getId(); ?>'><a class="subcategory-link" href="<?php echo $categories[$i]["subcats"][$j]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName());?>">
+                        <span><?php echo $this->escapeHtml($categories[$i]["subcats"][$j]->getName()); ?></span>
+                        </a></li>
+                    <?php endif;
+                    endfor; 
+                    ?>
+                    </ul>
+                </div>
+            <?php 
             endif; ?>
         <?php endfor; ?>
         <?php if($bShowColumns): ?>
-            </div>
         </div>
         <?php endif; ?>
-
     </nav>
 <?php if(!empty($this->getCssClass())): ?>
 </div>
