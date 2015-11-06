@@ -1,0 +1,106 @@
+// /**
+//  * Copyright © 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  */
+
+/* Mobile layered nav */
+.toolbar.toolbar-products {
+    .block.filter {
+        clear: left;
+        float: left;
+        text-align: left;
+        margin-top: 4px;
+        
+        .block-content.filter-content {
+            display: none;
+        }
+
+        .block-title {
+            cursor: pointer;
+            
+           .lib-icon-font(
+                @icon-next,
+                @_icon-font-position: after,
+                @_icon-font-color: @primary__color,
+                @_icon-font-size: 34px,
+                @_icon-font-text-hide: true
+            );
+            
+            &:after {
+                line-height: 34px;
+            }
+        }
+
+        &.opened {
+            .block-title {
+                .lib-icon-font(
+                    @icon-down,
+                    @_icon-font-position: after,
+                    @_icon-font-color: @primary__color,
+                    @_icon-font-size: 34px,
+                    @_icon-font-text-hide: true
+                );  
+                
+                &:after {
+                    line-height: 34px;
+                }  
+            } 
+
+            .block-content.filter-content {
+                display: block;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 99;
+                width: calc(~"100vw - 25px");
+                background-color: #fff;
+                border: 1px solid #d1d1d1;
+                padding: 10px;
+            }
+        }
+    }
+
+    .sorter {
+        float: right;
+    }
+}
+
+/* 
+
+Checkboxes addon 
+Controlled through 'filter-with-checkbox' class in /app/design/frontend/Studioemma/optimus/Magento_layeredNavigation/layout/catalog_category_view_type_layered.xml
+
+*/
+body.filter-with-checkbox {
+    .block.filter {
+        .filter-options {
+            li.item {
+                a {
+                    &:before {
+                        content: "\f096";
+                        font-family: "FontAwesome";
+                        font-size: 13px;
+                        padding-right: 6px;
+                        position: relative;
+                        top: 1px;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        &:before {
+                            content: "\f046";
+                            padding-right: 4px;
+                        }
+                    }
+                }            
+            }
+        }  
+    }
+}
+
+//@import '_extend-custom.less'; // Local theme print extend
