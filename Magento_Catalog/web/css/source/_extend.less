@@ -68,6 +68,18 @@
 //  ---------------------------------------------
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+    .column.main {
+        .product {
+            &-items {
+                margin-left: 0;
+            }
+            &-item {
+                padding-left: 0;
+            }
+        }
+    }
+
     .product {
         &-item {
             .products-grid & {
