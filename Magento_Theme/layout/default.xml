@@ -49,7 +49,7 @@
                     </arguments>
                 </block>
             </container>
-            <block class="Magento\Theme\Block\Html\Footer" name="footer.user.content" template="html/footer-user-content.phtml" before="newsletter.container" />
+            <block class="Magento\Framework\View\Element\Template" name="footer.user.content" template="Magento_Theme::html/footer-user-content.phtml" before="newsletter.container" />
             <container name="newsletter.container" htmlTag="div" htmlClass="colm1-4" after="-">
                 <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" template="subscribe.phtml"/>
                 <block class="Magento\Framework\View\Element\Template" name="social" template="Magento_Theme::html/social.phtml" after="-" />
@@ -64,7 +64,7 @@
                     <block class="Magento\Framework\View\Element\Template" name="address" template="Magento_Theme::html/address.phtml" />
                 </container>
                 <container name="payment.methods" htmlTag="div" htmlClass="payment-methods colm1-2">
-                    <block class="Magento\Theme\Block\Html\Footer" name="payment.icons" template="html/payment.phtml"/>
+                    <block class="Magento\Framework\View\Element\Template" name="payment.icons" template="Magento_Theme::html/payment.phtml"/>
                 </container>
                 <block class="Magento\Store\Block\Switcher" name="store_language_footer" template="Magento_Theme::html/languages_footer.phtml" after="-" />
             </container>
