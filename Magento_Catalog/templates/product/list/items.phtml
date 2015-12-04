@@ -155,6 +155,25 @@ switch ($type = $block->getType()) {
         }
     break;
 
+    case 'productwidget':
+        /** @var StudioEmma\ProductListWidget\Block\Widget\ProductList $block */
+        if ($exist = $block->getProducts()) {
+            $type = 'productwidget';
+            $class = $type;
+
+            $image = 'related_products_list';
+            $block->setLimit(4);
+            $items = $block->getProducts();
+
+            $showWishlist = false;
+            $showCompare = false;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = true;
+            $canItemsAddToCart = false;
+        }
+    break;
+
     case 'other':
     break;
 }
