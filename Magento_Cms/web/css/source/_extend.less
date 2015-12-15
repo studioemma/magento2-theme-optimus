@@ -1,0 +1,121 @@
+& when (@media-common = true) {
+    /* -------------------------------------------- *
+     * Accordion
+     */
+
+    .accordion {
+        h4, h3 {
+            &:after {
+                font-family: "FontAwesome";
+                content: "\f105";
+                padding-left: 10px;
+            }
+
+            &.toggled {
+                &:after {
+                    content: "\f107";
+                }
+            }
+        }
+
+        > div {
+            margin-top: 10px;
+            padding-bottom: 20px;
+            display: none;
+
+            &.toggled {
+                display: block;
+            }
+        }
+    }
+
+    /* -------------------------------------------- *
+     * More/less toggle system
+     */
+
+    .moreText {
+        display: none;
+
+        &.toggled {
+            display: block !important;
+        }
+    }
+
+    .showMoreText {
+        &:after {
+            content: "+";
+            padding-left: 10px;
+        }
+    }
+
+    .showLessText {
+        &:after {
+            content: "-";
+            padding-left: 10px;
+        }
+    }
+
+    /* -------------------------------------------- *
+     * System wide nav dropdown
+     */
+
+    .collapsible {
+        .title {
+            border: 1px solid #d1d1d1;
+            padding: 10px 44px 10px 15px;
+            position: relative;
+            cursor: pointer;
+
+            &:after {
+                font-family: "FontAwesome";
+                content: "\f107";
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                margin-top: -14px;
+            }
+            
+            &.toggled {
+                &:after {
+                    content: "\f106";
+                }
+            }
+        }
+
+        .content {
+            display: none;
+
+            li {
+                position: relative;
+                top: -1px;
+
+                a {
+                    padding: 10px 15px;
+                    border: 1px solid #d1d1d1;
+                    border-top: none;
+                    display: block;
+                }
+
+                &:first-child {
+                    border-top: 1px solid #d1d1d1;
+                }
+            }
+
+            &.toggled {
+                display: block;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+     .collapsible {
+        .title {
+            display: none;
+        }
+
+        .content {
+            display: block;
+        }
+    }
+}
