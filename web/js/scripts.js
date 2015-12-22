@@ -4,27 +4,26 @@ require(["jquery"], function($){
         // System-wide toggle system
         // ==============================================
 
-        $(".accordion h4 a, .accordion h3 a").click(function(){
+        $(".accordion h4 a, .accordion h3 a").click(function(e){
+            e.preventDefault();
             $(this).parent().next().toggleClass('toggled');
             $(this).parent().toggleClass('toggled');
-            return false;
-            
         });
 
         // ==============================================
         // Category description toggle system (old system because of existing client handlings)
         // ==============================================
 
-        $(".showMoreText").click(function() {
-            $('.moreText').addClass('toggled');
+        $(".showMoreText").click(function(e) {
+            e.preventDefault();
+            $(this).parent().next('.moreText').addClass('toggled');
             $(this).hide();
-            return false;
         });
 
-        $(".showLessText").click(function() {
-            $('.moreText').removeClass('toggled');
-            $('.showMoreText').show();
-            return false;
+        $(".showLessText").click(function(e) {
+            e.preventDefault();
+            $(this).parents('.moreText').removeClass('toggled');
+            $(this).parents('.moreText').parent().find('.showMoreText').show();
         });
 
         // ==============================================
