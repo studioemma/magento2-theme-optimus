@@ -47,7 +47,7 @@ define([
             $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
 
             /* Move store USP block to header */
-            $("footer .footer .store-usp").detach().prependTo($('.top.panel.wrapper .panel.header'));
+            $("footer .footer .store-usp").prependTo($('.top.panel.wrapper .panel.header'));
         },
         // Switch to Mobile Version
         exit: function () {
@@ -87,7 +87,7 @@ define([
             $(".sidebar.sidebar-main .block.filter").detach().insertBefore($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
             
             /* Move store USP block to footer */
-            $(".panel.header .store-usp").detach().prependTo($('footer .footer'));
+            $(".panel.header .store-usp").prependTo($('footer .footer'));
         }
     });
 
