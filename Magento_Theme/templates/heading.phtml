@@ -1,0 +1,16 @@
+<?php
+/**
+ *  template of simple h3 element with a class and a translated label inside
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+?>
+<?php if (!$block->getIsDisabled()): ?>
+<h3<?php if ($class = $block->getCssClass()):?> class="<?php echo $block->escapeHtml(__($class))?>"<?php endif;?>>
+    <?php echo $block->escapeHtml(__($block->getLabel()))?>
+</h3>
+<?php endif; ?>
