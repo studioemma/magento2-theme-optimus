@@ -44,7 +44,7 @@ define([
             }, 500);
 
             /* Move layered navigation back to sidebar */
-            $(".toolbar.toolbar-products .block.filter").detach().prependTo($('.sidebar.sidebar-main'));
+            $(".toolbar.toolbar-products .block.filter").prependTo($('.sidebar.sidebar-main'));
 
             /* Move store USP block to header */
             $("footer .footer .store-usp").prependTo($('.top.panel.wrapper .panel.header'));
@@ -84,7 +84,7 @@ define([
             }, 500);
 
             /* Move layered navigation to top */
-            $(".sidebar.sidebar-main .block.filter").detach().insertBefore($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
+            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
             
             /* Move store USP block to footer */
             $(".panel.header .store-usp").prependTo($('footer .footer'));
