@@ -7,72 +7,74 @@
 //Import all css for catalog sitemap options
 @import 'module/_catalog_sitemap.less';
 
-.box-tocart {
-    .select-qty {
-        min-width: 50px;
-        max-width: 50px;
+& when (@media-common = true) {
+    .box-tocart {
+        .select-qty {
+            min-width: 50px;
+            max-width: 50px;
+        }
+
+        input#qty {
+            display: none;
+        }
+
+        .small-save-button {
+            padding: 7px 4px;
+            
+            .lib-icon-font (
+                @icon-checkmark,
+                @_icon-font-position: after,
+                @_icon-font-color: @primary__color,
+                @_icon-font-size: 23px,
+                @_icon-font-text-hide: true
+            );
+        }
     }
 
-    input#qty {
+    .box-tocart .small-save-button {
         display: none;
     }
 
-    .small-save-button {
-        padding: 7px 4px;
+    /* Social sharing */
+    .social-sharing {
+        margin-top: @indent__xs;
         
-        .lib-icon-font (
-            @icon-checkmark,
-            @_icon-font-position: after,
-            @_icon-font-color: @primary__color,
-            @_icon-font-size: 23px,
-            @_icon-font-text-hide: true
-        );
-    }
-}
+        ul {
+            margin: 0;
+            padding: 0; 
 
-.box-tocart .small-save-button {
-    display: none;
-}
-
-/* Social sharing */
-.social-sharing {
-    margin-top: @indent__xs;
-    
-    ul {
-        margin: 0;
-        padding: 0; 
-
-        li {
-            list-style: none;
-            margin: 0 @indent__xs;
-            display: inline-block;
-        }
-    }
-}
-
-
-//
-//  Sidebar product view
-//  ---------------------------------------------
-
-.sidebar {
-    .product-items {
-        .product-item {
-            margin-bottom: 40px;
-            
-            &-info {
-                &:extend(.abs-add-clearfix all);
+            li {
+                list-style: none;
+                margin: 0 @indent__xs;
+                display: inline-block;
             }
         }
     }
-}
 
-/* Fix for list view on mobile */
-.product {
-    &-item {
-        &-info {
-            .page-products & {
-                width: auto;    
+
+    //
+    //  Sidebar product view
+    //  ---------------------------------------------
+
+    .sidebar {
+        .product-items {
+            .product-item {
+                margin-bottom: 40px;
+                
+                &-info {
+                    &:extend(.abs-add-clearfix all);
+                }
+            }
+        }
+    }
+
+    /* Fix for list view on mobile */
+    .product {
+        &-item {
+            &-info {
+                .page-products & {
+                    width: auto;    
+                }
             }
         }
     }
@@ -189,37 +191,39 @@
     }
 }
 
-/* Related products: visual buttons instead of good ol' boring checkboxes */
-.block.related {
-    .item {
-        button {
-            position: relative;
-            
-            &:after {
-                font-family: "FontAwesome";
-                padding-left: @indent__s;
-                position: absolute;
-                top: 50%;
-                right: 8px;
-                margin-top: -8px;
-            }
-
-            &.toggled {
-                padding-right: 30px;
+& when (@media-common = true) {
+    /* Related products: visual buttons instead of good ol' boring checkboxes */
+    .block.related {
+        .item {
+            button {
+                position: relative;
                 
                 &:after {
-                    content: "\f00c";
+                    font-family: "FontAwesome";
+                    padding-left: @indent__s;
+                    position: absolute;
+                    top: 50%;
+                    right: 8px;
+                    margin-top: -8px;
+                }
+
+                &.toggled {
+                    padding-right: 30px;
+                    
+                    &:after {
+                        content: "\f00c";
+                    }
+                }
+            }
+
+            .field.choice.related {
+                &.hidden {
+                    display: none;
                 }
             }
         }
-
-        .field.choice.related {
-            &.hidden {
-                display: none;
-            }
-        }
+        
     }
-    
 }
 
 /* Product stock info */
@@ -239,21 +243,21 @@
     }
 }
 
-/* Fix for list view on mobile */
-.product {
-    &-item {
-        &-info {
-            width: auto;
+& when (@media-common = true) {
+    /* Fix for list view on mobile */
+    .product {
+        &-item {
+            &-info {
+                width: auto;
+            }
+        }
+    }
+
+    .product-items {
+        .product-item {
+            position: relative;
         }
     }
 }
-
-.product-items {
-    .product-item {
-        position: relative;
-    }
-}
-
-
 
 
