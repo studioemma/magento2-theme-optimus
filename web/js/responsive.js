@@ -48,6 +48,9 @@ define([
 
             /* Move store USP block to header */
             $("footer .footer .store-usp").prependTo($('.top.panel.wrapper .panel.header'));
+
+            /* Move store USP block to header on checkout */
+            $(".checkout-index-index .footer .store-usp").prependTo($('.top.panel.wrapper .panel.header'));
         },
         // Switch to Mobile Version
         exit: function () {
@@ -88,6 +91,9 @@ define([
             
             /* Move store USP block to footer */
             $(".panel.header .store-usp").prependTo($('footer .footer'));
+
+            /* Move store USP block to page bottom on checkout */
+            $(".panel.header .store-usp").prependTo($('.checkout-index-index .footer'));
         }
     });
 
