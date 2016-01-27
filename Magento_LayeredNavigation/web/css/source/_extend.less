@@ -75,7 +75,23 @@
     }
 
     .block.filter {
-        dd{
+        dt {
+            cursor: pointer;
+
+            &:after {
+                content: "\f107";
+                font-family: "FontAwesome";
+                padding-left: 8px;
+            }
+
+            &.toggle-active {
+                &:after {
+                    content: "\f106";
+                }
+            }
+        }
+
+        dd {
             .more {
                 display: none;
 

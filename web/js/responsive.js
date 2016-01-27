@@ -164,7 +164,7 @@ define([
         });
         /* Autocomplete */
 
-        /* Layered navigation toggle */
+        /* Layered navigation more/less toggle */
         $('.block.filter dd').each(function () {
             var lnl = $(this).find('li').not('.more').length;
             if ($(this).find('.show_more_count').val()) {
@@ -184,6 +184,15 @@ define([
                 });
             }
         });
+
+        /* Layered navigation accordion dd toggle */
+        $(".block.filter #narrow-by-list > dt").click(function() {
+            $(this).toggleClass('toggle-active','');
+            $(this).next('dd').slideToggle('fast');
+            return false;
+        });
+
+        $(".block-layered-nav .block-content #narrow-by-list").addClass("force-display");
     });
 });
 
