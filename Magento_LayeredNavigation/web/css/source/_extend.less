@@ -74,6 +74,76 @@
         }
     }
 
+    .block.filter {
+        dd{
+            .more {
+                display: none;
+
+                a{
+                    margin: 5px 15px;
+                    display: inline-block;
+                    font-style: italic;
+                    color: gray;
+                    border-bottom: 1px solid gray;
+                    font-size: .85em;
+                    padding-bottom: 1px;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: gray;
+                        border-bottom-color: gray;
+                    }
+                }
+            }
+
+            &.collapse {
+                .more {
+                    display: block;
+
+                    &.hidden {
+                        display: none;
+                    }
+
+                    span.less {
+                        display: none;
+                    }
+                }
+
+                li {
+                    &.visible {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .filter-options {
+            li.item {
+                &.hidden {
+                    display: none;
+                }
+
+                &.visible {
+                    display: block;
+                }
+            }
+
+            .items {
+                &.open {
+                    .more {
+                        span.less {
+                            display: inline;
+                        }
+
+                        span.more {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /* 
 
     Checkboxes addon 
