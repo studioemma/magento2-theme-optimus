@@ -1,3 +1,7 @@
+<?php 
+	$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
+?>
+<meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="<?php echo __('Dit is de algemene titel van de website, indien niet overschreven door Category of PDP') ?>" />
 <meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />

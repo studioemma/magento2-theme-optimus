@@ -1,7 +1,9 @@
 <?php 
     $_helper    = $this->helper('Magento\Catalog\Helper\Output');
     $_category  = $block->getCurrentCategory();
+	$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
 ?>
+<meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="product.group" />
 <?php if ($_name = $block->getCurrentCategory()->getName()): ?>
     <meta property="og:title" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_name, 'name')) ?>" />

@@ -1,14 +1,7 @@
-<?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// @codingStandardsIgnoreFile
-
-/** @var $block \Magento\Catalog\Block\Product\View */
+<?php 
+	$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
 ?>
-
+<meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="og:product" />
 <meta property="og:title" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getProduct()->getName()); ?>" />
 <meta property="og:image" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getImage($block->getProduct(), 'product_base_image')->getImageUrl()); ?>" />
