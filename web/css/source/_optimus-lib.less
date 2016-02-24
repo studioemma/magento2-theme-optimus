@@ -46,7 +46,7 @@ html {
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .breadcrumbs {
         display: block;
-    }    
+    }
 }
 
 /* Cookie module */
@@ -60,7 +60,7 @@ html {
         color: #52575a;
         line-height: 1.5em;
         font-size: 1.4rem;
-        
+
         #btn-cookie-allow {
             color: #222;
             display: inline-block;
@@ -72,7 +72,7 @@ html {
             text-shadow: 1px 1px 0 #fff;
             border-radius: 2px;
             font-weight: normal;
-            
+
             &:before {
                 font-family: "FontAwesome";
                 content: "\f00c";
@@ -128,12 +128,12 @@ html {
         ul {
             font-size: 0;
             text-align: center;
-            
+
             li {
                 display: inline-block;
                 font-size: 1rem;
                 margin: 0 10px 5px 0;
-                
+
                 svg {
                     width: 70px;
                     height: auto;
@@ -151,7 +151,7 @@ html {
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .page.bottom .footer {
-        text-align: left;    
+        text-align: left;
     }
 
     .footer.content {
@@ -165,7 +165,7 @@ html {
         }
 
         /* Social */
-        .social {            
+        .social {
             ul {
                 text-align: right;
             }
@@ -226,12 +226,12 @@ html {
         font-size: 0;
         margin: 0;
         padding: 0;
-        
+
         li {
             display: inline-block;
             font-size: 1.4rem;
             margin: 0 10px 0 0;
-            
+
             &:before {
                 display: none;
             }
@@ -240,7 +240,7 @@ html {
 
     &.icons {
         ul {
-            li {                    
+            li {
                 &:before {
                     content: "\f00c";
                     font-family: "FontAwesome";
@@ -256,7 +256,7 @@ html {
 .footer.content {
     .store-usp {
         margin-bottom: 20px;
-        
+
         ul li {
             margin: 0 10px 5px 0;
             display: block;
@@ -281,7 +281,7 @@ html {
     .language-footer {
         text-align: center;
         display: inline-block;
-        
+
         .switcher-label {
             cursor: pointer;
             border: 1px solid @color-gray68;
@@ -290,7 +290,7 @@ html {
             border-radius: 4px;
             padding: 6px 12px;
             display: inline-block;
-            
+
             &:after {
                 content: "\f078";
                 font-family: "FontAwesome";
@@ -350,7 +350,7 @@ html {
 .mobile-pager {
     &:extend(.abs-add-clearfix all);
     text-align: left;
-    
+
     select {
         width: auto;
         margin-right: @indent__base;
@@ -359,7 +359,7 @@ html {
     a {
         float: right;
         line-height: 30px;
-        
+
         &.action.next {
             margin-left: @indent__xs;
         }
@@ -390,6 +390,7 @@ html {
 @import '_optimus-icons.less'; //optimus icon font
 @import '_cms-styles.less';  //Some handy styles for use in content
 @import '_responsiveslides.less'; // responsive slides css
+@import '_magnific-popup.less'; // magnific popup css
 @import '_colm-basic.less'; //Basic Colm css (no mixin)
 @import '_grid-basic.less'; //Basic Grid css (no mixin)
 

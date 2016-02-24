@@ -76,8 +76,6 @@
         border-top-width: 2px;
     }
 
-
-
     /* Responsive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
 
     .video-container {
@@ -94,6 +92,38 @@
         left: 0;
         width: 100%;
         height: 100%;
+    }
+
+    /* video popup thumb  */
+
+    .popup-video {
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        &.has-thumbnail {
+            display: block;
+            position: relative;
+
+            &:after {
+                content: "\f144";
+                font-family: "FontAwesome";
+                line-height: 64px;
+                font-size: 48px;
+                display: block;
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                color: #fff;
+                top: 50%;
+                margin-top: -32px;
+                left: 50%;
+                margin-left: -32px;
+            }
+        }
     }
 
     /* tables */
