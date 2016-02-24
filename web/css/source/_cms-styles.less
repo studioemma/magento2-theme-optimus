@@ -56,7 +56,7 @@
       border-top: 1px solid #d1d1d1;
       margin-bottom: 2em;
       margin-top: 2em;
-    }    
+    }
 
     hr.dotted{
         background: none;
@@ -78,14 +78,14 @@
 
 
 
-    /* Resposive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
+    /* Responsive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
 
     .video-container {
         position: relative;
         padding-bottom: 56.25%;
         padding-top: 30px; height: 0; overflow: hidden;
     }
-     
+
     .video-container iframe,
     .video-container object,
     .video-container embed {
@@ -221,6 +221,165 @@
 
 }
 
+//
+//  Responsive show / hide classes
+//  ______________________________
+
+& when (@media-common = true) {
+
+    @media screen and (min-width: (@screen__xs + 1)) {
+
+        .responsive-show-phone {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__m)) {
+
+        .responsive-show-smallscreen {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__m - 2)) {
+
+        .responsive-show-tablet {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__l + 1)) {
+
+        .responsive-show-tablet {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__l + 1)) {
+
+        .responsive-show-mobile {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__l)) {
+
+        .responsive-show-desktop {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__xl)) {
+
+        .responsive-show-widescreen {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__xs)) {
+
+        .responsive-hide-phone {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__m - 1)) {
+
+        .responsive-hide-smallscreen {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__m - 1)) and (max-width: (@screen__l)) {
+
+        .responsive-hide-tablet {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: (@screen__l)) {
+
+        .responsive-hide-mobile {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__l + 1)) {
+
+        .responsive-hide-desktop {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: (@screen__xl + 1)) {
+
+        .responsive-hide-widescreen {
+            display: none;
+        }
+    }
+
+    .responsive-hide-all {
+        display: none;
+    }
+
+    // vertical
+
+    @media screen and (min-height: (@screen__xs + 1)) {
+
+        .responsive-vertical-show-small {
+            display: none;
+        }
+    }
+
+    @media screen and (min-height: (@screen__s + 1)) {
+
+        .responsive-vertical-show-medium {
+            display: none;
+        }
+    }
+
+    @media screen and (min-height: (@screen__m)) {
+
+        .responsive-vertical-show-large {
+            display: none;
+        }
+    }
+
+    @media screen and (min-height: (@screen__l + 1)) {
+
+        .responsive-vertical-show-extra-large {
+            display: none;
+        }
+    }
+
+    @media screen and (max-height: (@screen__xs)) {
+
+        .responsive-vertical-hide-small {
+            display: none;
+        }
+    }
+
+    @media screen and (max-height: (@screen__s)) {
+
+        .responsive-vertical-hide-medium {
+            display: none;
+        }
+    }
+
+    @media screen and (max-height: (@screen__m - 1)) {
+
+        .responsive-vertical-hide-large {
+            display: none;
+        }
+    }
+
+    @media screen and (max-height: (@screen__l)) {
+
+        .responsive-vertical-hide-extra-large {
+            display: none;
+        }
+    }
+}
 
 // Slideshow
 /*! http://responsiveslides.com v1.54 by @viljamis */
