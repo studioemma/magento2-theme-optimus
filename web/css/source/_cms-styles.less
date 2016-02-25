@@ -461,3 +461,23 @@
         }
     }
 }
+
+//
+//  max-width-XX
+//  ____________
+
+& when (@media-common = true) {
+
+    @media screen and (min-width: (@screen__m)) {
+
+        .generate-max-width(9);
+
+        .generate-max-width(@n, @i: 1) when (@i =< @n) {
+            .max-width-@{i}0 {
+                max-width: (@i * 10%);
+                margin: 0 auto;
+            }
+            .generate-max-width(@n, (@i + 1));
+        }
+    }
+}
