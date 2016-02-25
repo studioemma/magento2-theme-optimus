@@ -131,8 +131,9 @@
         a {
             display: block;
             position: relative;
+            background: #000;
 
-            &:hover:after {
+            &:after {
                 content: "";
                 display: block;
                 position: absolute;
@@ -144,6 +145,9 @@
                 margin-left: -32px;
                 border-radius: 32px;
                 background: #000 url('../img/plus.svg') no-repeat center center;
+                opacity: 0;
+                -webkit-transition: opacity .3s;
+                transition: opacity .3s;
             }
 
             img {
@@ -151,6 +155,20 @@
                 margin-bottom: @p-gap;
                 width: 100%;
                 height: auto;
+                opacity: 1;
+                -webkit-transition: opacity .3s;
+                transition: opacity .3s;
+            }
+
+            &:hover {
+
+                &:after {
+                    opacity: 1;
+                }
+
+                img {
+                    opacity: .7;
+                }
             }
         }
 
