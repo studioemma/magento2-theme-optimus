@@ -1,12 +1,7 @@
-// /**
-//  * Copyright © 2015 Studioemma. All rights reserved.
-//  * See ... for license details.
-//  */
-
 //
 //  Colm
 //  basic classes without mixins
-//  _____________________________________________
+//  ____________________________
 
 /* variables for colm.css */
 
@@ -59,11 +54,14 @@
 .colm-grid {
 
     > .colm1-2,
-    > .colm1-2-pim,
     > .colm1-3,
     > .colm2-3,
     > .colm1-4,
     > .colm3-4,
+    > .colm1-5,
+    > .colm2-5,
+    > .colm3-5,
+    > .colm4-5,
     > .colm50-25,
     > .colm280-fixed,
     > .colm280-fixed-right,
@@ -86,37 +84,20 @@
 
 } // end when common
 
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-xsmall) {
-    .colm-grid {
-        > .colm1-2-pim {
-            margin: 0;
-            float: left;
-            width: 50%;
-        }
-
-        > .colm1-2-pim:nth-child(odd) {
-            padding-left: 0;
-            padding-right: @p-gap / 2;
-        }
-
-        > .colm1-2-pim:nth-child(even) {
-            padding-left: @p-gap / 2;
-            padding-right: 0;
-        }
-    }
-}
-
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @brp-medium) {
 
     .colm-grid {
 
         > .colm1-2,
-        > .colm1-2-pim,
         > .colm1-3,
         > .colm2-3,
         > .colm1-4,
         > .colm3-4,
+        > .colm1-5,
+        > .colm2-5,
+        > .colm3-5,
+        > .colm4-5,
         > .colm50-25,
         > .colm280-fixed,
         > .colm280-fixed-right,
@@ -126,20 +107,17 @@
 
         /* 1-2 */
 
-        > .colm1-2,
-        > .colm1-2-pim {
+        > .colm1-2 {
             float: left;
             width: 50%;
         }
 
-        > .colm1-2:nth-child(odd),
-        > .colm1-2-pim:nth-child(odd) {
+        > .colm1-2:nth-child(odd) {
             padding-left: 0;
             padding-right: @p-gap / 2;
         }
 
-        > .colm1-2:nth-child(even),
-        > .colm1-2-pim:nth-child(even) {
+        > .colm1-2:nth-child(even) {
             padding-left: @p-gap / 2;
             padding-right: 0;
         }
@@ -253,6 +231,87 @@
 
         > .colm3-4 + .colm1-4:nth-child(2n+2) {
             padding-left: @p-gap * 3 / 4;
+            padding-right: 0;
+        }
+
+        /* 1-5 */
+        > .colm1-5 {
+            float: left;
+            width: 20%;
+        }
+
+        > .colm2-5 {
+            float: left;
+            width: 40%;
+        }
+
+        > .colm3-5 {
+            float: left;
+            width: 60%;
+        }
+
+        > .colm4-5 {
+            float: left;
+            width: 80%;
+        }
+
+        > .colm1-5:nth-child(5n+1) {
+            padding-left: 0;
+            padding-right: @p-gap * 4 / 5;
+        }
+
+        > .colm1-5:nth-child(5n+2) {
+            padding-left: @p-gap / 5;
+            padding-right: @p-gap * 3 / 5;
+        }
+
+        > .colm1-5:nth-child(5n+3) {
+            padding-left: @p-gap * 2 / 5;
+            padding-right: @p-gap * 2 / 5;
+        }
+
+        > .colm1-5:nth-child(5n+4) {
+            padding-left: @p-gap * 3 / 5;
+            padding-right: @p-gap / 5;
+        }
+
+        > .colm1-5:nth-child(5n+5) {
+            padding-left: @p-gap * 4 / 5;
+            padding-right: 0;
+        }
+
+        > .colm4-5 {
+            padding-left: 0;
+            padding-right: @p-gap / 5;
+        }
+
+        > .colm1-5 + .colm4-5:nth-child(2n+2) {
+            padding-left: @p-gap / 5;
+            padding-right: 0;
+        }
+
+        > .colm4-5 + .colm1-5:nth-child(2n+2) {
+            padding-left: @p-gap * 4 / 5;
+            padding-right: 0;
+        }
+
+        > .colm2-5 {
+            padding-left: 0;
+            padding-right: @p-gap * 2 / 5;
+        }
+
+        > .colm3-5 + .colm2-5 {
+            padding-left: @p-gap * 2 / 5;
+            padding-right: 0;
+        }
+
+        > .colm3-5 {
+            padding-left: 0;
+            padding-right: @p-gap * 3 / 5;
+        }
+
+        > .colm2-5 + .colm3-5 {
+            padding-left: @p-gap * 3 / 5;
             padding-right: 0;
         }
 
@@ -849,6 +908,10 @@
     > .colm2-3,
     > .colm1-4,
     > .colm3-4,
+    > .colm1-5,
+    > .colm2-5,
+    > .colm3-5,
+    > .colm4-5,
     > .colm50-25,
     > .colm1-2:nth-child(odd),
     > .colm1-2:nth-child(even),
@@ -904,6 +967,10 @@
     > .colm2-3,
     > .colm1-4,
     > .colm3-4,
+    > .colm1-5,
+    > .colm2-5,
+    > .colm3-5,
+    > .colm4-5,
     > .colm50-25,
     > .colm280-fixed,
     > .colm280-fixed-right,
@@ -921,6 +988,10 @@
     > .colm2-3,
     > .colm1-4,
     > .colm3-4,
+    > .colm1-5,
+    > .colm2-5,
+    > .colm3-5,
+    > .colm4-5,
     > .colm50-25,
     > .colm280-fixed,
     > .colm280-fixed-right,
@@ -935,6 +1006,10 @@
     > .colm2-3:first-child,
     > .colm1-4:first-child,
     > .colm3-4:first-child,
+    > .colm1-5:first-child,
+    > .colm2-5:first-child,
+    > .colm3-5:first-child,
+    > .colm4-5:first-child,
     > .colm50-25:first-child,
     > .colm280-fixed:first-child,
     > .colm280-fixed-right:first-child,
@@ -968,6 +1043,10 @@
         > .colm2-3,
         > .colm1-4,
         > .colm3-4,
+        > .colm1-5,
+        > .colm2-5,
+        > .colm3-5,
+        > .colm4-5,
         > .colm50-25,
         > .colm280-fixed,
         > .colm280-fixed-right,
@@ -983,6 +1062,10 @@
         > .colm2-3 *:last-child,
         > .colm1-4 *:last-child,
         > .colm3-4 *:last-child,
+        > .colm1-5 *:last-child,
+        > .colm2-5 *:last-child,
+        > .colm3-5 *:last-child,
+        > .colm4-5 *:last-child,
         > .colm50-25:nth-child(4n+3) *:last-child,
         > .colm50-25:nth-child(4n+4) *:last-child,
         > .colm280-fixed *:last-child,
@@ -992,7 +1075,7 @@
         }
 
         > .colm1-2:nth-child(odd) {
-            padding-left: 0; 
+            padding-left: 0;
             padding-right: @p-gap-lines / 2;
         }
 
@@ -1221,7 +1304,7 @@
     .colm-grid.lines.reverse {
 
         > .colm1-2:nth-child(odd) {
-            padding-left: @p-gap-lines / 2; 
+            padding-left: @p-gap-lines / 2;
             padding-right: 0;
         }
 
@@ -1476,6 +1559,10 @@
         > .colm2-3,
         > .colm1-4,
         > .colm3-4,
+        > .colm1-5,
+        > .colm2-5,
+        > .colm3-5,
+        > .colm4-5,
         > .colm50-25,
         > .colm280-fixed,
         > .colm280-fixed-right,
@@ -1491,6 +1578,10 @@
         > .colm2-3 *:last-child,
         > .colm1-4 *:last-child,
         > .colm3-4 *:last-child,
+        > .colm1-5 *:last-child,
+        > .colm2-5 *:last-child,
+        > .colm3-5 *:last-child,
+        > .colm4-5 *:last-child,
         > .colm50-25:nth-child(4n+3) *:last-child,
         > .colm50-25:nth-child(4n+4) *:last-child,
         > .colm280-fixed *:last-child,
