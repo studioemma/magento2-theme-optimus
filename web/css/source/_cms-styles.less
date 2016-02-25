@@ -126,6 +126,39 @@
         }
     }
 
+    .popup-gallery {
+
+        a {
+            display: block;
+            position: relative;
+
+            &:hover:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                top: 50%;
+                margin-top: -32px;
+                left: 50%;
+                margin-left: -32px;
+                border-radius: 32px;
+                background: #000 url('../img/plus.svg') no-repeat center center;
+            }
+
+            img {
+                display: block;
+                margin-bottom: @p-gap;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .colm-grid {
+            margin-bottom: 0;
+        }
+    }
+
     /* tables */
 
     table.cms {

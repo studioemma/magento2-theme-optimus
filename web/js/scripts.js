@@ -33,15 +33,53 @@ define([
 
         require(['magnificpopup'], function(){
             $('.popup-video').magnificPopup({
-		        //disableOn: 700,
-		        type: 'iframe',
-		        //mainClass: 'mfp-fade',
-		        //removalDelay: 160,
-		        preloader: false,
-		        fixedContentPos: false
-	        });
+                //disableOn: 700,
+                type: 'iframe',
+                //mainClass: 'mfp-fade',
+                //removalDelay: 160,
+                preloader: false,
+                fixedContentPos: false
+            });
         });
     }
+
+    if ($('.popup-gallery').length) {
+
+        // fill paths of a's by replacing small with large of thumbnail source
+        $('.popup-gallery a').each(function (index){
+            if ($(this).attr('href') === "#") {
+                var thumbnail = $(this).find('img');
+                if (thumbnail.length) {
+                    var imgpath = thumbnail.attr('src');
+                    if (imgpath.indexOf("small") >= 0) {
+                        imgpath = imgpath.replace("small","large");
+                    }
+                    $(this).attr('href', imgpath);
+                }
+            }
+        });
+
+        require(['magnificpopup'], function(){
+            $('.popup-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                tLoading: 'Loading image #%curr%...',
+                mainClass: 'mfp-img-mobile',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0,1]
+                },
+                image: {
+                    tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                    titleSrc: function(item) {
+                        return (item.el.attr('title') === undefined) ? '' : item.el.attr('title');
+                    }
+                }
+            });
+        });
+    }
+
 
     // ==============================================
     // System-wide toggle system
