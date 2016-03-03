@@ -79,6 +79,50 @@
         border-top-width: 2px;
     }
 
+    hr.cross {
+        position: relative;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 38px;
+            background: #d1d1d1;
+            position: absolute;
+            left: 50%;
+            top: -19px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 38px;
+            background: #d1d1d1;
+            position: absolute;
+            left: 50%;
+            top: -19px;
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+    }
+
+    .ta-center {
+        text-align: center;
+    }
+
+    .ta-left {
+        text-align: left;
+    }
+
+    .ta-right {
+        text-align: right;
+    }
+
     /* Responsive youtube embed, More at: http://avexdesigns.com/responsive-youtube-embed/ */
 
     .video-container {
