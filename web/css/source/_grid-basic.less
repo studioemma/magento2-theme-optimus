@@ -31,6 +31,10 @@
     .vertical-center & {
         vertical-align: middle;
     }
+
+    &.empty {
+        display: none;
+    }
 }
 
 .se-grid .se-col:last-child{
@@ -72,11 +76,23 @@
 @media screen and (min-width: 499px) {
     .se-grid100-50 .se-col {
         width: 47%;
+
+        &.empty {
+            display: inline-block;
+        }
     }
 }
 
 
 @media screen and (min-width: 768px) {
+
+    .se-grid50-25 .se-col.empty,
+    .se-grid50-33 .se-col.empty,
+    .se-grid100-50 .se-col.empty,
+    .se-grid50-100 .se-col.empty,
+    .se-col.empty {
+        display: inline-block;
+    }        
 
     .se-grid .se-col1-1 { width: 97%; }
 

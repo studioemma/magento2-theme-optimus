@@ -71,6 +71,10 @@
         box-sizing: border-box;
         margin: 0 0 @m-bottom 0;
         padding: 0;
+
+        &.empty {
+            display: none;
+        }
     }
 }
 
@@ -103,6 +107,18 @@
         > .colm280-fixed-right,
         > .colm280-flex {
             margin: 0;
+
+            &.empty {
+                display: block;
+
+                &:before,
+                &:after {
+                    content: "x";
+                    color: rgba(0,0,0,0);
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
         }
 
         /* 1-2 */
@@ -397,6 +413,33 @@
 /* non-responsive */
 
 .colm-grid.non-responsive {
+
+    > .colm1-2,
+    > .colm1-3,
+    > .colm2-3,
+    > .colm1-4,
+    > .colm3-4,
+    > .colm1-5,
+    > .colm2-5,
+    > .colm3-5,
+    > .colm4-5,
+    > .colm50-25,
+    > .colm280-fixed,
+    > .colm280-fixed-right,
+    > .colm280-flex {
+
+        &.empty {
+            display: block;
+
+            &:before,
+            &:after {
+                content: "x";
+                color: rgba(0,0,0,0);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
 
     /* 1-2 */
 
