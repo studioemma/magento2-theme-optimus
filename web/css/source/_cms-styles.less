@@ -3,6 +3,9 @@
 //  * See ... for license details.
 //  */
 
+@centered-icon-block-border: 1px #000 solid;
+@centered-icon-block-padding: 1em;
+
 & when (@media-common = true) {
 
     /* pim debug boxes */
@@ -297,6 +300,19 @@
     .side-block.left {
         float: left;
         margin: 0 1.5em 1em 0;
+    }
+}
+
+.centered-icon-block {
+    border: @centered-icon-block-border;
+    padding: @centered-icon-block-padding;
+    text-align: center;
+
+    .colm-grid & img,
+    .colm-grid & svg,
+    img, svg {
+        display: inline-block;
+        border-bottom: @centered-icon-block-border;
     }
 }
 
