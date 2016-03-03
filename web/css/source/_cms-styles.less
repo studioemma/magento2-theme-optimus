@@ -497,3 +497,34 @@
         }
     }
 }
+
+//
+//  page-wide
+//  _________
+
+& when (@media-common = true) {
+
+    .page-wide {
+
+        .page-wide-inner {
+            padding: @layout-indent__width;
+        }
+
+        &.invert {
+            color: #fff;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .page-wide-inner {
+        padding-left: @layout-indent__width;
+        padding-right: @layout-indent__width;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+        max-width: @layout__max-width;
+        box-sizing: border-box;
+    }
+}
