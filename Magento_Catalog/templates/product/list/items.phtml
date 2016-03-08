@@ -11,6 +11,7 @@
 
 <?php
 $_className = $block->getCssClass();
+$title = "";
 
 switch ($type = $block->getType()) {
 
@@ -190,7 +191,7 @@ switch ($type = $block->getType()) {
     <?php else: ?>
         <div class="block <?php echo $class; ?>">
     <?php endif; ?>
-    <?php if ($title): ?>
+    <?php if ($title !== ""): ?>
     <div class="block-title title">
         <strong id="block-<?php echo $class?>-heading" role="heading" aria-level="2"><?php echo $title; ?></strong>
     </div>
