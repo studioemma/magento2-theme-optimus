@@ -190,9 +190,11 @@ switch ($type = $block->getType()) {
     <?php else: ?>
         <div class="block <?php echo $class; ?>">
     <?php endif; ?>
+    <?php if ($title): ?>
     <div class="block-title title">
         <strong id="block-<?php echo $class?>-heading" role="heading" aria-level="2"><?php echo $title; ?></strong>
     </div>
+    <?php endif; ?>
     <div class="block-content content" aria-labelledby="block-<?php echo $class?>-heading">
         <?php if ($type == 'related' && $canItemsAddToCart): ?>
         <div class="block-actions">
