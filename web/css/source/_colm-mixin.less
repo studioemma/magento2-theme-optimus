@@ -1,0 +1,514 @@
+/*************************************************
+ *
+ *  colmgrid mixin
+ *
+ *  @bp: breakpoint when to jump to one column
+ *  @gap: vertical space between cells
+ *  @m-btm: a bottom margin for the container and images
+ *  @reverse: wether it is float left or float right
+ *  @lines: To show lines or not
+ *  @l-clr: color of the lines
+ *
+ *************************************************/
+
+/* 
+
+// example
+// the variables do not have to be in the right order if you name them
+
+& when (@media-common = true) {
+
+    .test-grid {
+        .colmgrid(@lines: true; @bp: 666px; @reverse: true);
+    }
+
+}
+
+*/
+
+.breakpoint(@bp: 600px; @rules) {
+    @media screen and (min-width: @bp) {
+        @rules();
+    }
+}
+
+.colmgrid(@bp: 600px; @gap: 2.4em; @m-btm: 1em; @reverse: false; @lines: false; @l-clr: #ccc) {
+
+    /* clearfix for the container */
+    *zoom: 1; /* IE6-7 */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 0 @m-btm 0;
+    padding: 0;
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    /* reset for columns */
+    > .colm1-2, > .colm1-3, > .colm2-3, > .colm1-4, > .colm3-4 {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* images */
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: @m-btm;
+    }
+
+    & when (@lines = true) {
+
+        > .colm1-2, > .colm1-3, > .colm2-3, > .colm1-4, > .colm3-4 {
+            border-top: 1px @l-clr solid;
+            padding-top: @m-btm;
+            margin-top: @m-btm;
+        }
+
+        > .colm1-2:first-child, > .colm1-3:first-child, > .colm2-3:first-child, > .colm1-4:first-child, > .colm3-4:first-child {
+            border-top: 0;
+            padding-top: 0;
+            margin-top: 0;
+        }
+    }
+
+    .breakpoint(@bp: @bp; @rules: {
+
+        & when (@reverse = true) {
+
+            > .colm1-2 {
+                float: right;
+                width: 50%;
+            }
+
+            > .colm1-2:nth-child(odd) {
+                padding-left: @gap / 2;
+                padding-right: 0;
+            }
+
+            > .colm1-2:nth-child(even) {
+                padding-left: 0;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-3 {
+                float: right;
+                width: 33.33%;
+            }
+
+            > .colm1-3:nth-child(3n+1) {
+                padding-left: @gap * 2 / 3;
+                padding-right: 0;
+            }
+
+            > .colm1-3:nth-child(3n+2) {
+                padding-left: @gap / 3;
+                padding-right: @gap / 3;
+            }
+
+            > .colm1-3:nth-child(3n+3) {
+                padding-left: 0;
+                padding-right: @gap * 2 / 3;
+            }
+
+            > .colm2-3 {
+                float: right;
+                width: 66.66%;
+            }
+
+            > .colm2-3:nth-child(2n+1) {
+                padding-left: @gap / 3;
+                padding-right: 0;
+            }
+
+            > .colm2-3:nth-child(2n+2) {
+                padding-left: 0;
+                padding-right: @gap / 3;
+            }
+
+            > .colm2-3 + .colm1-3:nth-child(3n+2) {
+                padding-left: 0;
+                padding-right: @gap * 2 / 3;
+            }
+
+            > .colm1-4 {
+                float: right;
+                width: 25%;
+            }
+
+            > .colm1-4:nth-child(4n+1) {
+                padding-left: @gap * 3 / 4;
+                padding-right: 0;
+            }
+
+            > .colm1-4:nth-child(4n+2) {
+                padding-left: @gap / 2;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-4:nth-child(4n+3) {
+                padding-left: @gap / 4;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-4:nth-child(4n+4) {
+                padding-left: 0;
+                padding-right: @gap * 3 / 4;
+            }
+
+            > .colm1-2 + .colm1-4:nth-child(4n+2) {
+                padding-left: @gap / 4;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+                padding-left: 0;
+                padding-right: @gap * 3 / 4;
+            }
+
+            > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+                padding-left: 0;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-4 + .colm1-2:nth-child(3n+2) {
+                padding-left: @gap / 4;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+                padding-left: 0;
+                padding-right: @gap * 3 / 4;
+            }
+
+            > .colm3-4 {
+                float: right;
+                width: 75%;
+                padding-left: @gap / 4;
+                padding-right: 0;
+            }
+
+            > .colm1-4 + .colm3-4:nth-child(2n+2) {
+                padding-left: 0;
+                padding-right: @gap / 4;
+            }
+
+            > .colm3-4 + .colm1-4:nth-child(2n+2) {
+                padding-left: 0;
+                padding-right: @gap * 3 / 4;
+            }
+        }
+
+        & when (@reverse = false) {
+
+            > .colm1-2 {
+                float: left;
+                width: 50%;
+            }
+
+            > .colm1-2:nth-child(odd) {
+                padding-left: 0;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-2:nth-child(even) {
+                padding-left: @gap / 2;
+                padding-right: 0;
+            }
+
+            > .colm1-3 {
+                float: left;
+                width: 33.33%;
+            }
+
+            > .colm1-3:nth-child(3n+1) {
+                padding-left: 0;
+                padding-right: @gap * 2 / 3;
+            }
+
+            > .colm1-3:nth-child(3n+2) {
+                padding-left: @gap / 3;
+                padding-right: @gap / 3;
+            }
+
+            > .colm1-3:nth-child(3n+3) {
+                padding-left: @gap * 2 / 3;
+                padding-right: 0;
+            }
+
+            > .colm2-3 {
+                float: left;
+                width: 66.66%;
+            }
+
+            > .colm2-3:nth-child(2n+1) {
+                padding-left: 0;
+                padding-right: @gap / 3;
+            }
+
+            > .colm2-3:nth-child(2n+2) {
+                padding-left: @gap / 3;
+                padding-right: 0;
+            }
+
+            > .colm2-3 + .colm1-3:nth-child(3n+2) {
+                padding-left: @gap * 2 / 3;
+                padding-right: 0;
+            }
+
+            > .colm1-4 {
+                float: left;
+                width: 25%;
+            }
+
+            > .colm1-4:nth-child(4n+1) {
+                padding-left: 0;
+                padding-right: @gap * 3 / 4;
+            }
+
+            > .colm1-4:nth-child(4n+2) {
+                padding-left: @gap / 4;
+                padding-right: @gap / 2;
+            }
+
+            > .colm1-4:nth-child(4n+3) {
+                padding-left: @gap / 2;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-4:nth-child(4n+4) {
+                padding-left: @gap * 3 / 4;
+                padding-right: 0;
+            }
+
+            > .colm1-2 + .colm1-4:nth-child(4n+2) {
+                padding-left: @gap / 2;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3) {
+                padding-left: @gap * 3 / 4;
+                padding-right: 0;
+            }
+
+            > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3) {
+                padding-left: @gap / 2;
+                padding-right: 0;
+            }
+
+            > .colm1-4 + .colm1-2:nth-child(3n+2) {
+                padding-left: @gap / 4;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3) {
+                padding-left: @gap * 3 / 4;
+                padding-right: 0;
+            }
+
+            > .colm3-4 {
+                float: left;
+                width: 75%;
+                padding-left: 0;
+                padding-right: @gap / 4;
+            }
+
+            > .colm1-4 + .colm3-4:nth-child(2n+2) {
+                padding-left: @gap / 4;
+                padding-right: 0;
+            }
+
+            > .colm3-4 + .colm1-4:nth-child(2n+2) {
+                padding-left: @gap * 3 / 4;
+                padding-right: 0;
+            }
+
+        }//end if else @reverse
+
+        & when (@lines = true) {
+
+            @pseudo-line: {
+                content: " ";
+                display: block;
+                position: absolute;
+                width: 1px;
+                height: 100%;
+                background: @l-clr;
+                top: 0;
+            };
+
+            position: relative;
+            margin: 0 0 @m-btm*2 0;
+
+            > .colm1-2, > .colm1-3, > .colm2-3, > .colm1-4, > .colm3-4 {
+                position: static;
+                border-top: 0;
+                padding-top: 0;
+                margin-top: 0;
+            }
+
+            > .colm1-2 *:last-child, > .colm1-3 *:last-child, > .colm2-3 *:last-child, > .colm1-4 *:last-child, > .colm3-4 *:last-child {
+                margin-bottom: 0;
+            }
+
+            > .colm1-2:nth-child(even):after {
+                @pseudo-line();
+                left: 50%;
+            }
+
+            > .colm1-3:nth-child(3n+2):after {
+                @pseudo-line();
+                left: 33.33%;
+                margin-left: - @gap / 6;
+            }
+
+            > .colm1-3:nth-child(3n+3):after {
+                @pseudo-line();
+                left: 66.66%;
+                margin-left: @gap / 6;
+            }
+
+            > .colm2-3:nth-child(2n+2):after {
+                @pseudo-line();
+                left: 33.33%;
+                margin-left: - @gap / 6;
+            }
+
+            > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+                @pseudo-line();
+                left: 66.66%;
+                margin-left: @gap / 6;
+            }
+
+            > .colm1-4:nth-child(4n+2):after {
+                @pseudo-line();
+                left: 25%;
+                margin-left: - @gap / 4;
+            }
+
+            > .colm1-4:nth-child(4n+3):after {
+                @pseudo-line();
+                left: 50%;
+                margin-left: 0;
+            }
+
+            > .colm1-4:nth-child(4n+4):after {
+                @pseudo-line();
+                left: 75%;
+                margin-left: @gap / 4;
+            }
+
+            > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+                @pseudo-line();
+                left: 50%;
+                margin-left: 0;
+            }
+
+            > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+                @pseudo-line();
+                left: 75%;
+                margin-left: @gap / 4;
+            }
+
+            > .colm1-4 + .colm1-4 + .colm1-2:nth-child(3n+3):after {
+                @pseudo-line();
+                left: 50%;
+                margin-left: 0;
+            }
+
+            > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+                @pseudo-line();
+                left: 25%;
+                margin-left: - @gap / 4;
+            }
+
+            > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+                @pseudo-line();
+                left: 75%;
+                margin-left: @gap / 4;
+            }
+
+            > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+                @pseudo-line();
+                left: 25%;
+                margin-left: - @gap / 4;
+            }
+
+            > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+                @pseudo-line();
+                left: 75%;
+                margin-left: @gap / 4;
+            }
+
+            & when (@reverse = true) {
+
+                > .colm2-3:nth-child(2n+2):after {
+                    left: 66.66%;
+                    margin-left: @gap / 6;
+                }
+
+                > .colm2-3 + .colm1-3:nth-child(3n+2):after {
+                    left: 33.33%;
+                    margin-left: - @gap / 6;
+                }
+
+                > .colm1-4:nth-child(4n+2):after {
+                    left: 75%;
+                    margin-left: @gap / 4;
+                }
+
+                > .colm1-4:nth-child(4n+4):after {
+                    left: 25%;
+                    margin-left: - @gap / 4;
+                }
+
+                > .colm1-2 + .colm1-4:nth-child(4n+2):after {
+                    @pseudo-line();
+                    left: 50%;
+                    margin-left: 0;
+                }
+
+                > .colm1-2 + .colm1-4 + .colm1-4:nth-child(3n+3):after {
+                    left: 25%;
+                    margin-left: - @gap / 4;
+                }
+
+                > .colm1-4 + .colm1-2:nth-child(3n+2):after {
+                    left: 75%;
+                    margin-left: @gap / 4;
+                }
+
+                > .colm1-4 + .colm1-2 + .colm1-4:nth-child(3n+3):after {
+                    left: 25%;
+                    margin-left: - @gap / 4;
+                }
+
+                > .colm1-4 + .colm3-4:nth-child(2n+2):after {
+                    left: 75%;
+                    margin-left: @gap / 4;
+                }
+
+                > .colm3-4 + .colm1-4:nth-child(2n+2):after {
+                    left: 25%;
+                    margin-left: - @gap / 4;
+                }
+
+            }//end if @reverse (in if @lines)
+
+        }//end if @lines
+
+    }); // end breakpoint
+
+}//end mixin
