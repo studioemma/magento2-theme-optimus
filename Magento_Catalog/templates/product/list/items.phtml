@@ -254,6 +254,7 @@ switch ($type = $block->getType()) {
                             <?php endif; ?>
 
                             <?php if ($showWishlist || $showCompare || $showCart): ?>
+                            <div class="product-item-inner">
                                 <div class="product actions product-item-actions">
                                     <?php if ($showCart): ?>
                                         <div class="actions-primary">
@@ -303,6 +304,7 @@ switch ($type = $block->getType()) {
                                         </div>
                                     <?php endif; ?>
                                 </div>
+                            </div>
                             <?php endif; ?>
                         </div>
                     </div>
