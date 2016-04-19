@@ -16,6 +16,7 @@
     margin-bottom: 1em;
 }
 
+.se-grid50-20 .se-col,
 .se-grid50-25 .se-col,
 .se-grid50-33 .se-col,
 .se-grid100-50 .se-col,
@@ -66,6 +67,7 @@
     max-width: none;
 }
 .se-grid.no-margins .se-col,
+.se-grid50-20.no-margins .se-col,
 .se-grid50-25.no-margins .se-col,
 .se-grid50-33.no-margins .se-col,
 .se-grid100-50.no-margins .se-col {
@@ -86,13 +88,14 @@
 
 @media screen and (min-width: 768px) {
 
+    .se-grid50-20 .se-col.empty,
     .se-grid50-25 .se-col.empty,
     .se-grid50-33 .se-col.empty,
     .se-grid100-50 .se-col.empty,
     .se-grid50-100 .se-col.empty,
     .se-col.empty {
         display: inline-block;
-    }        
+    }
 
     .se-grid .se-col1-1 { width: 97%; }
 
@@ -168,9 +171,8 @@
 
     /* Fixed flexible */
 
-    .se-grid50-25 .se-col{
-        width: 30.36%;
-    }
+    .se-grid50-20 .se-col,
+    .se-grid50-25 .se-col,
     .se-grid50-33 .se-col{
         width: 30.36%;
     }
@@ -189,9 +191,8 @@
         width: 100%;
     }
 
-    .se-grid50-25.no-margins .se-col{
-        width: 33.3%;
-    }
+    .se-grid50-20.no-margins .se-col,
+    .se-grid50-25.no-margins .se-col,
     .se-grid50-33.no-margins .se-col{
         width: 33.3%;
     }
@@ -206,6 +207,9 @@
 @media screen and (min-width: 1024px) {
 
     /* Fixed flexible */
+    .se-grid50-20 .se-col {
+        width: 17.00%;
+    }
     .se-grid50-25 .se-col{
         /*width: 22.05%;*/ /* seems to give problems from time to time */
         width: 22.00%;
@@ -219,6 +223,9 @@
         width: 30.36%;
     }
 
+    .se-grid50-20.no-margins .se-col{
+        width: 20%;
+    }
     .se-grid50-25.no-margins .se-col{
         width: 25%;
     }
@@ -235,10 +242,12 @@
         margin-left: 0;
         max-width: none;
     }
+    .se-grid50-20,
     .se-grid50-25{
         margin-left: -3%;
         max-width: 105%;
     }
+    .se-grid50-20.no-margins,
     .se-grid50-25.no-margins{
         margin-left: 0;
         max-width: none;
@@ -250,17 +259,13 @@
         display: block;
     }
 
-    .se-grid50-25 .se-col{
-        width: 47%;
-    }
-
+    .se-grid50-20 .se-col,
+    .se-grid50-25 .se-col,
     .se-grid50-33 .se-col{
         width: 47%;
     }
-    .se-grid50-25.no-margins .se-col{
-        margin-left: 0;
-        width: 50%;
-    }
+    .se-grid50-20.no-margins .se-col,
+    .se-grid50-25.no-margins .se-col,
     .se-grid50-33.no-margins .se-col{
         margin-left: 0;
         width: 50%;
