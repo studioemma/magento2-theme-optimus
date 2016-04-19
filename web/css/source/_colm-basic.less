@@ -725,6 +725,8 @@
         padding-right: 0;
     }
 
+    // here
+
     > .colm2-5 {
         padding-left: 0;
         padding-right: @p-gap * 3 / 5;
@@ -1022,6 +1024,71 @@
             padding-left: 0;
             padding-right: @p-gap * 3 / 4;
         }
+
+        /* 1-5 */
+
+        > .colm1-5 {
+            float: right;
+            width: 20%;
+        }
+
+        > .colm2-5 {
+            float: right;
+            width: 40%;
+        }
+
+        > .colm3-5 {
+            float: right;
+            width: 60%;
+        }
+
+        > .colm4-5 {
+            float: right;
+            width: 80%;
+        }
+
+        > .colm1-5:nth-child(5n+1) {
+            padding-left: @p-gap * 4 / 5;
+            padding-right: 0;
+        }
+
+        > .colm1-5:nth-child(5n+2) {
+            padding-left: @p-gap * 3 / 5;
+            padding-right: @p-gap / 5;
+        }
+
+        > .colm1-5:nth-child(5n+3) {
+            padding-left: @p-gap * 2 / 5;
+            padding-right: @p-gap * 2 / 5;
+        }
+
+        > .colm1-5:nth-child(5n+4) {
+            padding-left: @p-gap / 5;
+            padding-right: @p-gap * 3 / 5;
+        }
+
+        > .colm1-5:nth-child(5n+5) {
+            padding-left: 0;
+            padding-right: @p-gap * 4 / 5;
+        }
+
+        > .colm4-5 {
+            padding-left: @p-gap / 5;
+            padding-right: 0;
+        }
+
+        > .colm1-5 + .colm4-5:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap / 5;
+        }
+
+        > .colm4-5 + .colm1-5:nth-child(2n+2) {
+            padding-left: 0;
+            padding-right: @p-gap * 4 / 5;
+        }
+
+        // here
+
 
         /* fixed */
 
