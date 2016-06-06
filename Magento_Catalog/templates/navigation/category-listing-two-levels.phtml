@@ -20,43 +20,55 @@ $currentCategory = $block->getCurrentCategory();
 //Declare filtered category array
 $categories = array();
 
+$manager = Magento\Framework\App\ObjectManager::getInstance();
+
 //Check to see if only selected categories should be shown, or all children from the current category
 if(empty($this->getSelectedCategoryIds())){
 
     if (!empty($this->getSelectedParentCategoryId())){
-        $manager = Magento\Framework\App\ObjectManager::getInstance();
         $currentCategory = $manager->create('Magento\Catalog\Model\Category')->load($this->getSelectedParentCategoryId());
     }
 
     if($currentCategory->hasChildren()){
         foreach ($currentCategory->getChildrenCategories() as $category)
         {
-            //Add category and children to array
-            $childCategories = array();
-            if ($category->hasChildren()) {
-                foreach ($category->getChildrenCategories() as $childCategory) {
-                    $childCategories[] = $childCategory;
+            $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category->getId());
+            if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
+                //Add category and children to array
+                $childCategories = array();
+                if ($category->hasChildren()) {
+                    foreach ($category->getChildrenCategories() as $childCategory) {
+                        $_subcat = $manager->create('Magento\Catalog\Model\Category')->load($childCategory->getId());
+                        if($_subcat->getIsActive() && $_subcat->getIncludeInMenu()){
+                            $childCategories[] = $_subcat;
+                        }
+                        
+                    }
                 }
+                $categories[] = array("cat" => $category, "subcats" => $childCategories);
             }
-            $categories[] = array("cat" => $category, "subcats" => $childCategories);
         }
     }
 }else{
 
     $selected_categories = explode(',',$this->getSelectedCategoryIds());
-    $manager = Magento\Framework\App\ObjectManager::getInstance();
-
     foreach ($selected_categories as $category)
-    {
-        //Add category and children to array
-        $cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
-        $childCategories = array();
-        if ($cat->hasChildren()) {
-            foreach ($cat->getChildrenCategories() as $childCategory) {
-                $childCategories[] = $childCategory;
+    {   
+        $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
+        if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
+            //Add category and children to array
+            $cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
+            $childCategories = array();
+            if ($cat->hasChildren()) {
+                foreach ($cat->getChildrenCategories() as $childCategory) {
+                    $_subcat = $manager->create('Magento\Catalog\Model\Category')->load($childCategory->getId());
+                    if($_subcat->getIsActive() && $_subcat->getIncludeInMenu()){
+                        $childCategories[] = $_subcat;
+                    }
+                }
             }
+            $categories[] = array("cat" => $cat, "subcats" => $childCategories);
         }
-        $categories[] = array("cat" => $cat, "subcats" => $childCategories);
     }
 }
 $bShowColumns = false;
