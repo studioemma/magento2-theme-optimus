@@ -8,10 +8,12 @@ var config = {
     ],
     paths: {
         responsiveslides: 'js/responsiveslides.min',
-        magnificpopup: 'js/jquery.magnific-popup.min'
+        magnificpopup: 'js/jquery.magnific-popup.min',
+        flexslider: 'js/jquery.flexslider-min'
     },
     shim: {
         responsiveslides: ['jquery'],
-        magnificpopup: ['jquery']
+        magnificpopup: ['jquery'],
+        flexslider: ['jquery']
     }
 };
