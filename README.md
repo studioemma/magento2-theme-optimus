@@ -85,7 +85,7 @@ Let's go back the Magento webroot
 
 Edit the composer.json to add Optimus theme, Optimus module and Core module
 
-For an example see [http://stash.studioemma.com/projects/MAG2LIB/repos/libeco/commits/1f81fe563f71fbbbbe5d9ea75e4c0959651bc389#composer.json](this commit)
+For an example see [this commit](http://stash.studioemma.com/projects/MAG2LIB/repos/libeco/commits/1f81fe563f71fbbbbe5d9ea75e4c0959651bc389#composer.json])
 
 Add to `repositories`
 
@@ -194,8 +194,10 @@ The composer.lock file will be changed for that project and you wil need to comm
 
 ## Contact
 
-
-[http://www.studioemma.com](Studio Emma)
+[Studio Emma](http://www.studioemma.com)
 
 Follow [@Studioemma](https://twitter.com/studioemma) on Twitter.
+
+
+
 
