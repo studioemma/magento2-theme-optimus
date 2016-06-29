@@ -32,18 +32,18 @@
                 </container>
             </container>
         </referenceContainer>
-        
+
         <!-- Footer (containing user content, newsletter and social) -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">
             <container name="sitemap" htmlTag="div" htmlClass="colm1-4" before="-">
-                <!-- 
+                <!--
                 Add the first level of categories in 2 columns to the footer menu on all pages
                 -->
                 <block class="Magento\Catalog\Block\Navigation" name="category_listing_footer" as="category_listing_footer" template="Magento_Catalog::navigation/category-listing.phtml">
                     <arguments>
                         <argument name="title" translate="true" xsi:type="string">Discover our catalog</argument>
                         <argument name="column_count" xsi:type="number">2</argument>
-                        <!-- Change selected parent to id of root category! --> 
+                        <!-- Change selected parent to id of root category! -->
                         <!-- <argument name="selected_parent_category_id" xsi:type="string">3</argument> -->
                         <!-- <argument name="selected_category_ids" xsi:type="string">4,8</argument> -->
                     </arguments>
@@ -71,5 +71,12 @@
                 </container>
             </container>
         </referenceContainer>
+
+        <!-- Adds sticky header script -->
+        <!--
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="sticky-header" template="Magento_Theme::html/sticky-header.phtml" before="-" />
+        </referenceContainer>
+        -->
     </body>
 </page>

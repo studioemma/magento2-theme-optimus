@@ -9,7 +9,8 @@ var config = {
     paths: {
         responsiveslides: 'js/responsiveslides.min',
         magnificpopup: 'js/jquery.magnific-popup.min',
-        flexslider: 'js/jquery.flexslider-min'
+        flexslider: 'js/jquery.flexslider-min',
+        stickyheader: 'js/stickyheader'
     },
     shim: {
         responsiveslides: ['jquery'],

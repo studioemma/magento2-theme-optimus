@@ -1,0 +1,38 @@
+//
+//  Sticky header
+//  _____________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .page-wrapper.sticky-header {
+
+        .panel.wrapper {
+            display: none;
+        }
+
+        header.page-header {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            z-index: 1010; // needs to be lower then the magnific popup which is 1043
+            height: 100px;
+            background: @page__background-color;
+        }
+
+        .nav-sections {
+            position: fixed;
+            top: 100px;
+            left: 0px;
+            width: 100%;
+            z-index: 1000; // needs to be lower then the magnific popup which is 1043
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+    body {
+        padding-top: 0 !important;
+    }
+}
