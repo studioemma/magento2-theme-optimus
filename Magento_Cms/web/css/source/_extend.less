@@ -74,7 +74,7 @@
                 top: 50%;
                 margin-top: -14px;
             }
-            
+
             &.toggled {
                 &:after {
                     content: "\f106";
@@ -104,6 +104,19 @@
             &.toggled {
                 display: block;
             }
+        }
+    }
+
+    //
+    //  remove wrapping of main content
+    //  _______________________________
+
+    body.page-wide-content {
+
+        .page-main {
+            max-width: none;
+            padding-left: 0;
+            padding-right: 0;
         }
     }
 }
