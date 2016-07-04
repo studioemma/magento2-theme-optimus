@@ -1,0 +1,141 @@
+//  Sitemap dropdown (mobile) (for structure see gotron)
+//  _________________________
+
+@sitemap-dropdown-color: #333;
+
+& when (@media-common = true) {
+
+    .sitemap-grid {
+        border-radius: 3px;
+        border: 1px @sitemap-dropdown-color solid;
+
+        .sitemap-dropdown {
+            border-bottom: 1px @sitemap-dropdown-color solid;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            &.colm1-2, &.colm1-4 {
+                margin: 0;
+                padding: 1em;
+            }
+
+            h2, h3 {
+                color: @sitemap-dropdown-color;
+                font-weight: bold;
+                font-size: 1.6rem;
+                cursor: pointer;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+
+                &:after {
+                    content: "\f078";
+                    font-family: "FontAwesome";
+                    display: inline-block;
+                    padding-left: 7px;
+                    float: right;
+                }
+            }
+
+            &.active {
+
+                h2, h3 {
+
+                    &:after {
+                        content: "\f077";
+                    }
+                }
+            }
+
+            a {
+                color:  @sitemap-dropdown-color;
+                border-bottom: 0;
+                text-decoration: none;
+
+                &:link, &:visited {
+                    color:  @sitemap-dropdown-color;
+                    border-bottom: 0;
+                    text-decoration: none;
+                }
+
+                &:hover, &:active {
+                    color:  darken(@sitemap-dropdown-color, 10%);
+                    border-bottom: 0;
+                    text-decoration: none;
+                }
+            }
+
+            .colm-grid {
+                margin: 0;
+            }
+
+            .colm-grid > .colm1-2 {
+                margin: 0;
+            }
+
+            ul {
+                margin-top: 1em;
+                display: none;
+
+                li {
+                    margin-bottom: .5em;
+                }
+            }
+
+            nav {
+                display: none;
+                margin-top: 1em;
+
+                ul {
+                    margin-top: 0;
+                }
+            }
+
+            &.active {
+                ul, nav {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .sitemap-grid {
+        border-radius: 0;
+        border: 0;
+
+        .sitemap-dropdown {
+            border-bottom: 0;
+
+            h2, h3 {
+                cursor: auto;
+
+                &:after {
+                    display: none;
+                }
+            }
+
+            &.active {
+
+                h2, h3 {
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+
+            ul {
+                display: block;
+            }
+
+            nav {
+                display: block;
+            }
+        }
+    }
+}

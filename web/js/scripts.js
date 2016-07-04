@@ -120,4 +120,13 @@ define([
         $(this).next('.content').toggleClass('toggled','');
         return false;
     });
+
+    // ==============================================
+    // Sitemap toggle
+    // ==============================================
+
+    $(".sitemap-dropdown h2, .sitemap-dropdown h3").click(function (e) {
+        $(this).parents('.sitemap-dropdown').toggleClass('active');
+    });
+
 });
