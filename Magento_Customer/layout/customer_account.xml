@@ -15,5 +15,15 @@
                 <argument name="block_title" translate="true" xsi:type="string">Account menu</argument>
             </arguments>
         </referenceBlock>
+
+        <!-- Adds a link to log out in the side menu on account pages -->
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-logout-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">customer/account/logout</argument>
+                    <argument name="label" xsi:type="string" translate="true">Sign Out</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>
