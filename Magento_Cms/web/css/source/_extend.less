@@ -1,3 +1,7 @@
+// CMS
+
+@layout__max-width-outside: 2000px; // can be overridden in theme.less
+
 & when (@media-common = true) {
     /* -------------------------------------------- *
      * Accordion
@@ -119,6 +123,23 @@
             padding-right: 0;
         }
     }
+
+    //Set max widths for content & banner that exceed the site a little, but not to the max
+    .content-wrapper-wide {
+        max-width: @layout__max-width-outside;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    //Set max widths for content & banner that do not exceed the site
+    .content-wrapper {
+        max-width: @layout__max-width;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
@@ -130,5 +151,10 @@
         .content {
             display: block;
         }
+    }
+
+    .content-wrapper {
+        padding-left: @layout-indent__width;
+        padding-right: @layout-indent__width;
     }
 }
