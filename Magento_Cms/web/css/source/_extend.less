@@ -121,6 +121,14 @@
             max-width: none;
             padding-left: 0;
             padding-right: 0;
+
+            .page.messages {
+                max-width: @layout__max-width;
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     }
 
@@ -156,5 +164,16 @@
     .content-wrapper {
         padding-left: @layout-indent__width;
         padding-right: @layout-indent__width;
+    }
+
+    body.page-wide-content {
+
+        .page-main {
+
+            .page.messages {
+                padding-left: @layout-indent__width;
+                padding-right: @layout-indent__width;
+            }
+        }
     }
 }
