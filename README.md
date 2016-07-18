@@ -14,7 +14,7 @@ This theme extends the default Magento 2 blank theme and it's purpose is to refi
 
 ## Requirements
 
-14/07 : Optimus theme is tested from 2.0.0 beta upwards to 2.1.0. Tag v1.0 is present for older projects. dev-master contains additions that cannot be deployed to older projects withouth having to modify the customer themes. New projects will always be set up with dev-master.
+14/07 : Optimus theme is tested from 2.0.0 beta upwards to 2.1.0. Tag v1.0.0 is present for older projects. dev-master contains additions that cannot be deployed to older projects withouth having to modify the customer themes. New projects will always be set up with dev-master.
 
 ## Installation
 
