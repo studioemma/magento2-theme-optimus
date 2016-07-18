@@ -2,6 +2,19 @@
 @form-field-type-label-inline__align: left;
 
 //
+//  General
+//  _______
+
+& when (@media-common = true) {
+
+    .fieldset > .field > legend.label {
+        border-bottom: 0;
+        font-size: inherit;
+        color: inherit;
+    }
+}
+
+//
 //  Desktop
 //  ---------------------------------------------
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
