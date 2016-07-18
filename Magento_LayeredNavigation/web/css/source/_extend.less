@@ -22,7 +22,7 @@
             .block-title {
                 cursor: pointer;
                 margin-bottom: 0;
-                
+
                .lib-icon-font(
                     @icon-next,
                     @_icon-font-position: after,
@@ -30,7 +30,7 @@
                     @_icon-font-size: 34px,
                     @_icon-font-text-hide: true
                 );
-                
+
                 &:after {
                     line-height: 34px;
                 }
@@ -44,12 +44,12 @@
                         @_icon-font-color: @primary__color,
                         @_icon-font-size: 34px,
                         @_icon-font-text-hide: true
-                    );  
-                    
+                    );
+
                     &:after {
                         line-height: 34px;
-                    }  
-                } 
+                    }
+                }
 
                 .block-content.filter-content {
                     display: block;
@@ -160,9 +160,9 @@
         }
     }
 
-    /* 
+    /*
 
-    Checkboxes addon 
+    Checkboxes addon
     Controlled through 'filter-with-checkbox' class in /app/design/frontend/Studioemma/optimus/Magento_layeredNavigation/layout/catalog_category_view_type_layered.xml
 
     */
@@ -192,9 +192,65 @@
                                 padding-right: 4px;
                             }
                         }
-                    }            
+                    }
                 }
-            }  
+            }
+        }
+    }
+
+    .filter-current-subtitle {
+        font-weight:  normal;
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 2rem;
+        color: @primary__color;
+    }
+
+    .filter-current {
+
+        .block-actions {
+            font-size: 0.935em;
+        }
+
+        .items {
+            margin-bottom: 8px;
+
+            .item {
+                display: inline-block;
+                margin: 0 4px 4px 0;
+                border: 1px @border-color__base solid;
+                font-size: 0.935em;
+                padding: .15em .2em;
+
+                .action.remove {
+                    color: @primary__color;
+                    margin-left: 3px;
+                    font-size: 1.2rem;
+                    &:before {
+                        content: "\f00d";
+                        font-family: "FontAwesome";
+                    }
+
+                    span {
+                        display: none;
+                    }
+                }
+
+                .filter-label {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .block.filter {
+
+        .filter-title {
+            display: none;
+        }
+
+        .filter-subtitle {
+            display: none;
         }
     }
 }

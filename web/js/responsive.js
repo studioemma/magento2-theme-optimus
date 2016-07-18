@@ -87,8 +87,8 @@ define([
             }, 500);
 
             /* Move layered navigation to top */
-            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products-grid').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
-            
+            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products.wrapper').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
+
             /* Move store USP block to footer */
             $(".panel.header .store-usp").prependTo($('footer .footer'));
 
@@ -101,7 +101,7 @@ define([
         /* Mobile layered nav toggle */
         $(".catalog-category-view .block.filter .block-title").click(function() {
             $(this).parent().toggleClass('opened');
-        }); 
+        });
 
         /* Cart quantity override */
         $("#shopping-cart-table .col.qty .select-qty").change(function() {
@@ -170,7 +170,7 @@ define([
             if ($(this).find('.show_more_count').val()) {
                 var sizeOfToggle = $(this).find('.show_more_count').val();
             } else {
-                var sizeOfToggle = 2;
+                var sizeOfToggle = 6;
             }
 
             if(lnl > sizeOfToggle){
