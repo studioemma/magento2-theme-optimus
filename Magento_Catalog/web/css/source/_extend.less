@@ -20,7 +20,7 @@
 
         .small-save-button {
             padding: 7px 4px;
-            
+
             .lib-icon-font (
                 @icon-checkmark,
                 @_icon-font-position: after,
@@ -38,10 +38,10 @@
     /* Social sharing */
     .social-sharing {
         margin-top: @indent__xs;
-        
+
         ul {
             margin: 0;
-            padding: 0; 
+            padding: 0;
 
             li {
                 list-style: none;
@@ -60,7 +60,7 @@
         .product-items {
             .product-item {
                 margin-bottom: 40px;
-                
+
                 &-info {
                     &:extend(.abs-add-clearfix all);
                 }
@@ -73,7 +73,7 @@
         &-item {
             &-info {
                 .page-products & {
-                    width: auto;    
+                    width: auto;
                 }
             }
         }
@@ -97,33 +97,21 @@
         }
     }
 
-    .product {
-        &-item {
-            .products-grid & {
+    .products-grid {
+
+        .product-item {
+            width: 100%;
+            margin-bottom: 2rem;
+
+            .product-image-photo {
                 width: 100%;
-                
-                &-info {
-                    .page-products & {
-                        width: 100%;
-                    }
-                }
+            }
 
-                .product-item-photo {
-                    width: 110px;
-                    float: left;
-                    
-                    .product-image-container {
-                        width: 100% !important;
-                    }
-                }
-
-                .product-item-details {
-                    overflow: hidden;
-                    padding-left: 10px;
-                }
-            }                 
+            .product-image-container {
+                width: 100%!important;
+            }
         }
-    } 
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
@@ -151,7 +139,7 @@
                     width: auto;
                     padding: 0;
                 }
-                
+
                 .actions-primary {
                     display: inherit;
                 }
@@ -197,7 +185,7 @@
         .item {
             button {
                 position: relative;
-                
+
                 &:after {
                     font-family: "FontAwesome";
                     padding-left: @indent__s;
@@ -209,7 +197,7 @@
 
                 &.toggled {
                     padding-right: 30px;
-                    
+
                     &:after {
                         content: "\f00c";
                     }
@@ -222,7 +210,7 @@
                 }
             }
         }
-        
+
     }
 }
 
