@@ -575,3 +575,109 @@
         box-sizing: border-box;
     }
 }
+
+//
+//  Special titles
+//  ______________
+
+// Striped title
+
+.stripedTitle() {
+
+    .block-title {
+        text-align: center;
+        position: relative;
+
+        &:after {
+            content: "";
+            background-color: @border-color__base;
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: 1px;
+            z-index: 0;
+        }
+
+        strong {
+            background-color: @page__background-color;
+            display: inline-block;
+            padding: 0 1em;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            font-size: 2.3rem;
+            letter-spacing: 6.9px;
+            font-weight: normal;
+        }
+    }
+}
+
+& when (@media-common = true) {
+
+    .striped {
+
+        strong {
+            color: @primary__color;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-top: 0rem;
+        }
+        .stripedTitle();
+        margin-bottom: 1.5em;
+    }
+}
+
+// title with background
+
+& when (@media-common = true) {
+
+    .page-title-wrapper.has-background-image {
+
+        .background-image {
+            display: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .page-title-wrapper.has-background-image {
+        text-align: center;
+        position: relative;
+        margin-bottom: @h1__margin-bottom;
+
+        h1 {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            margin: 0;
+            top: 0;
+            left: 0;
+            color: @color-white;
+
+            &:before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                width: 1px;
+                vertical-align: middle;
+            }
+
+            > span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .background-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
