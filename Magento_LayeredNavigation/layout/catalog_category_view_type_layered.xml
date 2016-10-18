@@ -9,5 +9,12 @@
     <body>
         <!-- Activate below for visual checkboxes in layered navigation -->
         <attribute name="class" value="filter-with-checkbox"/>
+
+        <!-- Activate below for visual checkboxes in layered navigation -->
+        <referenceBlock name="catalog.navigation.renderer">
+	    	<arguments>
+	            <argument name="no_follow" xsi:type="string">nofollow</argument>
+	        </arguments>
+	    </referenceBlock>
     </body>
 </page>

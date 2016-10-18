@@ -13,13 +13,15 @@
  *
  * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
  */
+
+$argNoFollow = $block->getNoFollow();
 ?>
 
 <ol class="items">
     <?php foreach ($filterItems as $filterItem): ?>
         <li class="item">
             <?php if ($filterItem->getCount() > 0): ?>
-                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>" <?php if($argNoFollow): ?> rel="nofollow"<?php endif; ?>>
                     <?php echo $filterItem->getLabel() ?>
                     <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
                         <span class="count"><?php echo $filterItem->getCount()?><span class="filter-count-label">
