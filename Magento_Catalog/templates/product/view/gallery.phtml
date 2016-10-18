@@ -12,22 +12,34 @@
  * @var $block \Magento\Catalog\Block\Product\View\Gallery
  */
 ?>
+<?php $galleryPhotos = $block->getGalleryImagesJson(); 
+$nofImages = count(json_decode($galleryPhotos));
+?>
 <div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
     <div data-role="loader" class="loading-mask">
         <div class="loader">
-            <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
-                 alt="<?php /* @escapeNotVerified */ echo __('Loading...') ?>">
+            <img src="<?php echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php echo __('Loading...') ?>">
         </div>
     </div>
 </div>
+<?php if($nofImages > 1) { ?>
+<div class="swipe-photos">
+    <?php if($nofImages > 2) {
+        echo __("Swipen voor %1 additionele foto's", ($nofImages - 1));
+    } else {
+        echo __("Swipen voor 1 additionele foto");
+    } ?>
+</div>
+<?php } ?>
 <!--Fix for jumping content. Loader must be the same size as gallery.-->
 <script>
     var config = {
-            "width": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
-            "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+            "width": <?php echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+            "thumbheight": <?php echo $block->getImageAttribute('product_page_image_small', 'height')
                         ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
-            "navtype": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navtype"); ?>",
-            "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height'); ?>
+            "navtype": "<?php  echo $block->getVar("gallery/navtype"); ?>",
+            "height": <?php echo $block->getImageAttribute('product_page_image_medium', 'height'); ?>
         },
         thumbBarHeight = 0,
         loader = document.querySelectorAll('[data-gallery-role="gallery-placeholder"] [data-role="loader"]')[0];
@@ -43,68 +55,68 @@
         "[data-gallery-role=gallery-placeholder]": {
             "mage/gallery/gallery": {
                 "mixins":["magnifier/magnify"],
-                "magnifierOpts": <?php /* @escapeNotVerified */ echo $block->getMagnifier(); ?>,
-                "data": <?php /* @escapeNotVerified */ echo $block->getGalleryImagesJson(); ?>,
+                "magnifierOpts": <?php echo $block->getMagnifier(); ?>,
+                "data": <?php echo $galleryPhotos; ?>,
                 "options": {
-                    "nav": "<?php /* @escapeNotVerified */ echo $block->getVar("gallery/nav"); ?>",
+                    "nav": "<?php echo $block->getVar("gallery/nav"); ?>",
                     <?php if (($block->getVar("gallery/loop"))): ?>
-                        "loop": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/loop"); ?>,
+                        "loop": <?php echo $block->getVar("gallery/loop"); ?>,
                     <?php endif; ?>
                     <?php if (($block->getVar("gallery/keyboard"))): ?>
-                        "keyboard": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/keyboard"); ?>,
+                        "keyboard": <?php echo $block->getVar("gallery/keyboard"); ?>,
                     <?php endif; ?>
                     <?php if (($block->getVar("gallery/arrows"))): ?>
-                        "arrows": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/arrows"); ?>,
+                        "arrows": <?php echo $block->getVar("gallery/arrows"); ?>,
                     <?php endif; ?>
                     <?php if (($block->getVar("gallery/allowfullscreen"))): ?>
-                        "allowfullscreen": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/allowfullscreen"); ?>,
+                        "allowfullscreen": <?php echo $block->getVar("gallery/allowfullscreen"); ?>,
                     <?php endif; ?>
                     <?php if (($block->getVar("gallery/caption"))): ?>
-                        "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/caption"); ?>,
+                        "showCaption": <?php echo $block->getVar("gallery/caption"); ?>,
                     <?php endif; ?>
-                    "width": "<?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>",
-                    "thumbwidth": "<?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'width'); ?>",
+                    "width": "<?php echo $block->getImageAttribute('product_page_image_medium', 'width'); ?>",
+                    "thumbwidth": "<?php echo $block->getImageAttribute('product_page_image_small', 'width'); ?>",
                     <?php if ($block->getImageAttribute('product_page_image_small', 'height') || $block->getImageAttribute('product_page_image_small', 'width')): ?>
-                        "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+                        "thumbheight": <?php echo $block->getImageAttribute('product_page_image_small', 'height')
                         ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
                     <?php endif; ?>
                     "thumbmargin": 10,
                     <?php if ($block->getImageAttribute('product_page_image_medium', 'height') || $block->getImageAttribute('product_page_image_medium', 'width')): ?>
-                        "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height')
+                        "height": <?php echo $block->getImageAttribute('product_page_image_medium', 'height')
                         ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
                     <?php endif; ?>
                     <?php if ($block->getVar("gallery/transition/duration")): ?>
-                        "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/duration"); ?>,
+                        "transitionduration": <?php  echo $block->getVar("gallery/transition/duration"); ?>,
                     <?php endif; ?>
-                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/effect"); ?>",
+                    "transition": "<?php  echo $block->getVar("gallery/transition/effect"); ?>",
                     <?php if (($block->getVar("gallery/navarrows"))): ?>
-                        "navarrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/navarrows"); ?>,
+                        "navarrows": <?php  echo $block->getVar("gallery/navarrows"); ?>,
                     <?php endif; ?>
-                    "navtype": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navtype"); ?>",
-                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navdir"); ?>"
+                    "navtype": "<?php  echo $block->getVar("gallery/navtype"); ?>",
+                    "navdir": "<?php  echo $block->getVar("gallery/navdir"); ?>"
                 },
                 "fullscreen": {
-                    "nav": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/nav"); ?>",
+                    "nav": "<?php  echo $block->getVar("gallery/fullscreen/nav"); ?>",
                     <?php if ($block->getVar("gallery/fullscreen/loop")): ?>
-                        "loop": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/loop"); ?>,
+                        "loop": <?php  echo $block->getVar("gallery/fullscreen/loop"); ?>,
                     <?php endif; ?>
-                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/navdir"); ?>",
+                    "navdir": "<?php  echo $block->getVar("gallery/fullscreen/navdir"); ?>",
                     <?php if ($block->getVar("gallery/transition/navarrows")): ?>
-                        "navarrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/navarrows"); ?>,
+                        "navarrows": <?php  echo $block->getVar("gallery/fullscreen/navarrows"); ?>,
                     <?php endif; ?>
-                    "navtype": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/navtype"); ?>",
+                    "navtype": "<?php  echo $block->getVar("gallery/fullscreen/navtype"); ?>",
                     <?php if ($block->getVar("gallery/fullscreen/arrows")): ?>
-                        "arrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/arrows"); ?>,
+                        "arrows": <?php  echo $block->getVar("gallery/fullscreen/arrows"); ?>,
                     <?php endif; ?>
                     <?php if ($block->getVar("gallery/fullscreen/caption")): ?>
-                        "showCaption": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/caption"); ?>,
+                        "showCaption": <?php  echo $block->getVar("gallery/fullscreen/caption"); ?>,
                     <?php endif; ?>
                     <?php if ($block->getVar("gallery/fullscreen/transition/duration")): ?>
-                        "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/duration"); ?>,
+                        "transitionduration": <?php  echo $block->getVar("gallery/fullscreen/transition/duration"); ?>,
                     <?php endif; ?>
-                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/effect"); ?>"
+                    "transition": "<?php  echo $block->getVar("gallery/fullscreen/transition/effect"); ?>"
                 },
-                "breakpoints": <?php /* @escapeNotVerified */ echo $block->getBreakpoints(); ?>
+                "breakpoints": <?php echo $block->getBreakpoints(); ?>
             }
         }
     }

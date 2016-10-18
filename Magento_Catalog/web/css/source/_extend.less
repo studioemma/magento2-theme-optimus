@@ -78,6 +78,19 @@
             }
         }
     }
+
+    /* Textual swipe notice */
+    .swipe-photos{
+        font-size: .8em;
+        font-style: italic;
+        text-align: center;
+        margin: 1em 0 1.4em 0;
+    }
+
+    /* Hide thumbnails on mobile */
+    .fotorama__nav-wrap {
+        display: none !important;
+    }
 }
 
 //
@@ -160,6 +173,14 @@
             }
         }
     }
+
+    .swipe-photos{
+        display: none;
+    }
+
+    .fotorama__nav-wrap {
+        display: block !important;
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
@@ -179,8 +200,8 @@
     }
 }
 
+/* Related products: visual buttons instead of good ol' boring checkboxes */
 & when (@media-common = true) {
-    /* Related products: visual buttons instead of good ol' boring checkboxes */
     .block.related {
         .item {
             button {
