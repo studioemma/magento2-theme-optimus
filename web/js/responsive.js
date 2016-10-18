@@ -7,7 +7,8 @@ define([
     'jquery',
     'matchMedia',
     'mage/tabs',
-    'domReady!'
+    'domReady!',
+    'mage/translate'
 ], function ($, mediaCheck) {
     'use strict';
 
@@ -143,8 +144,8 @@ define([
             $(this).parent().toggleClass('open');
         })
 
-        var translateAdd = $.mage.translate.add('Added to order');
-        var translateAdded = $.mage.translate.add('Add to order?');
+        var translateAdd = $.mage.__('Added to order');
+        var translateAdded = $.mage.__('Add to order?');
 
         /* Related products: visual buttons checkbox toggle functionality */
         $(".block.related .item button").on("click", function() {
