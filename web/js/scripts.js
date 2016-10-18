@@ -20,7 +20,7 @@ define([
     });
 
     //
-    //  Maginfic popup
+    //  Magnific popup
     //  ______________
 
     if ($('.popup-video').length) {
