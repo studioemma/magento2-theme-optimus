@@ -30,14 +30,14 @@ $contentblock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->set
         <?php  else :?>
             <p><?php echo __('Your order # is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
         <?php endif;?>
-            <p><?php /* @escapeNotVerified */ echo __('We\'ll email you an order confirmation with details and tracking info.') ?></p>
+            <p><?php echo __('We\'ll email you an order confirmation with details and tracking info.') ?></p>
     <?php endif;?>
 
     <?php echo $block->getAdditionalInfoHtml() ?>
 
     <div class="actions-toolbar">
         <div class="primary">
-            <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
+            <a class="action primary continue" href="<?php echo $block->getUrl() ?>"><span><?php echo __('Continue Shopping') ?></span></a>
         </div>
     </div>
 

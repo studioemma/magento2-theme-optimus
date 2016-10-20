@@ -66,7 +66,7 @@
 //--------------------------------------
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .product.data.items {
-        /* Remove .lib-data-tabs(); if you want accordion on desktop */
+        /* Only remove .lib-data-tabs(); if you want accordion on desktop */
         .lib-data-tabs();
         border-bottom: 0;
         margin-left: 0;
@@ -77,14 +77,14 @@
                 height: auto;
                 line-height: inherit;
                 
-                /* Remove &:after if you want accordion on desktop */
+                /* Only remove &:after if you want accordion on desktop */
                 &:after {
                     display: none;
                 }
             }
         }
 
-        /* Add below if you want regular blocks on desktop 
+        /* Only add below if you want regular blocks on desktop 
         > .item.title {
             > .switch {
                 border: none;
