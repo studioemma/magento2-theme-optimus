@@ -1,42 +1,69 @@
-# Studio Emma Mase 2 Optimus
+# MASE2 Optimus theme
 
-Custom theme for **Magento 2**, shorthand **Optimus**.
+## About and purpose
 
-## Motivation
+**Optimus** is a free and home-made Magento 2 theme, developed by [Studio Emma](http://www.studioemma.com) . Its purpose is providing a starting point for the development of our own client projects. It's a solid base to extend the Magento 2 Blank theme with functionality & styling without breaking future upgrades. It is continuously being worked on, both refined and expanded. All added changes and new features are extends; we try to stay away from overrides until there is absolutely no other way possible.
 
-This theme extends the default Magento 2 blank theme and it's purpose is to refine & add extra features that we consistently use in client work. Optimus is continuosly refined & expanded to provide us with a strong starting point for new Magento 2 projects.
+It comprises of the following:
 
-## Technical feature
+* module-core (seperate composer install) with several helper functions which can be of use throughout your own client theme.
+* module-optimus (seperate composer install) which stands in for our example content pages at [rooturl]/content. More on that later.
+* theme-frontend-optimus (seperate composer install) which is the actual front-end theme and works together with the two above.
 
-* This theme inherits from the Magento/blank theme.
-* The theme is declared in [theme.xml](theme.xml). The theme.xml file also contains information about the inheritance relationship and the location for a theme preview image [preview.jpg](media/preview.jpg) (not applicable since there is no styling).
-* The [composer.json](composer.json) file contains the dependency information required for this theme, which is defined under "require". The installation path of this theme is defined under "extra".
+Optimus works with Magento 2, starting from the initial 2.0.0 BETA all the way up to the current 2.1.2 release. 
 
-## Requirements
+## Module-core
+This module contains a lot of handy helper functions:
 
-14/07 : Optimus theme is tested from 2.0.0 beta upwards to 2.1.0. Tag v1.0.0 is present for older projects. dev-master contains additions that cannot be deployed to older projects withouth having to modify the customer themes. New projects will always be set up with dev-master.
+* getCurrentStore() : returns the current store
+* getLocale() : returns the current locale
+* getCurrentCategory() : returns the current category
+* getParentCategory() : returns the parent category of the current category
+* getCurrentProduct: returns the current product, if available
+* getBackUrl() : returns the back url value when browsing products or categories
+* isLoggedIn() : return boolean if user is or is not logged in
+* getCurrentCustomer() : if logged in, returns current customer object
+* getCurrentCustomerGroup() : if logged in, returns current customer group object
 
-## Installation
+## Module-optimus
+This module contains the necessary files in order to build the example content pages. After you installed Optimus, navigate to **[rooturl]/content**. These pages were setup to give you a visual overview of all of our content-related changes. This includes basic layout (titles, lists, quotes, ...), page/section layouts (grids, sections, structures ...), interaction elements (accordeons, FAQs, toggles, ...), reusable classes, specific contentblocks, images and videos, ...
 
-This extension is intended to be installed using composer. After installing "Studio Emma Mase 2 Optimus" theme, you can verify that it is installed by going to the backend:
+## Theme-frontend-optimus
+This module contains the front-end theme itself. We divider our work into two main sections:
 
-Content -> Design -> Themes
+* **Changes**: Extends the blank theme with changes to its functionality, styling and technologies according to our experience throughout the years.
+* **New features**: Extends the blank theme with new features that are of interest to most our clients. These can easily activated/deactivated when needed.
 
-On that page check that the theme "Studio Emma Mase 2 Optimus" shows up in the list to confirm that it is installed correctly. The theme preview file is not really applicable because no extra styling has been done.
+### Technicalities
 
-Normally, this theme will never be set as a theme for a client, but to set this theme for development purposes on the storefront, go to:
+* The theme inherits from the Magento Blank theme.
+* The theme itself is declared in theme.xml. This file is a necessity for all Magento 2 themes and contains information about inheritance.
+* The composer.json file contains the dependency information required for this theme.
 
-Stores -> Configuration -> Design ->  Design Theme
+### Installation
+The modules are intended to be installed using composer. If you do not have composer installed (check by entering the command "composer --help" into your terminal), please install it using the following commands:
 
-Select "Studio Emma Mase 2 Optimus" from the drop-down list and save the configuration. Go to frontend after flushing the page cache as prompted.
+```
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
 
-## Using Optimus for client themes
+After installing composer, use the following commands to install Optimus to your Magento 2 installation:
 
-A client project will inherit from the Optimus theme. To do this, set the theme.xml of the client's theme inside the client's package to inherit Studioemma/optimus.
+```
+Aan te vullen door Ike
+```
+
+After installing "Studio Emma Mase 2 Optimus" theme, you can verify that the installation succeeded by going to the Magento 2 back-end and navigating to **Content -> Design -> Themes**. If it listed there, you should be happy.
+
+Normally, this theme will never be set as a the main theme for a client, but to set this theme for development purposes on the storefront, go to: **Content -> Design -> Configuration** and set the Optimus theme on the Store View you wish to use. Do not forget to flush the cache afterwards.
+
+### Using Optimus as the base theme for your own client theme
+A client project will inherit from the Optimus theme. To do this, set the theme.xml of your own client's theme inside the client's package to inherit from Studioemma/optimus.
 
 ```
 <theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Config/etc/theme.xsd">
-    <title>Client name - Theme name</title>
+    <title>Own client name - Own theme name</title>
     <parent>Studioemma/optimus</parent>
     <media>
         <preview_image>media/preview.jpg</preview_image>
@@ -44,160 +71,85 @@ A client project will inherit from the Optimus theme. To do this, set the theme.
 </theme>
 ```
 
-## Setting up a box for developing for the Optimus theme itself
+Because of the Magento 2 inheritance system, we had to create an additional _**extend-custom.less** file per module. This means that all of your client theme, module-specific, styling should be added in this file!
 
-If you like to develop for the optimus itself and install the Optimus theme on a Magento box. You need to do the following.
+An example. You want to edit the footer for your client theme:
 
-Make a folder for the project
+* Add the "Magento_Theme" folder inside your app/design/frontend/ClientPackage/ClientTheme/ folder structure
+* Add the web/css/source folder structure inside your newly created "Magento_Theme" folder
+* Create the _extend-custom.less file inside the newly created "source" folder
+* Make changes in this file
+* Watch your Grunt process this file using the "grunt watch" command in the webroot of your box.
+* Reload the front, your changes should be visible
+* It is possible though that Grunt won't pick up your newly created file. In this case, simply stop watching and re-watch using, again, the "grunt watch" command. Re-save the file and Grunt should pick it up.
 
-    mkdir optimus
-    cd optimus
+### Upgrading Magento 2
+Normally, no problems should rise when upgrading Magento 2 to a new release. If they do, please let us know.
 
-Create 2 folders (one for vagrant and one for the web root)
+### Changes in Optimus extended from the Magento 2 Blank theme
+As discussed, we divide Optimus specific work into two sections:
 
-    mkdir vagrant
-    mkdir wwwroot
+* **Changes**: Extends the blank theme with changes to its functionality, styling and technologies according to our experience throughout the years.
+* **New features**: Extends the blank theme with new features that are of interest to most our clients. These can easily activated/deactivated when needed
 
-Clone the SE vagrant box for Magento into the vagrant folder
+#### Changes
 
-    git clone ssh://git@stash.studioemma.com:7999/mag2/vagrant-magento2.git vagrant/
-
-Clone the master-se branch from the SE Magento2 repo into the wwwroot folder
-
-    git clone -b master-se ssh://git@stash.studioemma.com:7999/mag2/magento2.git wwwroot/
-
-*It is best not to push anything to these repos.*
-
-Inside the vagrant folder configure the yaml file to your network needs
-
-    cd vagrant
-    cp config.yml.example config.yml
-    vim config.yml
-
-Then start the box
-
-    vagrant up
-
-Let's go back the Magento webroot
-
-    cd ../wwwroot
-
-Edit the composer.json to add Optimus theme, Optimus module and Core module
-
-For an example see [this commit](http://stash.studioemma.com/projects/MAG2LIB/repos/libeco/commits/1f81fe563f71fbbbbe5d9ea75e4c0959651bc389#composer.json)
-
-Add to `repositories`
-
-        ,
-        {
-            "type" : "vcs",
-            "url"  : "ssh://git@stash.studioemma.com:7999/mase2/theme-optimus.git"
-        },
-        {
-            "type" : "vcs",
-            "url"  : "ssh://git@stash.studioemma.com:7999/mase2/module-optimus.git"
-        },
-        {
-            "type" : "vcs",
-            "url"  : "ssh://git@stash.studioemma.com:7999/mase2/module-core.git"
-        }
-
-Add to `require`
-
-        ,
-        "studioemma/theme-frontend-optimus": "dev-master",
-        "studioemma/module-optimus": "dev-master",
-        "studioemma/module-core": "dev-master"
-
-Also edit the build.xml file at this point. Ask Quinten to send the file to you, because it contains passwords.
-
-Another file we should edit in the webroot is `dev/tools/grunt/configs/themes.js`
-
-Add the following
-
-    ,
-    optimus: {
-        area: 'frontend',
-        name: 'Studioemma/optimus',
-        locale: 'nl_NL',
-        files: [
-            'css/optimus-m',
-            'css/optimus-l',
-            'css/styles-m',
-            'css/styles-l',
-            'css/print',
-            'css/email',
-            'css/email-inline'
-        ],
-        dsl: 'less'
-    }
-
-Copy your private and public key to your webroot.
-
-    cp ~/.ssh/id_rsa ./
-    cp ~/.ssh/id_rsa.pub ./
-
-Go back to your vagrant folder and ssh into the box.
-
-    cd ../vagrant
-    vagrant ssh
-
-Make sure you are in the webroot:
-
-    w
-
-Move the public and private keys
-
-    mv id_rsa ~/.ssh/id_rsa
-    mv id_rsa.pub ~/.ssh/id_rsa.pub
-
-Install the composer packages
-
-    composer install
-
-Now we need the build.xml
-
-Now we need to install grunt
-
-    ant local-install-grunt
-
-Next install Magento
-
-    ant install
-
-Clear the var cache
-
-    ant clean-var
-
-Clear the static files
-
-    ant clean-static
-
-Source the theme
-
-    ant source-theme
-
-Watch the files
-
-    grunt watch
-
-Now edit a .less file on your local machine, grunt will run and then *surf to the site.*
-
-Keep editing the .less files in vendor/studioemma/theme-frontend-optimus and commit and push them from there.
-
-If you want the changes to be refelected on another site that uses Optimus. You need to go to that site and run:
-
-    composer require studioemma/theme-frontend-optimus:dev-master
-
-The composer.lock file will be changed for that project and you wil need to commit that.
-
-## Contact
-
-[Studio Emma](http://www.studioemma.com)
-
-Follow [@Studioemma](https://twitter.com/studioemma) on Twitter.
+* Removed breadcrumbs for screens smaller than 768px
+* Added a mobile pager (< select >) on category pages instead of default pager for screens smaller than 768px
+* Rearranged both the layered nav and sorting options on category pages for screens smaller than 768px. These are now placed in a readable manner above the category grid/list
+* The grid on category pages falls back to one column for screens smaller than 480px
+* Product actions (add to cart, add to wishlist, add to compare) have been added back to the category grid/list on screens smaller than 640px
+* Changed required form elements's colour from red to the default text colour, removed right align of labels
+* Removed all Paypal and other marketing callouts
+* Changed the way the review action breaks down on category listview on screens smaller than 768px
+* The wishlist in the left column has been rearranged so that the product image and product description are now placed below each other instead of the 50/50 column view
+* Made several changes to account section to improve usability
+* Page zoom has been added to touch devices
+* Added a home link (text + icon) to the main navigation
+* A toggle system has been introduced in the layered navigation. Every clicked <dt> will toggle its followed <dd>
+* Adjusted the print stylesheet to focus on the real necessary content
+* The empty state wishlist & compare blocks will not be shown if they have no items inside of them
 
 
+#### New features
 
+* Added our own grid system (called _colm.less) in both regular and mixin flavours
+* The contact page now includes a static block with identifier "contact-us-info" for contact info. You have to create this static block in the back-end.
+* Added all necessary favicons and touch icons to head
+* Modernizr library has been added to default head for usage
+* Added a whole bunch of show/hide classes based on viewport width. See /content/responsive
+* Added a "Go to products" link on the cart page on screens smaller than 480px
+* Hid the "Clear shopping cart" button on the cart page
+* PDP + Cart page: Quantities from 1 to 5 are shown in a selectbox. If the user wants to add even more to his cart, he can select the "More" option in the selectbox. The selectbox will then be hidden and replaced by a regular textinput.
+* Added social sharing options to PDP
+* Adjusted the complete footer section through layout XML. 
+	* 4 columns:
+		* Column 1: Sitemap (level 1 categories)
+		* Column 2: Static block
+		* Column 3: Static block
+		* Column 4: Newsletter block and social sharing block
+	* Full width payment icons
+	* Full width copyright + address
+* Made it possible to change the view of the additional product detail blocks on the PDP. The file _sections.less explains what you have to do to:
+* have the desktop view display these blocks as an accordion instead of tabs
+* have the desktop view display these blocks without any UI modification
+* Header has a new top row of USPs, derived from static block "store-usp"
+* Added a static block "product_info_stock" on the PDP next to the "Add to cart" action. You have to create this static block in the back-end.
+* Added a count toggle for the layered navigation. A specific numbers of filter options is shown; others are hidden in order to not have huge lists of options. You can change the number of filter options in responsive.js. 
+* Added the language block to the footer on screens smaller than 768px
+* Added a visual checkbox (not a functional one) system for the layered nav. This can be activated through layout XML. 
+* Added an SVG loading animation to the regular search in the header after submitting the search form
+* Added the Font Awesome library
+* The checkout success page now includes a static block with identifier "checkout-success". You have to create this static block.
+* Added Flex Slider library. See /content/images
+* Added possibility to make the header sticky. Edit the default.xml file in Magento_Theme/layout; see comments.
+* Added a new layout handle: 1 column - wide. This will have your content expand to viewport edge. You can choose this layout when editing a page in the back-end. This new option will be selectable from the layout dropdown.
+* Added own icon font library:
 
-
+```
+.myicon {
+    font-family: 'optimus-icons';
+    content: 'a';
+}
+```
+![Markdown preferences pane](https://s10.postimg.org/6mbg4emg9/Screen_Shot_2016_05_31_at_10_13_06.png)
