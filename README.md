@@ -6,9 +6,9 @@
 
 It comprises of the following:
 
-* module-core (seperate composer install) with several helper functions which can be of use throughout your own client theme.
-* module-optimus (seperate composer install) which stands in for our example content pages at [rooturl]/content. More on that later.
-* theme-frontend-optimus (seperate composer install) which is the actual front-end theme and works together with the two above.
+* module-core (separate composer install) with several helper functions which can be of use throughout your own client theme.
+* module-optimus (separate composer install) which stands in for our example content pages at [rooturl]/content. More on that later.
+* theme-frontend-optimus (separate composer install) which is the actual front-end theme and works together with the two above.
 
 Optimus works with Magento 2, starting from the initial 2.0.0 BETA all the way up to the current 2.1.2 release. 
 
