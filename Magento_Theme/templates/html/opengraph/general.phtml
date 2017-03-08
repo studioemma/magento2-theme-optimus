@@ -1,14 +1,42 @@
 <?php
-	$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
+
+$_meta_title = '';
+$_page_title = $objectManager->get('Magento\Framework\View\Page\Title');
+$_meta_title = strip_tags($_page_title->getShort());
+
+$_meta_description = '';
+$_page_description = $objectManager->get('Magento\Cms\Model\Page');
+$_meta_description = strip_tags($_page_description->getMetaDescription());
+
 ?>
+
 <meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="website" />
+
+<?php if (!empty($_meta_title)): ?>
+    <meta property="og:title" content="<?php echo $_meta_title ?>" />
+<?php else: ?>
+<?php /* // uncomment for a default one
 <meta property="og:title" content="<?php echo __('This is the general title of the website, if not overwritten by Category or PDP') ?>" />
+*/?>
+<?php endif; ?>
+
+<?php if (!empty($_meta_description)): ?>
+    <meta property="og:description" content="<?php echo $_meta_description ?>" />
+<?php else: ?>
+<?php /* // uncomment for a default one
+<meta property="og:description" content="<?php echo __('This is the general description of the website, if not overwritten by Category or PDP') ?>" />
+*/?>
+<?php endif; ?>
+
+<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
+<meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
+
 <meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />
 <meta property="og:image:secure_url" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />
 <meta property="og:image:type" content="image/jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="600">
-<meta property="og:description" content="<?php echo __('This is the general description of the website, if not overwritten by Category or PDP') ?>" />
-<meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
-<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
