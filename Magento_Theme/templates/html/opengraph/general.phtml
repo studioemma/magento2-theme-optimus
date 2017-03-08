@@ -1,15 +1,11 @@
 <?php
 
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
 
-$_meta_title = '';
-$_page_title = $objectManager->get('Magento\Framework\View\Page\Title');
-$_meta_title = strip_tags($_page_title->getShort());
-
-$_meta_description = '';
-$_page_description = $objectManager->get('Magento\Cms\Model\Page');
-$_meta_description = strip_tags($_page_description->getMetaDescription());
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_page_config = $objectManager->get('Magento\Framework\View\Page\Config');
+$_meta_title = strip_tags($_page_config->getTitle()->getShort());
+$_meta_description = strip_tags($_page_config->getDescription());
 
 ?>
 
@@ -18,18 +14,10 @@ $_meta_description = strip_tags($_page_description->getMetaDescription());
 
 <?php if (!empty($_meta_title)): ?>
     <meta property="og:title" content="<?php echo $_meta_title ?>" />
-<?php else: ?>
-<?php /* // uncomment for a default one
-<meta property="og:title" content="<?php echo __('This is the general title of the website, if not overwritten by Category or PDP') ?>" />
-*/?>
 <?php endif; ?>
 
 <?php if (!empty($_meta_description)): ?>
     <meta property="og:description" content="<?php echo $_meta_description ?>" />
-<?php else: ?>
-<?php /* // uncomment for a default one
-<meta property="og:description" content="<?php echo __('This is the general description of the website, if not overwritten by Category or PDP') ?>" />
-*/?>
 <?php endif; ?>
 
 <meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
