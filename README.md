@@ -10,7 +10,7 @@ It comprises of the following:
 * module-optimus (separate composer install) which stands in for our example content pages at [rooturl]/content. More on that later.
 * theme-frontend-optimus (separate composer install) which is the actual front-end theme and works together with the two above.
 
-Optimus works with Magento 2, starting from the initial 2.0.0 BETA all the way up to the current 2.1.2 release. 
+Optimus works with Magento 2, starting from the initial 2.0.0 BETA all the way up to the current 2.1.2 release.
 
 ## Module-core
 This module contains a lot of handy helper functions:
@@ -29,7 +29,7 @@ This module contains a lot of handy helper functions:
 This module contains the necessary files in order to build the example content pages. After you installed Optimus, navigate to **[rooturl]/content**. These pages were setup to give you a visual overview of all of our content-related changes. This includes basic layout (titles, lists, quotes, ...), page/section layouts (grids, sections, structures ...), interaction elements (accordeons, FAQs, toggles, ...), reusable classes, specific contentblocks, images and videos, ...
 
 ## Theme-frontend-optimus
-This module contains the front-end theme itself. We divider our work into two main sections:
+This module contains the front-end theme itself. We divide our work into two main sections:
 
 * **Changes**: Extends the blank theme with changes to its functionality, styling and technologies according to our experience throughout the years.
 * **New features**: Extends the blank theme with new features that are of interest to most our clients. These can easily activated/deactivated when needed.
@@ -51,7 +51,7 @@ mv composer.phar /usr/local/bin/composer
 After installing composer, use the following commands to install Optimus to your Magento 2 installation:
 
 ```
-Aan te vullen door Ike
+composer require studioemma/magento2-theme-optimus
 ```
 
 After installing "Studio Emma Mase 2 Optimus" theme, you can verify that the installation succeeded by going to the Magento 2 back-end and navigating to **Content -> Design -> Themes**. If it listed there, you should be happy.
@@ -122,22 +122,22 @@ As discussed, we divide Optimus specific work into two sections:
 * Hid the "Clear shopping cart" button on the cart page
 * PDP + Cart page: Quantities from 1 to 5 are shown in a selectbox. If the user wants to add even more to his cart, he can select the "More" option in the selectbox. The selectbox will then be hidden and replaced by a regular textinput.
 * Added social sharing options to PDP
-* Adjusted the complete footer section through layout XML. 
-	* 4 columns:
-		* Column 1: Sitemap (level 1 categories)
-		* Column 2: Static block
-		* Column 3: Static block
-		* Column 4: Newsletter block and social sharing block
-	* Full width payment icons
-	* Full width copyright + address
+* Adjusted the complete footer section through layout XML.
+    * 4 columns:
+        * Column 1: Sitemap (level 1 categories)
+        * Column 2: Static block
+        * Column 3: Static block
+        * Column 4: Newsletter block and social sharing block
+    * Full width payment icons
+    * Full width copyright + address
 * Made it possible to change the view of the additional product detail blocks on the PDP. The file _sections.less explains what you have to do to:
 * have the desktop view display these blocks as an accordion instead of tabs
 * have the desktop view display these blocks without any UI modification
 * Header has a new top row of USPs, derived from static block "store-usp"
 * Added a static block "product_info_stock" on the PDP next to the "Add to cart" action. You have to create this static block in the back-end.
-* Added a count toggle for the layered navigation. A specific numbers of filter options is shown; others are hidden in order to not have huge lists of options. You can change the number of filter options in responsive.js. 
+* Added a count toggle for the layered navigation. A specific numbers of filter options is shown; others are hidden in order to not have huge lists of options. You can change the number of filter options in responsive.js.
 * Added the language block to the footer on screens smaller than 768px
-* Added a visual checkbox (not a functional one) system for the layered nav. This can be activated through layout XML. 
+* Added a visual checkbox (not a functional one) system for the layered nav. This can be activated through layout XML.
 * Added an SVG loading animation to the regular search in the header after submitting the search form
 * Added the Font Awesome library
 * The checkout success page now includes a static block with identifier "checkout-success". You have to create this static block.
