@@ -11,6 +11,6 @@
 ?>
 <?php if (!$block->getIsDisabled()): ?>
 <p<?php if ($class = $block->getCssClass()):?> class="<?php echo $block->escapeHtml(__($class))?>"<?php endif;?>>
-    <?php echo $block->escapeHtml(__($block->getLabel()))?>
+    <span><?php echo $block->escapeHtml(__($block->getLabel()))?></span>
 </p>
 <?php endif; ?>
