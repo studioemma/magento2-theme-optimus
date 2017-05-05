@@ -83,6 +83,39 @@ An example. You want to edit the footer for your client theme:
 * Reload the front, your changes should be visible
 * It is possible though that Grunt won't pick up your newly created file. In this case, simply stop watching and re-watch using, again, the "grunt watch" command. Re-save the file and Grunt should pick it up.
 
+### Configuring grunt (development purposes only)
+You need to configure Grunt in order to work with your theme and pick up the Optimus files too, open /dev/tools/grunt/configs/themes.js and put in a new config for your theme like in our example below. Only replace the items between curly brackets {{item}}.
+
+```
+{{themename}}: {
+    area: 'frontend',
+    name: '{{themepackage}}/{{themefolder}}',
+    locale: 'en_US',
+    files: [
+        'css/optimus-m',
+        'css/optimus-l',
+        'css/styles-m',
+        'css/styles-l',
+        'css/print',
+        'css/email',
+        'css/email-inline'
+    ],
+    dsl: 'less'
+```
+
+Next : run the following command that generate symlinks to the .less files that are watched by grunt (see command below) when you edit the source .less files (see next command). You need to re-run this command every time files are added/deleted.
+```
+bin/magento dev:source-theme:deploy --theme=vendor/theme --locale=en_US css/styles-m css/optimus-m css/styles-l css/optimus-l css/print css/email css/email-inline
+
+```
+
+Run grunt watch in the webroot of your box.
+```
+grunt watch
+
+```
+
+
 ### Upgrading Magento 2
 Normally, no problems should rise when upgrading Magento 2 to a new release. If they do, please let us know.
 
