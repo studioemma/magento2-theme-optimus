@@ -5,16 +5,16 @@
 ?>
 <meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="product.group" />
-<?php if ($_category && $_name = $block->getCurrentCategory()->getName()): ?>
-    <meta property="og:title" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_name, 'name')) ?>" />
+<?php if ($_category && $_name = $_category->getName()): ?>
+    <meta property="og:title" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($_category, $_name, 'name')) ?>" />
 <?php endif; ?>
 <meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />
 <meta property="og:image:secure_url" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />
 <meta property="og:image:type" content="image/jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="600">
-<?php if ($_category && $_description = $block->getCurrentCategory()->getDescription()): ?>
-    <meta property="og:description" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $_description, 'description')) ?>" />
+<?php if ($_category && $_description = $_category->getDescription()): ?>
+    <meta property="og:description" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($_category, $_description, 'description')) ?>" />
 <?php endif; ?>
 <meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
 <meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
