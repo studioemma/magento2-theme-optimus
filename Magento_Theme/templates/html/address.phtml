@@ -1,9 +1,9 @@
-<?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-?>
-Street<br />
-Postal code + city<br />
-Phone number
+<?php if ($sb = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-address')->toHtml()) { ?>
+    <?php echo $sb; ?>
+<?php } else { ?>
+    <p>
+        Street<br />
+        Postal code + city<br />
+        Phone number
+    </p>
+<?php } ?>
