@@ -88,7 +88,7 @@ define([
             }, 500);
 
             /* Move layered navigation to top */
-            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products.wrapper').prev('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
+            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products.wrapper').prevAll('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
 
             /* Move store USP block to footer */
             $(".panel.header .store-usp").prependTo($('footer .footer'));
