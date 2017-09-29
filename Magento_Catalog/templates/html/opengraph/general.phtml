@@ -2,6 +2,10 @@
     $_helper    = $this->helper('Magento\Catalog\Helper\Output');
     $_category  = $block->getCurrentCategory();
 	$_helper_store = $this->helper('StudioEmma\Core\Helper\Store');
+
+    /** @var Zend\Uri\Http $uri */
+    $uri = $this->getRequest()->getUri();
+    $ogUrl = $uri->getScheme() . '://' . $uri->getHost() . $this->getRequest()->getRequestUri();
 ?>
 <meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
 <meta property="og:type" content="product.group" />
@@ -17,4 +21,4 @@
     <meta property="og:description" content="<?php echo strip_tags($this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($_category, $_description, 'description')) ?>" />
 <?php endif; ?>
 <meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
-<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
+<meta property="og:url" content="<?php echo $ogUrl; ?>" />

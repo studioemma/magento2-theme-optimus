@@ -7,6 +7,10 @@ $_page_config = $objectManager->get('Magento\Framework\View\Page\Config');
 $_meta_title = strip_tags($_page_config->getTitle()->getShort());
 $_meta_description = strip_tags($_page_config->getDescription());
 
+/** @var Zend\Uri\Http $uri */
+$uri = $this->getRequest()->getUri();
+$ogUrl = $uri->getScheme() . '://' . $uri->getHost() . $this->getRequest()->getRequestUri();
+
 ?>
 
 <meta property="og:locale" content="<?php echo $_helper_store->getLocale()?>" />
@@ -20,7 +24,7 @@ $_meta_description = strip_tags($_page_config->getDescription());
     <meta property="og:description" content="<?php echo $_meta_description ?>" />
 <?php endif; ?>
 
-<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>" />
+<meta property="og:url" content="<?php echo $ogUrl; ?>" />
 <meta property="og:site_name" content="<?php echo $this->getBaseUrl(); ?>" />
 
 <meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Theme::images/facebook-og-preview.jpg') ?>" />
