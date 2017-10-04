@@ -1,5 +1,7 @@
 # MASE2 Optimus theme
 
+[Demo available](http://magento2.optimus.studioemma.com/) with a list of [extra features](http://magento2.optimus.studioemma.com/content). (Note: this is a base theme and it is does not look pretty by itself.)
+
 ## About and purpose
 
 **Optimus** is a free and home-made Magento 2 theme, developed by [Studio Emma](http://www.studioemma.com) . Its purpose is providing a starting point for the development of our own client projects. It's a solid base to extend the Magento 2 Blank theme with functionality & styling without breaking future upgrades. It is continuously being worked on, both refined and expanded. All added changes and new features are extends; we try to stay away from overrides until there is absolutely no other way possible.
