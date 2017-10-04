@@ -12,5 +12,6 @@
     <!-- separate the optimus framework styles so we do not easily reach the 4096 selectors treshold in IE9 -->
     <css src="css/optimus-m.css" />
     <css src="css/optimus-l.css" media="screen and (min-width: 768px)"/>
+    <meta name="twitter:card" content="summary" />
 </head>
 </page>
