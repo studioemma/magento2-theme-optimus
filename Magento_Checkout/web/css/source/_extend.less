@@ -55,6 +55,11 @@
             }
         }
     }
+
+    // Fix for https://github.com/magento/magento2/issues/8178
+    .minicart-wrapper .ui-dialog {
+        width: 0;
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
