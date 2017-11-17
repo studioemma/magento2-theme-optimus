@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Head (containing meta tags) -->
+        <referenceBlock name="head.additional">
+            <block class="StudioEmma\Optimus\Block\Opengraph\Page" name="opengraph.general" template="StudioEmma_Optimus::html/opengraph/page.phtml" />
+        </referenceBlock>
+    </body>
+</page>
