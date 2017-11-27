@@ -20,7 +20,7 @@
 
         <!-- Head (containing meta tags and favicons) -->
         <referenceBlock name="head.additional">
-            <block class="Magento\Framework\View\Element\Template" name="opengraph.general" template="Magento_Theme::html/opengraph/general.phtml" />
+            <block class="StudioEmma\Optimus\Block\Opengraph\General" name="opengraph.general" template="StudioEmma_Optimus::html/opengraph/general.phtml" />
             <block class="Magento\Framework\View\Element\Template" name="favicons" template="Magento_Theme::html/favicons/favicons.phtml" />
         </referenceBlock>
 

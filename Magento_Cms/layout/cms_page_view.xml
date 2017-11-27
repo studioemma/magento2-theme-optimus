@@ -3,7 +3,7 @@
     <body>
         <!-- Head (containing meta tags) -->
         <referenceBlock name="head.additional">
-            <block class="StudioEmma\Optimus\Block\Opengraph\Page" name="opengraph.general" template="StudioEmma_Optimus::html/opengraph/page.phtml" />
+            <block class="StudioEmma\Optimus\Block\Opengraph\Page" name="opengraph.general" template="StudioEmma_Optimus::html/opengraph/general.phtml" />
         </referenceBlock>
     </body>
 </page>
