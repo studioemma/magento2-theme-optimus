@@ -3,6 +3,13 @@
  * Category listing template
  * Copyright © Studio Emma. All rights reserved.
  *
+ * Usage in a cms block or page
+ *
+ * {{block class="Magento\\Catalog\\Block\\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="4" selected_parent_category_id="3"}}
+ *
+ * {{block class="Magento\\Catalog\\Block\\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="3" selected_category_ids="3,4,5" }}
+ *
+ *
  */
 ?>
 
@@ -25,7 +32,6 @@ if(empty($this->getSelectedCategoryIds())){
         foreach ($currentCategory->getChildrenCategories() as $category)
         {
             $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category->getId());
-            //Add category to array
             if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
                 //Add category to array
                 $categories[] = $_cat;
@@ -35,7 +41,6 @@ if(empty($this->getSelectedCategoryIds())){
 }else{
 
     $selected_categories = explode(',',$this->getSelectedCategoryIds());
-
     foreach ($selected_categories as $category)
     {
         $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
@@ -43,9 +48,7 @@ if(empty($this->getSelectedCategoryIds())){
             //Add category to array
             $categories[] = $_cat;
         }
-
     }
-
 }
 $bShowColumns = false;
 $nofItemsPerColumn = count($categories);
@@ -75,7 +78,6 @@ if($columnCount > 1){
     }
 
 }
-
 
 ?>
 <?php if(count($categories) > 0):
@@ -110,7 +112,6 @@ if(!empty($this->getCssClass())): ?>
                 if($k == $nofItemsPerColumn && $i != (count($categories)-1) && $bShowColumns):
                     $k = 0;
                     ?>
-
                         </ul>
                     </div>
                     <div class="colm colm1-<?php echo $columnCount?>">
@@ -125,7 +126,6 @@ if(!empty($this->getCssClass())): ?>
             </div>
         </div>
         <?php endif; ?>
-
     </nav>
 <?php if(!empty($this->getCssClass())): ?>
 </div>
