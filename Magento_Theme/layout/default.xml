@@ -33,6 +33,11 @@
             </container>
         </referenceContainer>
 
+        <!-- Navigation (only adds a home icon) -->
+        <referenceBlock name="store.menu">
+            <block class="StudioEmma\Optimus\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-" />
+        </referenceBlock>
+
         <!-- Footer (containing user content, newsletter and social) -->
         <referenceContainer name="footer" htmlClass="footer content colm-grid">
             <container name="sitemap" htmlTag="div" htmlClass="colm1-4" before="-">

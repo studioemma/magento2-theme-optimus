@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 // @codingStandardsIgnoreFile
 
@@ -11,15 +7,13 @@
 /**
  * Top menu for store
  *
- * @see \Magento\Theme\Block\Html\Topmenu
+ * @see \StudioEmma\Optimus\Block\Html\Topmenu
  */
 ?>
 <?php
     $columnsLimit = $block->getColumnsLimit() ?: 0;
     $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
-    $manager = Magento\Framework\App\ObjectManager::getInstance();
-    $url = $manager->create('\Magento\Framework\UrlInterface');
-    $currentUrl = parse_url($url->getCurrentUrl())['path'];
+    $currentUrl = $block->getCurrentUrl();
 ?>
 
 <nav class="navigation" role="navigation">
