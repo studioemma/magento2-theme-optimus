@@ -5,55 +5,54 @@
  *
  * Usage in a cms block or page
  *
- * {{block class="Magento\Catalog\Block\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="4" selected_parent_category_id="3"}}
+ * {{block class="StudioEmma\Optimus\Block\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="4" selected_parent_category_id="3"}}
  *
- * {{block class="Magento\Catalog\Block\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="3" selected_category_ids="3,4,5" }}
+ * {{block class="StudioEmma\Optimus\Block\Navigation" template="Magento_Catalog::navigation/category-listing.phtml" title="Lorem ipsum" column_count="3" selected_category_ids="3,4,5" }}
  *
  *
  */
-?>
 
-<?php
 //Get current category
 $currentCategory = $block->getCurrentCategory();
 //Declare filtered category array
 $categories = array();
 
-$manager = Magento\Framework\App\ObjectManager::getInstance();
-
 //Check to see if only selected categories should be shown, or all children from the current category
 if(empty($this->getSelectedCategoryIds())){
 
     if (!empty($this->getSelectedParentCategoryId())){
-        $currentCategory = $manager->create('Magento\Catalog\Model\Category')->load($this->getSelectedParentCategoryId());
+        $currentCategory = $block->getCategoryById($this->getSelectedParentCategoryId());
     }
 
     if($currentCategory->hasChildren()){
         foreach ($currentCategory->getChildrenCategories() as $category)
         {
-            $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category->getId());
+            $_cat = $block->getCategoryById($category->getId());
             if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
                 //Add category to array
                 $categories[] = $_cat;
             }
         }
     }
+
 }else{
 
     $selected_categories = explode(',',$this->getSelectedCategoryIds());
     foreach ($selected_categories as $category)
     {
-        $_cat = $manager->create('Magento\Catalog\Model\Category')->load($category);
+        $_cat = $block->getCategoryById($category);
         if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
             //Add category to array
             $categories[] = $_cat;
         }
     }
+
 }
+
+
 $bShowColumns = false;
 $nofItemsPerColumn = count($categories);
 $columnCount = (int)$block->getColumnCount();
-
 
 //When no columncount has been requested, there's only 1 column
 if($columnCount == 0){
@@ -79,8 +78,8 @@ if($columnCount > 1){
 
 }
 
-?>
-<?php if(count($categories) > 0):
+
+if(count($categories) > 0):
 $cssClasses = "";
 
 if(!empty($this->getCssClass())): ?>
