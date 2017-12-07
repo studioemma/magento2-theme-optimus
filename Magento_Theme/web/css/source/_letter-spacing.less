@@ -1,0 +1,170 @@
+//
+//  Theme variables
+//  _____________________________________________
+
+@default__letter-spacing: normal;
+@h1__letter-spacing: normal;
+@h1__letter-spacing__desktop: normal;
+@h2__letter-spacing: normal;
+@h2__letter-spacing__desktop: normal;
+@h3__letter-spacing: normal;
+@h3__letter-spacing__desktop: normal;
+@h4__letter-spacing: normal;
+@h4__letter-spacing__desktop: normal;
+@h5__letter-spacing: normal;
+@h5__letter-spacing__desktop: normal;
+@h6__letter-spacing: normal;
+@h6__letter-spacing__desktop: normal;
+@blockquote__letter-spacing: normal;
+@blockquote__font-family: @font-family__base;
+@h1__margin-bottom__desktop: @h1__margin-bottom;
+@h2__margin-bottom__desktop: @h2__margin-bottom;
+@h3__margin-bottom__desktop: @h3__margin-bottom;
+@h4__margin-bottom__desktop: @h4__margin-bottom;
+@h5__margin-bottom__desktop: @h5__margin-bottom;
+@h6__margin-bottom__desktop: @h6__margin-bottom;
+@h1__font-size-desktop: @h1__font-size;
+@h2__font-size-desktop: @h2__font-size;
+@h3__font-size-desktop: @h3__font-size;
+@h4__font-size-desktop: @h4__font-size;
+@h5__font-size-desktop: @h5__font-size;
+@h6__font-size-desktop: @h6__font-size;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    body {
+        letter-spacing: @default__letter-spacing;
+    }
+
+    // make sure we can use .hx classes to avoid seo specialist chenanigans
+    .h1 { .lib-heading(h1); }
+    .h2 { .lib-heading(h2); }
+    .h3 { .lib-heading(h3); }
+    .h4 { .lib-heading(h4); }
+    .h5 { .lib-heading(h5); }
+    .h6 { .lib-heading(h6); }
+
+    h1, .h1 {
+        letter-spacing: @h1__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h2, .h2 {
+        letter-spacing: @h2__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h3, .h3 {
+        letter-spacing: @h3__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h4, .h4 {
+        letter-spacing: @h4__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h5, .h5 {
+        letter-spacing: @h5__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    h6, .h6 {
+        letter-spacing: @h6__letter-spacing;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    blockquote {
+        font-family: @blockquote__font-family;
+        letter-spacing: @blockquote__letter-spacing;
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    h1, .h1 {
+        font-size: @h1__font-size-desktop;
+        margin-bottom: @h1__margin-bottom__desktop;
+        letter-spacing: @h1__letter-spacing__desktop;
+    }
+
+    h2, .h2 {
+        font-size: @h2__font-size-desktop;
+        margin-bottom: @h2__margin-bottom__desktop;
+        letter-spacing: @h2__letter-spacing__desktop;
+    }
+
+    h3, .h3 {
+        font-size: @h3__font-size-desktop;
+        margin-bottom: @h3__margin-bottom__desktop;
+        letter-spacing: @h3__letter-spacing__desktop;
+    }
+
+    h4, .h4 {
+        font-size: @h4__font-size-desktop;
+        margin-bottom: @h4__margin-bottom__desktop;
+        letter-spacing: @h4__letter-spacing__desktop;
+    }
+
+    h5, .h5 {
+        font-size: @h5__font-size-desktop;
+        margin-bottom: @h5__margin-bottom__desktop;
+        letter-spacing: @h5__letter-spacing__desktop;
+    }
+
+    h6, .h6 {
+        font-size: @h6__font-size-desktop;
+        margin-bottom: @h6__margin-bottom__desktop;
+        letter-spacing: @h6__letter-spacing__desktop;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+
+}
