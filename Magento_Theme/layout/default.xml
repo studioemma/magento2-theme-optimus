@@ -57,7 +57,7 @@
             <block class="Magento\Framework\View\Element\Template" name="footer.user.content" template="Magento_Theme::html/footer-user-content.phtml" before="newsletter.container" />
             <container name="newsletter.container" htmlTag="div" htmlClass="colm1-4" after="-">
                 <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" template="subscribe.phtml"/>
-                <block class="Magento\Framework\View\Element\Template" name="social" template="Magento_Theme::html/social.phtml" after="-" />
+                <block class="StudioEmma\Optimus\Block\Html\ConfigTemplate" name="social" template="Magento_Theme::html/social.phtml" after="-" />
             </container>
         </referenceContainer>
 
