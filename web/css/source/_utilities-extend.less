@@ -1,27 +1,21 @@
-
 & when (@media-common = true) {
 
-.hover-action-container {
-    position: relative;
+    .hover-action-container {
+        position: relative;
+    }
+
+    .hover-action-content {
+        display: none;
+
+        .is-active & {
+            display: inline-block;
+            position: absolute;
+            z-index: 1;
+            background-color: @color-white;
+            padding: 1rem 2.4rem;
+            border: 1px solid @color-gray80;
+            top: 30px;
+            left: 0;
+        }
+    }
 }
-
-.hover-action-content {
-    display: none;
-    
-    &.open {
-        display: inline-block;
-        position: absolute;
-        z-index: 1;
-        background-color: @color-white;
-        padding: 10px;
-        border: 1px solid @color-gray80;
-        top: 30px;
-        left: 0;
-    }    
-}
-
-}
-
-
-
-

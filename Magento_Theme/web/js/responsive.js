@@ -1,5 +1,5 @@
 /**
- * Copyright © 2015 Magento. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -14,8 +14,13 @@ define([
 
     mediaCheck({
         media: '(min-width: 769px)',
-        // Switch to Desktop Version
+
+        /**
+         * Switch to Desktop Version.
+         */
         entry: function () {
+            var galleryElement;
+
             (function () {
 
                 var productInfoMain = $('.product-info-main'),
@@ -28,7 +33,7 @@ define([
 
             })();
 
-            var galleryElement = $('[data-role=media-gallery]');
+            galleryElement = $('[data-role=media-gallery]');
 
             if (galleryElement.length && galleryElement.data('mageZoom')) {
                 galleryElement.zoom('enable');
@@ -53,23 +58,26 @@ define([
             /* Move store USP block to header on checkout */
             $(".checkout-index-index .footer .store-usp").prependTo($('.top.panel.wrapper .panel.header'));
         },
-        // Switch to Mobile Version
+        /**
+         * Switch to Mobile Version.
+         */
         exit: function () {
-            $('.action.toggle.checkout.progress')
-                .on('click.gotoCheckoutProgress', function () {
+            var galleryElement;
+
+            $('.action.toggle.checkout.progress').on('click.gotoCheckoutProgress', function () {
                     var myWrapper = '#checkout-progress-wrapper';
+
                     scrollTo(myWrapper + ' .title');
                     $(myWrapper + ' .title').addClass('active');
                     $(myWrapper + ' .content').show();
                 });
 
-            $('body')
-                .on('click.checkoutProgress', '#checkout-progress-wrapper .title', function () {
+            $('body').on('click.checkoutProgress', '#checkout-progress-wrapper .title', function () {
                     $(this).toggleClass('active');
                     $('#checkout-progress-wrapper .content').toggle();
                 });
 
-            var galleryElement = $('[data-role=media-gallery]');
+            galleryElement = $('[data-role=media-gallery]');
 
             setTimeout(function () {
                 if (galleryElement.length && galleryElement.data('mageZoom')) {
@@ -130,13 +138,8 @@ define([
         });
 
         /* General dropdown from regular anchor */
-        $('.hover-action').toggle(function() {
-            $(this).next('.hover-action-content').andSelf().wrapAll("<div class='hover-action-container' />");
-            $(this).next('.hover-action-content').addClass('open');
-            return false;
-        }, function(){
-            $(this).next('.hover-action-content').andSelf().unwrap();
-            $(this).next('.hover-action-content').removeClass('open');
+        $('.hover-action').click(function(e) {
+            $(this).parents('.hover-action-container').toggleClass('is-active');
         });
 
         /* Footer language dropdown */
@@ -196,5 +199,3 @@ define([
         $(".block-layered-nav .block-content #narrow-by-list").addClass("force-display");
     });
 });
-
-
