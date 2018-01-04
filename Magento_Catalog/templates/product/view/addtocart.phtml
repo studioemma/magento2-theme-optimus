@@ -17,25 +17,12 @@
         <div class="field qty">
             <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
             <div class="control">
-                <select class="select-qty">
-                        <option value="<?php echo $block->getProductDefaultQty() ?>"><?php echo $block->getProductDefaultQty() ?></option>
-                        <?php if ($block->getProductDefaultQty() != 1 ): ?>
-                        <option value="1">1</option>
-                        <?php endif; ?>
-                        <?php if ($block->getProductDefaultQty() != 2 ): ?>
-                        <option value="2">2</option>
-                        <?php endif; ?>
-                        <?php if ($block->getProductDefaultQty() != 3 ): ?>
-                        <option value="3">3</option>
-                        <?php endif; ?>
-                        <?php if ($block->getProductDefaultQty() != 4 ): ?>
-                        <option value="4">4</option>
-                        <?php endif; ?>
-                        <?php if ($block->getProductDefaultQty() != 5 ): ?>
-                        <option value="5">5</option>
-                        <?php endif; ?>
-                        <option value="more"><?php echo __('More') ?></option>
-                    </select>
+                <?php
+                    $selectHtml = $block->getLayout()->createBlock('StudioEmma\Optimus\Block\Checkout\Cart\SelectQty')->setQty($block->getProductDefaultQty())->setTemplate('StudioEmma_Optimus::checkout/cart/select-qty.phtml')->toHtml();
+                    if (!empty($selectHtml)) {
+                        echo $selectHtml;
+                    }
+                ?>
                 <input type="number"
                        name="qty"
                        id="qty"

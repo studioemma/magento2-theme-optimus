@@ -112,31 +112,6 @@ define([
             $(this).parent().toggleClass('opened');
         });
 
-        /* Cart quantity override */
-        $("#shopping-cart-table .col.qty .select-qty").change(function() {
-            if($(this).val() == "more") {
-                $(this).hide();
-                $(this).next(".qty").css('display', 'inline-block');
-                $(this).next(".qty").focus();
-                $(this).next(".qty").select();
-            } else {
-                $(this).next(".qty").val($(this).val());
-            }
-            $(this).siblings('.small-save-button').css('display','inline-block');
-        });
-
-        /* PDP quantity override */
-        $(".box-tocart .select-qty").change(function() {
-            if($(this).val() == "more") {
-                $(this).hide();
-                $(this).next(".qty").css('display', 'inline-block');
-                $(this).next(".qty").focus();
-                $(this).next(".qty").select();
-            } else {
-                $(this).next(".qty").val($(this).val());
-            }
-        });
-
         /* General dropdown from regular anchor */
         $('.hover-action').click(function(e) {
             $(this).parents('.hover-action-container').toggleClass('is-active');

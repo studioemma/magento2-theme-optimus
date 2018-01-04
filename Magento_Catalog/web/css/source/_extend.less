@@ -10,8 +10,9 @@
 & when (@media-common = true) {
     .box-tocart {
         .select-qty {
-            min-width: 50px;
-            max-width: 50px;
+            @tocart-input-size: @button__line-height__l + 28px;
+            height: @tocart-input-size + 2px;
+            width: @tocart-input-size + 2px;
         }
 
         input#qty {

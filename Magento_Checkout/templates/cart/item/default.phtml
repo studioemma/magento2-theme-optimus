@@ -88,25 +88,12 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                     <span><?= /* @escapeNotVerified */ __('Qty') ?></span>
                 </label>
                 <div class="control qty">
-                    <select class="select-qty">
-                        <option value="<?php echo $block->getQty() ?>"><?php echo $block->getQty() ?></option>
-                        <?php if ($block->getQty() != 1 ): ?>
-                        <option value="1">1</option>
-                        <?php endif; ?>
-                        <?php if ($block->getQty() != 2 ): ?>
-                        <option value="2">2</option>
-                        <?php endif; ?>
-                        <?php if ($block->getQty() != 3 ): ?>
-                        <option value="3">3</option>
-                        <?php endif; ?>
-                        <?php if ($block->getQty() != 4 ): ?>
-                        <option value="4">4</option>
-                        <?php endif; ?>
-                        <?php if ($block->getQty() != 5 ): ?>
-                        <option value="5">5</option>
-                        <?php endif; ?>
-                        <option value="more"><?php echo __('More') ?></option>
-                    </select>
+                    <?php
+                        $selectHtml = $block->getLayout()->createBlock('StudioEmma\Optimus\Block\Checkout\Cart\SelectQty')->setQty($block->getQty())->setTemplate('StudioEmma_Optimus::checkout/cart/select-qty.phtml')->toHtml();
+                        if (!empty($selectHtml)) {
+                            echo $selectHtml;
+                        }
+                    ?>
                     <input id="cart-<?= /* @escapeNotVerified */ $_item->getId() ?>-qty"
                            name="cart[<?= /* @escapeNotVerified */ $_item->getId() ?>][qty]"
                            data-cart-item-id="<?= /* @escapeNotVerified */ $_item->getSku() ?>"
@@ -116,9 +103,10 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                            title="<?= $block->escapeHtml(__('Qty')) ?>"
                            class="input-text qty"
                            data-validate="{required:true,'validate-greater-than-zero':true}"
-                           data-role="cart-item-qty"
-                           style="display: none;" />
+                           data-role="cart-item-qty" />
+                    <?php if (!empty($selectHtml)): ?>
                     <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo __('Update'); ?>" class="small-save-button"></button>
+                    <?php endif; ?>
                 </div>
             </div>
         </td>
