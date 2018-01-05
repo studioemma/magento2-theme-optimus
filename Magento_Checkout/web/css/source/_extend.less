@@ -52,9 +52,89 @@
     .minicart-wrapper {
         z-index: 101;
     }
+
+    .cart.table-wrapper .cart.items {
+
+        .actions-toolbar > .action {
+            .lib-button-reset();
+
+            &.action-edit {
+                .lib-link(
+                    @_link-color: @link__color,
+                    @_link-text-decoration: @link__text-decoration,
+                    @_link-color-visited: @link__visited__color,
+                    @_link-text-decoration-visited: @link__visited__text-decoration,
+                    @_link-color-hover: @link__hover__color,
+                    @_link-text-decoration-hover: @link__hover__text-decoration,
+                    @_link-color-active: @link__active__color,
+                    @_link-text-decoration-active: @link__active__text-decoration,
+                );
+            }
+
+            &.action-delete {
+                .lib-icon-font(
+                    @_icon-font-content: '\f014',
+                    @_icon-font: 'FontAwesome',
+                    @_icon-font-size: 18px,
+                    @_icon-font-line-height: 32px,
+                    @_icon-font-color: inherit,
+                    @_icon-font-color-hover: inherit,
+                    @_icon-font-color-active: inherit,
+                    @_icon-font-margin: 0,
+                    @_icon-font-vertical-align: middle,
+                    @_icon-font-position: before,
+                    @_icon-font-text-hide: true,
+                    @_icon-font-display: inline-block
+                );
+                display: inline-block;
+                position: absolute;
+                top: 15px;
+                right: 0;
+            }
+        }
+
+        .col.qty {
+            min-width: 110px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+    .cart.table-wrapper .cart.items {
+
+        .col.price {
+            display: none;
+        }
+
+        .col.qty {
+            width: 50%;
+            text-align: left;
+            padding-left: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .col.subtotal {
+            width: 50%;
+            text-align: right;
+            padding-right: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .col.item {
+            padding-right: 32px;
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
     .checkout-index-index .opc-wrapper {
         width: 60%;
     }
@@ -69,5 +149,65 @@
             margin-top: 40px;
         }
     }
-}
 
+    .cart.table-wrapper .cart.items {
+
+        .col.item {
+            padding-top: 20px;
+            padding-left: 0;
+
+            .product-item-photo {
+                display: block;
+                float: left;
+                width: 130px;
+            }
+
+            .product-item-details {
+                display: block;
+                width: auto;
+                margin-left: 130px;
+            }
+
+            .actions-toolbar {
+                margin-left: 130px;
+
+                .action-edit {
+                    .lib-link(
+                        @_link-color: @primary__color,
+                        @_link-text-decoration: none,
+                        @_link-color-visited: @primary__color,
+                        @_link-text-decoration-visited: none,
+                        @_link-color-hover: @primary__color,
+                        @_link-text-decoration-hover: none,
+                        @_link-color-active: @primary__color,
+                        @_link-text-decoration-active: none,
+                    );
+                    .lib-icon-font(
+                        @_icon-font-content: '\f040',
+                        @_icon-font: 'FontAwesome',
+                        @_icon-font-size: 18px,
+                        @_icon-font-line-height: 32px,
+                        @_icon-font-color: inherit,
+                        @_icon-font-color-hover: inherit,
+                        @_icon-font-color-active: inherit,
+                        @_icon-font-margin: 0,
+                        @_icon-font-vertical-align: middle,
+                        @_icon-font-position: before,
+                        @_icon-font-text-hide: true,
+                        @_icon-font-display: inline-block
+                    );
+                    display: inline-block;
+                    margin-right: 8px;
+                }
+
+                .action-delete {
+                    position: static;
+                }
+            }
+        }
+
+        .col.subtotal {
+            padding-right: 0;
+        }
+    }
+}

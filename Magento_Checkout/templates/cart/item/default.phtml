@@ -65,6 +65,9 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                     <?= $addInfoBlock->setItem($_item)->toHtml() ?>
                 <?php endif;?>
             </div>
+            <div class="actions-toolbar">
+                <?= /* @escapeNotVerified */ $block->getActions($_item) ?>
+            </div>
         </td>
 
         <?php if ($canApplyMsrp): ?>
@@ -117,13 +120,6 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
             <?php else: ?>
                 <?= $block->getRowTotalHtml($_item) ?>
             <?php endif; ?>
-        </td>
-    </tr>
-    <tr class="item-actions">
-        <td colspan="100">
-            <div class="actions-toolbar">
-                <?= /* @escapeNotVerified */ $block->getActions($_item) ?>
-            </div>
         </td>
     </tr>
 </tbody>
