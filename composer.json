@@ -5,10 +5,10 @@
         "php": "~5.6.0|~7.0.0|~7.1.0",
         "magento/theme-frontend-blank": ">=100.0.0",
         "studioemma/magento2-module-core": ">=2.1.2",
-        "studioemma/magento2-module-optimus": ">=2.0.5"
+        "studioemma/magento2-module-optimus": ">=2.0.6"
     },
     "type": "magento2-theme",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "license": [
         "OSL-3.0"
     ],

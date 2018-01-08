@@ -1,17 +1,10 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © 2015 Studio Emma. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link src="modernizr/modernizr.2.0.6.js" />
-    <!-- separate the optimus framework styles so we do not easily reach the 4096 selectors treshold in IE9 -->
-    <css src="css/optimus-m.css" />
-    <css src="css/optimus-l.css" media="screen and (min-width: 768px)"/>
-    <meta name="twitter:card" content="summary" />
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link src="modernizr/modernizr.2.0.6.js" />
+        <!-- separate the optimus framework styles so we do not easily reach the 4096 selectors treshold in IE9 -->
+        <css src="css/optimus-m.css" />
+        <css src="css/optimus-l.css" media="screen and (min-width: 768px)"/>
+    </head>
 </page>
