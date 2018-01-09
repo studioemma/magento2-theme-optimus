@@ -5,21 +5,6 @@
             <block class="StudioEmma\Optimus\Block\Product\ConfigView" name="product.info.socialsharing" template="Magento_Catalog::product/view/social-sharing.phtml" after="product.info.mailto" />
         </referenceContainer>
 
-        <referenceContainer name="columns.top">
-            <block class="Magento\Framework\View\Element\Template" name="catalog.compare.sidebar"
-                   template="Magento_Catalog::product/compare/sidebar.phtml">
-                <arguments>
-                    <argument name="jsLayout" xsi:type="array">
-                        <item name="components" xsi:type="array">
-                            <item name="compareProducts" xsi:type="array">
-                                <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
-                            </item>
-                        </item>
-                    </argument>
-                </arguments>
-            </block>
-        </referenceContainer>
-
         <referenceBlock name="top.links">
             <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" before="-"
                    template="Magento_Catalog::product/compare/link.phtml">
