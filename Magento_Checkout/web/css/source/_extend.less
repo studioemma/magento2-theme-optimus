@@ -150,11 +150,22 @@
         }
     }
 
+    .cart-container {
+        position: relative;
+
+        .cart-summary {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
     .cart.table-wrapper .cart.items {
 
         .col.item {
             padding-top: 20px;
             padding-left: 0;
+            .lib-clearfix();
 
             .product-item-photo {
                 display: block;
@@ -164,12 +175,15 @@
 
             .product-item-details {
                 display: block;
-                width: auto;
-                margin-left: 130px;
+                width: ~"calc(100% - 130px)";
+                float: right;
+                margin-left: 0;
             }
 
             .actions-toolbar {
-                margin-left: 130px;
+                width: ~"calc(100% - 130px)";
+                float: right;
+                margin-left: 0;
 
                 .action-edit {
                     .lib-link(
