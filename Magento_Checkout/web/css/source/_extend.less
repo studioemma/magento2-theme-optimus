@@ -214,6 +214,23 @@
     .checkout-payment-method .checkout-billing-address .billing-address-details {
         padding-left: 32px;
     }
+
+    .cart-container .form-cart {
+
+        .action.update {
+            display: none;
+        }
+
+        .action.continue {
+            .lib-button-as-link();
+            text-decoration: none!important;
+            font-weight: normal;
+
+            &:before {
+                vertical-align: middle;
+            }
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
