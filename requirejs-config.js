@@ -16,5 +16,12 @@ var config = {
         responsiveslides: ['jquery'],
         magnificpopup: ['jquery'],
         flexslider: ['jquery']
+    },
+    config: {
+        mixins: {
+            'Magento_CheckoutAgreements/js/view/checkout-agreements': {
+                'js/agree-checkbox': true
+            }
+        }
     }
 };

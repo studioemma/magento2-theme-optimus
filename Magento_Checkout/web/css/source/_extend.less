@@ -168,6 +168,47 @@
             font-size: 1.4rem;
         }
     }
+
+    .checkout-agreement label {
+        padding-left: 32px;
+        line-height: 24px;
+        position: relative;
+
+        input {
+            display: none;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: @form-element-input__background;
+            border: 1px @form-element-input__border-color solid;
+            border-radius: 2px;
+        }
+
+        &:after {
+            content: '';
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: url(@bg-checkbox) no-repeat;
+            background-size: 20px 20px;
+            background-position: center center;
+
+        }
+
+        &.active:after {
+            display: block;
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
