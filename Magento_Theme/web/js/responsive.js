@@ -108,7 +108,7 @@ define([
 
     $(document).ready(function () {
         /* Mobile layered nav toggle */
-        $(".catalog-category-view .block.filter .block-title").click(function() {
+        $(".block.filter .block-title").click(function() {
             $(this).parent().toggleClass('opened');
         });
 
