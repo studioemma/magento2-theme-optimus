@@ -11,6 +11,7 @@
         <referenceBlock name="sale.reorder.sidebar" remove="true"/>
         <referenceBlock name="report.bugs" remove="true"/>
         <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
 
         <!-- Head (containing meta tags and favicons) -->
         <referenceBlock name="head.additional">
