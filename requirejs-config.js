@@ -21,6 +21,9 @@ var config = {
         mixins: {
             'Magento_CheckoutAgreements/js/view/checkout-agreements': {
                 'js/agree-checkbox': true
+            },
+            'Magento_Customer/js/view/customer': {
+                'js/accountdropdown': true
             }
         }
     }

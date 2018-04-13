@@ -1,0 +1,212 @@
+& when (@media-common = true) {
+
+    .is-hidden-on-load {
+        display: none;
+    }
+
+    .nav-sections .header.links li {
+
+        > a {
+            border-top: 0;
+        }
+
+        .c-account-dropdown {
+
+            > a {
+                display: none;
+            }
+
+            ul {
+
+                li {
+
+                    > a {
+                        border-top: 1px solid @color-gray82;
+                    }
+
+                    &:first-child {
+
+                        > a {
+                            border-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .c-account-dropdown {
+
+        > a {
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+    .nav-sections .header.links li {
+
+        &.greet.welcome {
+            padding: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .header.panel > .header.links > li.welcome {
+
+        a {
+            padding-left: 0;
+
+            &:active,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        > a {
+
+            &:before {
+                content: '\f007';
+                font-family: 'FontAwesome';
+            }
+        }
+
+        .c-account-dropdown {
+
+            ul {
+
+                li {
+
+                    a {
+                        display: block;
+                        padding: .5em 1em;
+                    }
+
+                    &:first-child {
+
+                        a {
+                            padding-top: 1em;
+                        }
+                    }
+
+                    &:last-child {
+
+                        a {
+                            padding-bottom: 1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .c-account-dropdown {
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: -10px 0;
+
+        > a {
+            position: relative;
+            display: inline-block;
+            max-width: 160px;
+            padding-right: 32px;
+
+            &:before {
+                content: '\f007';
+                font-family: 'FontAwesome';
+                font-size: 20px;
+                line-height: 20px;
+                display: inline-block;
+                padding-right: .25em;
+            }
+
+            &:after {
+                content: '\f107';
+                font-family: 'FontAwesome';
+                font-size: 20px;
+                line-height: 20px;
+                display: inline-block;
+                position: absolute;
+                right: .5em;
+                top: 0;
+            }
+        }
+
+        ul {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 102; // right above minicart
+            background: @page__background-color;
+            border: 1px @border-color__base solid;
+
+            li {
+                margin: 0;
+            }
+
+            &:before {
+
+            }
+        }
+    }
+
+    .touchevents {
+
+        .c-account-dropdown {
+
+            ul {
+                display: none;
+            }
+
+            &.is-active {
+
+                > a {
+
+                    &:after {
+                        content: '\f106';
+                    }
+                }
+
+                ul {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .no-touchevents {
+
+        .c-account-dropdown {
+
+            ul {
+                display: none;
+            }
+
+            &:hover {
+
+                > a {
+
+                    &:after {
+                        content: '\f106';
+                    }
+                }
+
+                ul {
+                    display: block;
+                }
+            }
+        }
+    }}

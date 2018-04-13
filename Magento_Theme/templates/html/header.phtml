@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 // @codingStandardsIgnoreFile
 
@@ -15,12 +11,33 @@ $welcomeMessage = $block->getWelcome();
     case 'welcome': ?>
         <li class="greet welcome" data-bind="scope: 'customer'">
             <!-- ko if: customer().fullname  -->
-            <span data-bind="text: new String('<?= $block->escapeHtml(__('Welcome, %1!', '%1')) ?>').replace('%1', customer().firstname)">
-            </span>
+            <div class="c-account-dropdown is-hidden-on-load" data-bind="css: { 'is-hidden-on-load': !customer(), 'is-active': menuActive() }">
+                <a href="javascript:void(0)" data-bind="click: toggleMenu">
+                    <span data-bind="text: customer().firstname"></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="<?= $block->getUrl('customer/account') ?>">
+                            <span><?= __('My account') ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= $block->getUrl('sales/order/history') ?>">
+                            <span><?= __('My orders') ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= $block->getUrl('customer/account/logout') ?>">
+                            <span><?= __('Sign Out') ?></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <!-- /ko -->
             <!-- ko ifnot: customer().fullname  -->
-            <span data-bind='html:"<?= $block->escapeHtmlAttr($welcomeMessage) ?>"'></span>
-            <?= $block->getBlockHtml('header.additional') ?>
+            <a href="<?= $block->getUrl('customer/account') ?>" class="is-hidden-on-load" data-bind="css: { 'is-hidden-on-load': !customer() }">
+                <span><?= __('Account') ?></span>
+            </a>
             <!-- /ko -->
         </li>
         <script type="text/x-magento-init">
