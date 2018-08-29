@@ -1,0 +1,37 @@
+/* Cookie notice styling */
+
+//Cookie notice variables
+@cookie-notice-maxwidth: 500px;
+@cookie-notice-contentpadding: 20px;
+@cookie-notice-boxmargin: 20px;
+
+@cookie-notice-background-color: #fff;
+@cookie-notice-text-color: #000;
+
+@cookie-notice-border-width: 1px;
+@cookie-notice-border-color: #ccc;
+
+
+.message.global.cookie{
+  color: @cookie-notice-text-color;
+  background-color: @cookie-notice-background-color;
+  border: @cookie-notice-border-width solid @cookie-notice-border-color;
+  width: auto;
+  max-width: @cookie-notice-maxwidth;
+  padding: @cookie-notice-contentpadding;
+  margin-left: @cookie-notice-boxmargin;
+  margin-right: @cookie-notice-boxmargin;
+  margin-bottom: @cookie-notice-boxmargin;
+  a {
+    text-decoration: underline;
+  }
+  p{
+    margin-bottom: 1.3em;
+  }
+  #btn-cookie-allow{
+    background-image: none;
+    border-radius: 0;
+    text-shadow: none;
+    padding: 8px 10px;
+  }
+}
