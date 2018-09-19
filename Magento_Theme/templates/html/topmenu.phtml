@@ -16,7 +16,7 @@
     $currentUrl = $block->getCurrentUrl();
 ?>
 
-<nav class="navigation" role="navigation">
+<nav class="navigation" data-action="navigation">
     <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
         <li class="level0 home <?php if($currentUrl == '/'): ?>active<?php endif; ?>"><a href="/" title="<?php echo __('Home') ?>" class="level-top"><span></span></a></li>
         <?php echo $_menu; ?>
