@@ -12,122 +12,52 @@
  *
  */
 
-//Get current category
-$currentCategory = $block->getCurrentCategory();
-//Declare filtered category array
-$categories = array();
+$categories = $this->getCategories();
 
-//Check to see if only selected categories should be shown, or all children from the current category
-if(empty($this->getSelectedCategoryIds())){
+if ($this->categoriesCount() > 0):
 
-    if (!empty($this->getSelectedParentCategoryId())){
-        $currentCategory = $block->getCategoryById($this->getSelectedParentCategoryId());
-    }
-
-    if($currentCategory->hasChildren()){
-        foreach ($currentCategory->getChildrenCategories() as $category)
-        {
-            $_cat = $block->getCategoryById($category->getId());
-            if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
-                //Add category to array
-                $categories[] = $_cat;
-            }
-        }
-    }
-
-}else{
-
-    $selected_categories = explode(',',$this->getSelectedCategoryIds());
-    foreach ($selected_categories as $category)
-    {
-        $_cat = $block->getCategoryById($category);
-        if($_cat->getIsActive() && $_cat->getIncludeInMenu()){
-            //Add category to array
-            $categories[] = $_cat;
-        }
-    }
-
-}
-
-
-$bShowColumns = false;
-$nofItemsPerColumn = count($categories);
-$columnCount = (int)$block->getColumnCount();
-
-//When no columncount has been requested, there's only 1 column
-if($columnCount == 0){
-    $columnCount = 1;
-}
-
-//When requested column count exceeds number of items in total, set the requested columns to the number of items
-if($columnCount > $nofItemsPerColumn){
-    $columnCount = $nofItemsPerColumn;
-}
-
-// At least 1 item per column should be available, otherwise, lower the columncount
-// When columnCount > 1 -> show colm-grid and set nofItemsPerColumn
-if($columnCount > 1){
-    $bShowColumns = true;
-    $nofItemsPerColumn = ceil($nofItemsPerColumn/$columnCount);
-
-    $totalCount = $columnCount * $nofItemsPerColumn;
-    $diff = abs(count($categories) - $totalCount);
-    if($diff > $nofItemsPerColumn){
-        $columnCount--;
-    }
-
-}
-
-
-if(count($categories) > 0):
-$cssClasses = "";
-
-if(!empty($this->getCssClass())): ?>
-<div class='<?php echo $this->getCssClass()?>'>
-<?php endif; ?>
-    <?php if($block->getTitle() != ''): ?>
-    <h2><?php echo $block->getTitle(); ?></h2>
+    if (!empty($this->getCssClass())): ?>
+        <div class="<?= $this->getCssClass() ?>">
     <?php endif; ?>
-
-    <nav role="navigation">
-        <?php if($bShowColumns): ?>
-        <div class="colm-grid">
-            <div class="colm colm1-<?php echo $columnCount?>">
+        <?php if (!empty($block->getTitle())): ?>
+            <h2><?= $block->getTitle(); ?></h2>
         <?php endif; ?>
-        <ul class="catalog-navigation">
-        <?php
-        $k = 0;
-        for($i=0;$i<count($categories);$i++):
-            if(isset($categories[$i])):
-            $k++;
-            ?>
-                <li class='category category-<?php echo $categories[$i]->getId(); ?>'><a class="category-link" href="<?php echo $categories[$i]->getUrl();?>" title="<?php echo $this->escapeHtml($categories[$i]->getName());?>">
-                    <span><?php echo $this->escapeHtml($categories[$i]->getName()); ?></span>
-                    </a>
-                </li>
-
-            <?php
-
-                if($k == $nofItemsPerColumn && $i != (count($categories)-1) && $bShowColumns):
-                    $k = 0;
+            <nav role="navigation">
+            <?php if ($this->bShowColumns()): ?>
+                <div class="colm-grid">
+                    <div class="colm colm1-<?= $this->columnCount()?>">
+            <?php endif; ?>
+                        <ul class="catalog-navigation">
+                    <?php $k = 0;
+                    for ($i=0; $i < $this->categoriesCount(); $i++):
+                        if (isset($categories[$i])):
+                            $k++;
                     ?>
+                            <li class='category category-<?= $categories[$i]->getId(); ?>'>
+                                <a class="category-link" href="<?= $categories[$i]->getUrl();?>" title="<?= $this->escapeHtml($categories[$i]->getName());?>">
+                                    <span><?= $this->escapeHtml($categories[$i]->getName()); ?></span>
+                                </a>
+                            </li>
+                        <?php
+                            if ($k == $this->nofItemsPerColumn() && $i != ($this->categoriesCount() - 1) && $this->bShowColumns()):
+                                $k = 0;
+                        ?>
                         </ul>
                     </div>
-                    <div class="colm colm1-<?php echo $columnCount?>">
+                    <div class="colm colm1-<?= $this->columnCount() ?>">
                         <ul class="catalog-navigation">
-                <?php
-                endif;
-
-            endif; ?>
-        <?php endfor; ?>
-        </ul>
-        <?php if($bShowColumns): ?>
-            </div>
+                        <?php
+                            endif;
+                        endif;
+                    endfor; ?>
+                        </ul>
+                <?php if ($this->bShowColumns()): ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </nav>
+    <?php if (!empty($this->getCssClass())): ?>
         </div>
-        <?php endif; ?>
-    </nav>
-<?php if(!empty($this->getCssClass())): ?>
-</div>
-<?php endif; ?>
+    <?php endif; ?>
 
 <?php endif; ?>
