@@ -29,13 +29,13 @@ if ($this->categoriesCount() > 0):
             <?php endif; ?>
                         <ul class="catalog-navigation">
                     <?php $k = 0;
-                    for ($i=0; $i < $this->categoriesCount(); $i++):
+                    for ($i = 0; $i < $this->categoriesCount(); $i++):
                         if (isset($categories[$i])):
                             $k++;
                     ?>
                             <li class='category category-<?= $categories[$i]->getId(); ?>'>
-                                <a class="category-link" href="<?= $categories[$i]->getUrl();?>" title="<?= $this->escapeHtml($categories[$i]->getName());?>">
-                                    <span><?= $this->escapeHtml($categories[$i]->getName()); ?></span>
+                                <a class="category-link" href="<?= $categories[$i]->getUrl() ?>" title="<?= $this->escapeHtml($categories[$i]->getName()) ?>">
+                                    <span><?= $this->escapeHtml($categories[$i]->getName()) ?></span>
                                 </a>
                             </li>
                         <?php
