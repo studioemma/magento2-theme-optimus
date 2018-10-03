@@ -4,7 +4,8 @@
 
 var config = {
     deps: [
-        'js/scripts'
+        'js/scripts',
+        'js/responsive-optimus'
     ],
     paths: {
         responsiveslides: 'js/responsiveslides.min',
