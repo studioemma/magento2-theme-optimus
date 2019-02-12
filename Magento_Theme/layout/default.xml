@@ -71,7 +71,7 @@
                     </container>
                     <block class="Magento\Store\Block\Switcher" name="store_language_footer" template="Magento_Theme::html/languages_footer.phtml" after="-" />
                 </container>
-                <container name="credits" htmlTag="div" htmlClass="credits" >
+                <container name="credits" htmlTag="div" htmlClass="footer content credits" >
                     <block class="Magento\Framework\View\Element\Template" name="se.credits" after="-" template="Magento_Theme::html/se-logo.phtml" />
                 </container>
             </container>
