@@ -2,8 +2,8 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/static/frontend/Studioemma/optimus/en_US/Magento_Theme/images/icons/mstile-150x150.png"/>
-            <TileColor>#ed7402</TileColor>
+            <square150x150logo src="/mstile-150x150.png"/>
+            <TileColor>#ffffff</TileColor>
         </tile>
     </msapplication>
 </browserconfig>
