@@ -4,6 +4,12 @@
 //  */
 
 & when (@media-common = true) {
+
+    //Hide filters on mobile because they're moved to the filter toggle with JS - prevent flash of content
+    .sidebar-main > .block.filter{
+        display: none;
+    }
+
     /* Mobile layered nav */
     .toolbar.toolbar-products {
 
@@ -253,4 +259,45 @@
             display: none;
         }
     }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    //Re-enable filters on desktop - is set to invisible on mobile to prevent flash of content
+    .sidebar-main > .block.filter{
+        display: block;
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+
 }
