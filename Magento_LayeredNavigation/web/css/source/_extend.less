@@ -26,6 +26,15 @@
             }
 
             .block-title {
+
+                position: relative;
+                border: 1px solid #d4d4d4;
+                padding: 2px 0px 2px 12px;
+
+                strong{
+                    .lib-css(font-size,1.4rem);
+                }
+
                 cursor: pointer;
                 margin-bottom: 0;
 
@@ -60,10 +69,11 @@
                 .block-content.filter-content {
                     display: block;
                     position: absolute;
-                    top: 42px;
+                    top: 39px;
                     left: 0;
                     z-index: 99;
-                    width: calc(~"100vw - 25px");
+                    //100% viewport
+                    width: calc(~"100vw - 45px");
                     background-color: #fff;
                     border: 1px solid #d1d1d1;
                     padding: 10px;
@@ -80,143 +90,203 @@
         }
     }
 
-    .block.filter {
-        dt {
-            cursor: pointer;
+    // end mobile layered nav
 
-            &:after {
-                content: "\f107";
-                font-family: "FontAwesome";
-                padding-left: 8px;
-            }
-
-            &.toggle-active {
-                &:after {
-                    content: "\f106";
-                }
-            }
+    // Default layered nav styling
+    .filter{
+        .filter-title {
+            display: none;
         }
 
-        dd {
-            .more {
-                display: none;
-
-                a{
-                    margin: 5px 15px;
-                    display: inline-block;
-                    font-style: italic;
-                    color: gray;
-                    border-bottom: 1px solid gray;
-                    font-size: .85em;
-                    padding-bottom: 1px;
-
-                    &:hover {
-                        text-decoration: none;
-                        color: gray;
-                        border-bottom-color: gray;
-                    }
-                }
-            }
-
-            &.collapse {
-                .more {
-                    display: block;
-
-                    &.hidden {
-                        display: none;
-                    }
-
-                    span.less {
-                        display: none;
-                    }
-                }
-
-                li {
-                    &.visible {
-                        display: block;
-                    }
-                }
-            }
-        }
-
-        .filter-options {
-            li.item {
-                &.hidden {
-                    display: none;
-                }
-
-                &.visible {
-                    display: block;
-                }
-            }
-
-            .items {
-                &.open {
-                    .more {
-                        span.less {
-                            display: inline;
-                        }
-
-                        span.more {
-                            display: none;
-                        }
-                    }
-                }
-            }
+        .filter-subtitle {
+            display: none;
         }
     }
 
-    /*
+    .filter-options {
 
-    Checkboxes addon
-    Controlled through 'filter-with-checkbox' class in /app/design/frontend/Studioemma/optimus/Magento_layeredNavigation/layout/catalog_category_view_type_layered.xml
+        .filter-options-content {
+            .item {
+                a {
+                    display: block;
+                    position: relative;
+                    padding: 0 2rem 0 0;
 
-    */
-    body.filter-with-checkbox {
-        .block.filter {
-            .filter-options {
-                li.item {
-                    a {
+                    .lib-link(
+                        @_link-color: @layerednav_link__color,
+                        @_link-text-decoration: none,
+                        @_link-color-visited: @layerednav_link__color,
+                        @_link-text-decoration-visited: none,
+                        @_link-color-hover: @layerednav_link__hover__color,
+                        @_link-text-decoration-hover: none,
+                        @_link-color-active: @layerednav_link__color,
+                        @_link-text-decoration-active: none
+                    );
+
+                    // Only used when checkbox is active
+                    // Controlled through 'filter-with-checkbox' class in /app/design/frontend/Studioemma/optimus/Magento_layeredNavigation/layout/catalog_category_view_type_layered.xml
+
+                    .filter-with-checkbox &{
+
+                        padding-left: @layerednav_checkbox__width;
                         &:before {
                             content: "\f096";
                             font-family: "FontAwesome";
-                            font-size: 13px;
-                            padding-right: 6px;
-                            position: relative;
-                            top: 1px;
-                        }
+                            position: absolute;
+                            top: 2px;
+                            left: 1px;
 
-                        &:hover {
-                            text-decoration: none;
+                            .lib-css(color, @layerednav_checkbox__color);
+                            .lib-css(font-size, @layerednav_checkbox__fontsize);
                         }
 
                         &:hover,
                         &:focus,
                         &.active {
                             &:before {
+                                color: @layerednav_checkbox__hover__color;
                                 content: "\f046";
-                                padding-right: 4px;
                             }
                         }
                     }
+                }
+            }
+
+            //More functionality
+
+            li.more {
+                display: none;
+                margin: 5px 0;
+
+                //Indent when checkbox is active;
+                .filter-with-checkbox &{
+                    padding-left: @layerednav_checkbox__width;
+                }
+
+                a {
+                    display: inline-block;
+                    padding-bottom: 1px;
+
+                    .lib-link(
+                        @_link-color: @layerednav_link_more__color,
+                        @_link-text-decoration: none,
+                        @_link-color-visited: @layerednav_link_more__color,
+                        @_link-text-decoration-visited: none,
+                        @_link-color-hover: @layerednav_link_more__hover__color,
+                        @_link-text-decoration-hover: none,
+                        @_link-color-active: @layerednav_link__color,
+                        @_link-text-decoration-active: none
+                    );
+                    .lib-css(font-size, @layerednav_link_more__fontsize);
+                    
+                    &:link,
+                    &:hover,
+                    &:active,
+                    &:focus{
+                        border-bottom: 1px solid @layerednav_link_more__border__color;
+                    }
+                }
+            }
+
+            //hide extra options by default
+            .item {
+                &.extra-options {
+                    display: none;
+                }
+            }
+            
+            .items {
+                &.is-expandable {
+                    .more {
+                        display: block;
+    
+                        &.hidden {
+                            display: none;
+                        }
+    
+                        span.less {
+                            display: none;
+                        }
+                    }
+    
+                    li.visible {
+                        display: block;
+                    }
+                }
+    
+                &.open {
+                    .item{
+                        &.extra-options{
+                            display: block;
+                        }
+                    }
+                    .more {
+                        span.less {
+                            display: inline;
+                        }
+                        span.more {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            
+            // End more functionality
+        }
+
+        // Align count to the right
+        .count{
+
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .lib-css(color, @layerednav_count__color);
+            .lib-css(font-size, @layerednav_count__fontsize);
+
+            //No round brackets
+            &:before {
+                content: '';
+            }
+
+            &:after {
+                content: '';
+            }            
+            
+        }
+
+        //Layered nav title layout
+
+        .filter-options-title {
+
+            cursor: pointer;
+            padding-bottom: 5px;
+            border-bottom: @layerednav_title_border;
+
+            &:after {
+                content: "\f107";
+                font-family: "FontAwesome";
+                padding-left: 8px;
+            }
+            &.toggle-active {
+                &:after {
+                    content: "\f106";
                 }
             }
         }
     }
 
     .filter-current-subtitle {
-        font-weight:  normal;
-        font-size: 1.5rem;
+        font-weight:  bold;
         display: block;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         color: @primary__color;
+        padding-bottom: 5px;
+        border-bottom: @layerednav_title_border
     }
 
+    // Current filter layout
     .filter-current {
-
-        .block-actions {
-            font-size: 0.935em;
-        }
 
         .items {
             margin-bottom: 8px;
@@ -225,8 +295,7 @@
                 display: inline-block;
                 margin: 0 4px 4px 0;
                 border: 1px @border-color__base solid;
-                font-size: 0.935em;
-                padding: .15em .2em;
+                padding: .4em .5em;
 
                 .action.remove {
                     color: @primary__color;
@@ -236,12 +305,11 @@
                         content: "\f00d";
                         font-family: "FontAwesome";
                     }
-
                     span {
                         display: none;
                     }
                 }
-
+                //Hide filter label
                 .filter-label {
                     display: none;
                 }
@@ -249,16 +317,6 @@
         }
     }
 
-    .block.filter {
-
-        .filter-title {
-            display: none;
-        }
-
-        .filter-subtitle {
-            display: none;
-        }
-    }
 }
 
 //

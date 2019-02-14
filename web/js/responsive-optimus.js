@@ -83,24 +83,10 @@ define([
     /* Autocomplete */
 
     /* Layered navigation more/less toggle */
-    $('.block.filter dd').each(function () {
-        var lnl = $(this).find('li').not('.more').length;
-        if ($(this).find('.show_more_count').val()) {
-            var sizeOfToggle = $(this).find('.show_more_count').val();
-        } else {
-            var sizeOfToggle = 6;
-        }
-
-        if(lnl > sizeOfToggle){
-            $(this).addClass('collapse');
-            $(this).find('li').slice(sizeOfToggle).not('.more').addClass('hidden');
-            $(this).find('li.more a').click(function() {
-                $(this).parent().parent().toggleClass('open');
-                $(this).toggleClass('toggled','');
-                $(this).parent().parent().find('li').not('.more').toggleClass('visible', 500);
-                return false;
-            });
-        }
+    $('.js-toggle-hidden-layerednav').click(function () {
+        //Toggle class
+        $(this).parent().parent().toggleClass('open');
+        return false;
     });
 
     /* Layered navigation accordion dd toggle */
