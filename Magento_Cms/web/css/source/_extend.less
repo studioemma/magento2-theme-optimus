@@ -1,7 +1,5 @@
 // CMS
 
-@layout__max-width-outside: 2000px; // can be overridden in theme.less
-
 & when (@media-common = true) {
     /* -------------------------------------------- *
      * Accordion
@@ -126,8 +124,8 @@
 
             .page.messages {
                 max-width: @layout__max-width;
-                padding-left: 15px;
-                padding-right: 15px;
+                padding-left: @layout__width-xs-indent;
+                padding-right: @layout__width-xs-indent;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -152,8 +150,8 @@
     //Set max widths for content & banner that do not exceed the site
     .content-wrapper {
         max-width: @layout__max-width;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: @layout__width-xs-indent;
+        padding-right: @layout__width-xs-indent;
         margin-left: auto;
         margin-right: auto;
     }
