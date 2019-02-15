@@ -1,0 +1,187 @@
+
+// Extra styling for headings
+// Override existing lib-heading gave an error in _reset.less for some reason
+
+.lib-heading-extra(@_heading_level: h1) {
+    @_text-transform: "@{_heading_level}__text-transform";
+    @_letter-spacing: "@{_heading_level}__letter-spacing";
+    @_inline-link-text-decoration: "@{_heading_level}__inline-link-text-decoration";
+    @_margin-top-block: "@{_heading_level}__margin-top-block";
+
+    & {
+        .lib-css(text-transform, @@_text-transform);
+    }
+
+    & {
+        .lib-css(letter-spacing, @@_letter-spacing);
+    }
+
+    p + &,
+    ul + &,
+    ol + &,
+    blockquote + &{
+        .lib-css(margin-top, @@_margin-top-block);
+    }
+
+
+    //Inline link text decoration
+    a {
+        .lib-css(text-decoration, @@_inline-link-text-decoration);
+    }
+}
+
+.lib-heading-desktop(@_heading_level: h1) {
+    @_font-size: "@{_heading_level}__font-size-desktop";
+    @_line-height: "@{_heading_level}__line-height";
+    @_margin-top: "@{_heading_level}__margin-top__desktop";
+    @_margin-top-block: "@{_heading_level}__margin-top-block__desktop";
+    @_margin-bottom: "@{_heading_level}__margin-bottom__desktop";
+    @_text-transform: "@{_heading_level}__text-transform__desktop";
+    @_letter-spacing: "@{_heading_level}__letter-spacing__desktop";
+
+    & {
+        .lib-css(font-size, @@_font-size);
+    }
+
+    & {
+        .lib-css(line-height, @@_line-height);
+    }
+
+    & {
+        .lib-css(margin-top, @@_margin-top);
+    }
+
+    & {
+        .lib-css(margin-bottom, @@_margin-bottom);
+    }
+
+    & {
+        .lib-css(text-transform, @@_text-transform);
+    }
+
+    & {
+        .lib-css(letter-spacing, @@_letter-spacing);
+    }
+
+    p + &,
+    ul + &,
+    ol + &,
+    blockquote + &{
+        .lib-css(margin-top, @@_margin-top-block);
+    }
+
+}
+
+
+
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    html{
+        /* Smoothing */
+        -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+        -moz-osx-font-smoothing: grayscale; /* Firefox */        
+    }
+
+    body {
+        letter-spacing: @default__letter-spacing;
+    }
+
+    // make sure we can use .hx classes to avoid seo specialist chenanigans
+    .h1 { .lib-heading(h1); }
+    .h2 { .lib-heading(h2); }
+    .h3 { .lib-heading(h3); }
+    .h4 { .lib-heading(h4); }
+    .h5 { .lib-heading(h5); }
+    .h6 { .lib-heading(h6); }
+
+    h1, .h1 {
+        .lib-heading-extra(h1);
+    }
+
+    h2, .h2 {
+        .lib-heading-extra(h2);
+    }
+
+    h3, .h3 {
+        .lib-heading-extra(h3);
+    }
+
+    h4, .h4 {
+        .lib-heading-extra(h4);
+    }
+
+    h5, .h5 {
+        .lib-heading-extra(h5);
+    }
+
+    h6, .h6 {
+        .lib-heading-extra(h6);
+    }
+
+    blockquote {
+        font-family: @blockquote__font-family;
+        letter-spacing: @blockquote__letter-spacing;
+    }
+
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+
+    h1, .h1 {
+        .lib-heading-desktop(h1);
+    }
+
+    h2, .h2 {
+        .lib-heading-desktop(h2);
+    }
+
+    h3, .h3 {
+        .lib-heading-desktop(h3);
+    }
+
+    h4, .h4 {
+        .lib-heading-desktop(h4);
+    }
+
+    h5, .h5 {
+        .lib-heading-desktop(h5);
+    }
+
+    h6, .h6 {
+        .lib-heading-desktop(h6);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+
+}

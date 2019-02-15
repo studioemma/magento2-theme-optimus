@@ -15,19 +15,14 @@
 @centered-icon-block-border: 1px solid black;
 @centered-icon-block-padding: 10px;
 @sitemap-dropdown-color: #333;
-
+@p__margin-bottom: 15px;
 
 //
 //  New layout variables
 //  ---------------------------------------------
 
 @layout__max-width-outside: 2000px; 
-@h1__margin-bottom__desktop: @h1__margin-bottom;
-@h2__margin-bottom__desktop: @h2__margin-bottom;
-@h3__margin-bottom__desktop: @h3__margin-bottom;
-@h4__margin-bottom__desktop: @h4__margin-bottom;
-@h5__margin-bottom__desktop: @h5__margin-bottom;
-@h6__margin-bottom__desktop: @h6__margin-bottom;
+
 
 //
 //  Letter spacing (new variables in Optimus)
@@ -47,6 +42,42 @@
 @h6__letter-spacing: normal;
 @h6__letter-spacing__desktop: @h6__letter-spacing;
 @blockquote__letter-spacing: normal;
+
+
+//
+//
+// HEADING NEW
+// ---------------------------------------------
+
+@h1__margin-bottom__desktop: @h1__margin-bottom;
+@h2__margin-bottom__desktop: @h2__margin-bottom;
+@h3__margin-bottom__desktop: @h3__margin-bottom;
+@h4__margin-bottom__desktop: @h4__margin-bottom;
+@h5__margin-bottom__desktop: @h5__margin-bottom;
+@h6__margin-bottom__desktop: @h6__margin-bottom;
+
+@h1__margin-top__desktop: @h1__margin-top;
+@h2__margin-top__desktop: @h2__margin-top;
+@h3__margin-top__desktop: @h3__margin-top;
+@h4__margin-top__desktop: @h4__margin-top;
+@h5__margin-top__desktop: @h5__margin-top;
+@h6__margin-top__desktop: @h6__margin-top;
+
+@margin-top-block__extra: 1.5;
+@h1__margin-top-block: 0;
+@h2__margin-top-block: @h2__margin-bottom * @margin-top-block__extra;
+@h3__margin-top-block: @h3__margin-bottom * @margin-top-block__extra;
+@h4__margin-top-block: @h4__margin-bottom * @margin-top-block__extra;
+@h5__margin-top-block: @h5__margin-bottom * @margin-top-block__extra;
+@h6__margin-top-block: @h6__margin-bottom * @margin-top-block__extra;
+
+@h1__margin-top-block__desktop: @h1__margin-top-block;
+@h2__margin-top-block__desktop: @h2__margin-top-block;
+@h3__margin-top-block__desktop: @h3__margin-top-block;
+@h4__margin-top-block__desktop: @h4__margin-top-block;
+@h5__margin-top-block__desktop: @h5__margin-top-block;
+@h6__margin-top-block__desktop: @h6__margin-top-block;
+
 
 //
 //  HEADING CHANGES
@@ -124,6 +155,13 @@
 @h6__text-transform: none;
 @h6__text-transform__desktop: @h6__text-transform;
 
+@h1__inline-link-text-decoration: none;
+@h2__inline-link-text-decoration: none;
+@h3__inline-link-text-decoration: none;
+@h4__inline-link-text-decoration: none;
+@h5__inline-link-text-decoration: none;
+@h6__inline-link-text-decoration: none;
+
 //
 //  Font family
 //  ---------------------------------------------
@@ -149,3 +187,10 @@
 @layerednav_checkbox__width: 2rem;
 @layerednav_count__color: @color-gray55;
 @layerednav_count__fontsize: 1.3rem;
+
+
+//
+//  Padding 
+//  ---------------------------------------------
+
+@padding-default: 2.2em;
