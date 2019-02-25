@@ -194,3 +194,25 @@
 //  ---------------------------------------------
 
 @padding-default: 2.2em;
+
+
+//
+//  Messages - links inside messages
+//  ---------------------------------------------
+
+//  Information message -> is shared across message & notice!
+
+@message-info-link__color: @message-info__color;
+@message-info-link__color-hover: darken(@message-info-link__color,10);
+@message-info-link__color-active: @message-info-link__color-hover;
+
+//  Error message
+@message-error-link__color: @error__color;
+@message-error-link__color-hover: darken(@message-error-link__color,10);
+@message-error-link__color-active: @message-error-link__color-hover;
+
+//  Success message
+@message-success-link__color: @message-success__color;
+@message-success-link__color-hover: darken(@message-success-link__color,10);
+@message-success-link__color-active: @message-success-link__color-hover;
+
