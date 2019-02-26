@@ -1,37 +1,81 @@
 /* Cookie notice styling */
 
 //Cookie notice variables
+
+@cookie-notice-fontsize: 1.4rem;
 @cookie-notice-maxwidth: 500px;
 @cookie-notice-contentpadding: 20px;
-@cookie-notice-boxmargin: 20px;
+@cookie-notice-boxmargin: 0 20px 20px;
+@cookie-notice-lineheight: @heading__line-height__base;
+@cookie-notice-icon-fontsize: 1em;
+@cookie-notice-actions-topmargin: @indent__s;
 
-@cookie-notice-background-color: #fff;
-@cookie-notice-text-color: #000;
+//
+//  Common
+//  _____________________________________________
 
-@cookie-notice-border-width: 1px;
-@cookie-notice-border-color: #ccc;
+& when (@media-common = true) {
 
 
-.message.global.cookie{
-  color: @cookie-notice-text-color;
-  background-color: @cookie-notice-background-color;
-  border: @cookie-notice-border-width solid @cookie-notice-border-color;
-  width: auto;
-  max-width: @cookie-notice-maxwidth;
-  padding: @cookie-notice-contentpadding;
-  margin-left: @cookie-notice-boxmargin;
-  margin-right: @cookie-notice-boxmargin;
-  margin-bottom: @cookie-notice-boxmargin;
-  a {
-    text-decoration: underline;
+  .message.global.cookie{
+
+    width: auto;
+
+    .lib-css(font-size, @cookie-notice-fontsize);
+    .lib-css(line-height, @cookie-notice-lineheight);
+    .lib-css(max-width, @cookie-notice-maxwidth);
+    .lib-css(padding, @cookie-notice-contentpadding);
+    .lib-css(margin, @cookie-notice-boxmargin);
+
+    .actions {
+      .lib-css(margin-top, @cookie-notice-actions-topmargin)
+    }
+
+    #btn-cookie-allow{
+      &:before {
+        font-family: "FontAwesome";
+        font-weight: normal;
+        .lib-css(font-size, @cookie-notice-icon-fontsize);
+        content: "\f00c";
+        .lib-css(padding-right, @indent__xs);
+      }      
+    }
+
   }
-  p{
-    margin-bottom: 1.3em;
-  }
-  #btn-cookie-allow{
-    background-image: none;
-    border-radius: 0;
-    text-shadow: none;
-    padding: 8px 10px;
-  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+
 }
