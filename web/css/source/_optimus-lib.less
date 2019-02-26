@@ -34,18 +34,26 @@ html {
 
     /* SE credits */
 
-    .page.bottom .footer.content.credits {
+    .credits,
+    .footer.content.credits {
         padding-top: 1em;
-        text-align: right;
-        border-top: 0;
-
+        text-align: center;
         .se {
             padding-right: 35px;
             position: relative;
             font-size: .75em;
-            color: #a2a2a2;
-            text-decoration: none;
-            font-family: 'Verdana';
+
+            .lib-link(
+                @_link-color: @se-credits__color,
+                @_link-text-decoration: @se-credits__text-decoration,
+                @_link-color-hover: @se-credits__color-hover,
+                @_link-text-decoration-hover: @se-credits__text-decoration,
+                @_link-color-active: @se-credits__color-active,
+                @_link-text-decoration-active: @se-credits__text-decoration,
+                @_link-color-visited: @se-credits__color-visited,
+                @_link-text-decoration-visited: @se-credits__text-decoration,
+            );
+
             &:before {
                 content: "";
                 display: block;
@@ -56,6 +64,11 @@ html {
                 top: -3px;
                 background: transparent url("@{baseDir}images/icons/se-logo.svg") no-repeat;
                 background-size: 25px 25px;
+            }
+            &.white {
+                &:before {
+                    background-image: url("@{baseDir}images/icons/se-logo-white.svg");
+                }
             }
         }
     }
@@ -142,6 +155,14 @@ html {
             }
         }
     }
+
+    /* SE credits */
+
+    .credits,
+    .footer.content.credits {
+        text-align: right;
+    }
+
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {

@@ -13,4 +13,10 @@
         <!-- Number of items shown, rest is collapsed (default 6) -->
         <var name="layerednav_items_shown">6</var>
     </vars>
+    <!-- config for white SE credits logo -->
+    <!--
+    <vars module="Magento_Theme">
+        <var name="se_credits_invert">true</var>
+    </vars>
+    -->
 </view>

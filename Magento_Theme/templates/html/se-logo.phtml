@@ -1,1 +1,7 @@
-<a class="se" href="//www.studioemma.com" target="_blank" title="<?php echo __('Een e-commerce project door Studio Emma') ?>"><?php echo __('E-commerce') ?></a>
+<?php 
+$css_class = "";
+if($block->getVar('se_credits_invert',"Magento_Theme") != ""):
+    $css_class = " white";
+endif;
+?>
+<a class="se<?=$css_class?>" href="//www.studioemma.com" target="_blank" title="<?php echo __('Een e-commerce project door Studio Emma') ?>"><?php echo __('E-commerce') ?></a>
