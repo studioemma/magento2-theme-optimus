@@ -15,6 +15,15 @@
 
 @import 'source/_reset.less';
 @import '_styles.less';
+
+//
+//  Optimus - add optimus lib with all the css files
+//  ---------------------------------------------
+
+@import 'source/_optimus-lib.less';
+
+//  End Optimus
+
 @import (reference) 'source/_extends.less';
 
 //
@@ -39,7 +48,29 @@
 @import 'source/_theme.less';
 
 //
+//  Optimus - add extend for theme variables
+//  ---------------------------------------------
+
+// For project theme, which is a child of Optimus
+@import 'source/_theme-extend.less';
+// For project theme, which is a child of the parent Project theme
+@import 'source/_theme-extend-extra.less';
+
+//  End Optimus
+
+//
 //  Extend for minor customisation
 //  ---------------------------------------------
 
 //@magento_import 'source/_extend.less';
+
+//
+//  Optimus - add extra extend files
+//  ---------------------------------------------
+
+// For project theme, which is a child of Optimus
+//@magento_import 'source/_extend-custom.less';
+// For project theme, which is a child of the parent Project theme
+//@magento_import 'source/_extend-custom-extra.less';
+
+//  End Optimus

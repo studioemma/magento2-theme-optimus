@@ -5,6 +5,8 @@
 
 @import 'source/lib/_lib.less'; // Global lib
 @import 'source/_theme.less'; // Theme overrides
+@import 'source/_theme-extend.less'; // Child theme overrides
+@import 'source/_theme-extend-extra.less'; // Child Child theme overrides
 @import 'source/_variables.less'; // Local theme variables
 
 @baseDir: "../"; // Default
@@ -120,7 +122,7 @@ h3 {
 
 .product.data.items .data.item.content {
     display: block !important;
-    
+
     &#reviews {
         display: none !important;
     }
