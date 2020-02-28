@@ -3,7 +3,8 @@
     "description": "Base theme used by Studio Emma",
     "require": {
         "php": "~5.6.0|>=7.0.0",
-        "magento/theme-frontend-blank": ">=100.0.0",
+        "magento/theme-frontend-blank": "^100.3.3",
+        "magento/module-checkout": "^100.3.3",
         "studioemma/magento2-module-optimus": ">=2.0.23"
     },
     "type": "magento2-theme",
