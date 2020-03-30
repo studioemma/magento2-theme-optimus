@@ -3,5 +3,6 @@
     <body>
         <!-- Move the checkout.registration inside the checkout.success -->
         <move element="checkout.registration" destination="checkout.success" after="-" />
+        <referenceBlock name="page.main.title" remove="true"/>
     </body>
 </page>
