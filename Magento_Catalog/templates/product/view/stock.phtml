@@ -1,23 +1,12 @@
 <!-- This template is meant for stock information: be it dynamic or static (CMS block) -->
 
-<?php 
+<?php
 
-    //Load block            
+    //Load block
     $contentblock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_info_stock')->toHtml();
     //Check to see if block is empty
-    if(!empty($contentblock)): 
+    if(!empty($contentblock)):
         //If not empty -> output block
         echo $contentblock;
-    else:
-        //If empty -> output static content with outline
-        ?>
-        <div class="product-info-stock">
-            <ul>
-                <li>In stock</li>
-                <li>Ordered before 4PM, delivered by tomorrow</li>
-                <li>Shipping costs only €2,95 (Belgium). Free delivery from €40!</li>
-            </ul>
-        </div>
-        <?php
     endif;
 ?>

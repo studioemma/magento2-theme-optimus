@@ -1,12 +1,5 @@
 <?php if ($sb = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('store-usp')->toHtml()) { ?>
+<div class="store-usp icons">
     <?php echo $sb; ?>
-<?php } else { ?>
-    <div class="store-usp icons">
-        <ul>
-        <li><a title="" href="#"><strong>Need advice?</strong> Call xxx/xx.xx.xx (mon - fri 9AM - 6PM)</a></li>
-        <li><a title="" href="#"><strong>Free delivery</strong> from &euro; 40</a></li>
-        <li><a title="" href="#">Authorized shop</a></li>
-        <li><a title="" href="#">Ordered before 4PM, <strong>delivered by tomorrow</strong></a></li>
-        </ul>
-    </div>
+</div>
 <?php } ?>

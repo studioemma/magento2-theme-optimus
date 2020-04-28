@@ -17,17 +17,6 @@
         <div role="document" class="content" tabindex="0">
             <?php if ($sb = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('cookie_notice_content')->toHtml()): ?>
                 <?= $sb ?>
-            <?php else: ?>
-                <p>
-                    <strong><?= $block->escapeHtml(__('We use cookies to make your experience better.')) ?></strong>
-                    <span><?= $block->escapeHtml(__('To comply with the new e-Privacy directive, we need to ask for your consent to set the cookies.')) ?></span>
-                    <?= $block->escapeHtml(__('<a href="%1">Learn more</a>.', $block->getPrivacyPolicyLink()), ['a']) ?>
-                </p>
-                <div class="actions">
-                    <button id="btn-cookie-allow" class="action allow primary">
-                        <span><?= $block->escapeHtml(__('Allow Cookies')) ?></span>
-                    </button>
-                </div>
             <?php endif; ?>
         </div>
     </div>

@@ -23,7 +23,7 @@ $contentblock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->set
     <?php endif; ?>
 
     <h1><?php echo __('Thank you for your order!')?></h1>
-    
+
     <?php if ($block->getOrderId()):?>
         <?php if ($block->getCanViewOrder()) :?>
             <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
