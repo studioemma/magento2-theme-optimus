@@ -21,7 +21,7 @@
 //  New layout variables
 //  ---------------------------------------------
 
-@layout__max-width-outside: 2000px; 
+@layout__max-width-outside: 2000px;
 
 
 //
@@ -190,7 +190,7 @@
 
 
 //
-//  Padding 
+//  Padding
 //  ---------------------------------------------
 
 @padding-default: 2.2em;
@@ -235,6 +235,14 @@
 
 @link__text-decoration: underline;
 
+@link__visited__color: @link__color;
+@link__visited__text-decoration: underline;
+
+@link__hover__color: darken(@link__color, 20%);
+@link__hover__text-decoration: underline;
+
+@link__active__color: darken(@link__color, 20%);
+@link__active__text-decoration: underline;
 
 // Main navigation - desktop
 // ---------------------------------------------
