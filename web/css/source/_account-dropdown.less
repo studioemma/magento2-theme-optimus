@@ -6,6 +6,7 @@
 
     .nav-sections .header.links li {
 
+        &.greet.welcome > a,
         > a {
             border-top: 0;
         }
@@ -60,30 +61,42 @@
             padding: 0;
         }
     }
+
+    .header > .header.links {
+        display: none;
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
 
-    .header.panel > .header.links > li.welcome {
+    .header > .header.links {
 
-        a {
-            padding-left: 0;
+        > li.welcome {
 
-            &:active,
-            &:hover {
-                text-decoration: none;
+            a {
+                padding-left: 0;
+
+                &:active,
+                &:hover {
+                    text-decoration: none;
+                }
             }
-        }
 
-        > a {
+            > a {
+                line-height: 33px;
 
-            &:before {
-                content: '\f007';
-                font-family: 'FontAwesome';
+                &:before {
+                    content: '\f007';
+                    font-family: 'FontAwesome';
+                }
             }
         }
 
         .c-account-dropdown {
+
+            > a {
+                line-height: 33px;
+            }
 
             ul {
 
@@ -137,7 +150,7 @@
                 content: '\f107';
                 font-family: 'FontAwesome';
                 font-size: 20px;
-                line-height: 20px;
+                line-height: 33px;
                 display: inline-block;
                 position: absolute;
                 right: .5em;
@@ -163,50 +176,32 @@
         }
     }
 
-    .touchevents {
+    .c-account-dropdown {
 
-        .c-account-dropdown {
+        ul {
+            display: none;
+        }
 
-            ul {
-                display: none;
+        &.is-active {
+
+            > a {
+
+                &:after {
+                    content: '\f106';
+                }
             }
 
-            &.is-active {
-
-                > a {
-
-                    &:after {
-                        content: '\f106';
-                    }
-                }
-
-                ul {
-                    display: block;
-                }
+            ul {
+                display: block;
             }
         }
     }
 
-    .no-touchevents {
+    .panel.header .header.links {
+        display: none;
+    }
 
-        .c-account-dropdown {
-
-            ul {
-                display: none;
-            }
-
-            &:hover {
-
-                > a {
-
-                    &:after {
-                        content: '\f106';
-                    }
-                }
-
-                ul {
-                    display: block;
-                }
-            }
-        }
-    }}
+    .header.content .header.links {
+        float: right;
+    }
+}

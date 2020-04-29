@@ -72,6 +72,17 @@ html {
             }
         }
     }
+
+    .nav-sections-item-content .header-quick-links {
+        margin-top: 1em;
+    }
+
+    .panel.header {
+
+        .header-quick-links {
+            display: none;
+        }
+    }
 }
 
 //
@@ -81,6 +92,11 @@ html {
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .breadcrumbs {
         display: block;
+    }
+
+    .header.content .block-search {
+        float: left;
+        margin-left: 40px;
     }
 }
 
@@ -163,6 +179,24 @@ html {
         text-align: right;
     }
 
+    .panel.header {
+
+        .header-quick-links {
+            display: block;
+            float: right;
+
+            ul {
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin: 0 1em 0 0;
+                    padding: 0;
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
