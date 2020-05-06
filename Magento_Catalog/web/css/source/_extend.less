@@ -10,7 +10,7 @@
 & when (@media-common = true) {
 
 
-    // Toolbar 
+    // Toolbar
 
     .toolbar-products {
         padding: 0;
@@ -55,10 +55,21 @@
     .sidebar {
         .product-items {
             .product-item {
-                margin-bottom: 40px;
 
                 &-info {
                     &:extend(.abs-add-clearfix all);
+                }
+            }
+        }
+
+        .block.block-compare {
+
+            .block-title {
+
+                > span,
+                > strong {
+                    display: block;
+                    margin-bottom: 0;
                 }
             }
         }
