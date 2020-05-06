@@ -18,8 +18,6 @@ define([
                 $('.product.data.items').tabs('option', 'openOnFocus', true);
             }, 500);
 
-            /* Move layered navigation back to sidebar */
-            $(".toolbar.toolbar-products .block.filter").prependTo($('.sidebar.sidebar-main'));
         },
         /**
          * Switch to Mobile Version.
@@ -28,15 +26,7 @@ define([
             setTimeout(function () {
                 $('.product.data.items').tabs('option', 'openOnFocus', false);
             }, 500);
-
-            /* Move layered navigation to top */
-            $(".sidebar.sidebar-main .block.filter").insertAfter($('.products.wrapper').prevAll('.toolbar.toolbar-products').find('.toolbar-sorter.sorter'));
         }
-    });
-
-    /* Mobile layered nav toggle */
-    $(".block.filter .block-title").click(function() {
-        $(this).parent().toggleClass('opened');
     });
 
     /* General dropdown from regular anchor */
@@ -70,19 +60,4 @@ define([
     });
     /* Autocomplete */
 
-    /* Layered navigation more/less toggle */
-    $('.js-toggle-hidden-layerednav').click(function () {
-        //Toggle class
-        $(this).parent().parent().toggleClass('open');
-        return false;
-    });
-
-    /* Layered navigation accordion dd toggle */
-    $(".block.filter #narrow-by-list > dt").click(function() {
-        $(this).toggleClass('toggle-active','');
-        $(this).next('dd').slideToggle('fast');
-        return false;
-    });
-
-    $(".block-layered-nav .block-content #narrow-by-list").addClass("force-display");
 });
