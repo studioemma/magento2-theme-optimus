@@ -1,0 +1,20 @@
+/* Override in theme because of wrong media query - 768 vs 769 */
+
+//
+//  Default appearance styles
+//  _____________________________________________
+& when (@media-common = true) {
+    .pagebuilder-column {
+        box-sizing: border-box;
+    }
+}
+
+//
+//  Responsive Classes
+//  _____________________________________________
+
+@media only screen and (max-width: (@screen__m - 1)) {
+    .pagebuilder-column {
+        flex-basis: 100%;
+    }
+}
