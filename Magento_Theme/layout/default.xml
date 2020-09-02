@@ -53,28 +53,8 @@
             <block class="StudioEmma\Optimus\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-" />
         </referenceBlock>
 
-        <!-- Footer (containing user content, newsletter and social) -->
-        <referenceContainer name="footer" htmlClass="footer content colm-grid">
-            <container name="sitemap" htmlTag="div" htmlClass="colm1-4" before="-">
-                <!--
-                Add the first level of categories in 2 columns to the footer menu on all pages
-                -->
-                <block class="StudioEmma\Optimus\Block\Navigation" name="category_listing_footer" as="category_listing_footer" template="Magento_Catalog::navigation/category-listing.phtml">
-                    <arguments>
-                        <argument name="title" translate="true" xsi:type="string">Discover our catalog</argument>
-                        <argument name="column_count" xsi:type="number">2</argument>
-                        <!-- Change selected parent to id of root category! -->
-                        <!-- <argument name="selected_parent_category_id" xsi:type="string">3</argument> -->
-                        <!-- <argument name="selected_category_ids" xsi:type="string">4,8</argument> -->
-                    </arguments>
-                </block>
-            </container>
-            <block class="Magento\Framework\View\Element\Template" name="footer.user.content" template="Magento_Theme::html/footer-user-content.phtml" before="newsletter.container" />
-            <container name="newsletter.container" htmlTag="div" htmlClass="colm1-4" after="-">
-                <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" template="subscribe.phtml"/>
-            </container>
-        </referenceContainer>
-        <move element="social" destination="newsletter.container" after="-" />
+        <!-- Footer -->
+        <referenceContainer name="footer" htmlClass="footer content" />
 
         <!-- After footer (containing copyright, address, payment and languages) -->
         <referenceContainer name="page.wrapper">
