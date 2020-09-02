@@ -48,16 +48,4 @@ define([
         $(this).toggleClass('toggled');
         $(this).html($(this).html() == translateAdd ? translateAdded : translateAdd);
     });
-
-    /*** Toggle search loading animation for search ***/
-    /* Regular search */
-    $(".form.minisearch input#search").keypress(function (e) {
-        if (this.value) {
-            if (e.keyCode == 13) {
-                $(this).next('.search-loader').fadeIn();
-            }
-        }
-    });
-    /* Autocomplete */
-
 });
