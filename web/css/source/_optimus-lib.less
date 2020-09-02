@@ -41,6 +41,7 @@ html {
         text-align: center;
         .se {
             padding-right: 35px;
+            margin-top: 4px;
             position: relative;
             font-size: .75em;
 
@@ -74,6 +75,20 @@ html {
         }
     }
 
+    .footer.content.credits {
+        display: flex;
+        flex-wrap: wrap;
+
+        .se {
+            margin-left: auto;
+        }
+
+        .copyright {
+            margin: 0 0 20px;
+            text-align: right;
+        }
+    }
+
     .nav-sections-item-content .header-quick-links {
         margin-top: 1em;
     }
@@ -99,6 +114,10 @@ html {
         float: left;
         margin-left: 40px;
     }
+
+    header.page-header .panel.wrapper {
+        border-bottom: 0;
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
@@ -121,14 +140,17 @@ html {
 
     /* Payment methods */
     .payment-methods {
+        margin-top: 25px;
+
         ul {
             font-size: 0;
             text-align: center;
 
             li {
                 display: inline-block;
+                vertical-align: middle;
                 font-size: 1rem;
-                margin: 0 10px 5px 0;
+                margin: 0 5px 5px;
 
                 svg {
                     width: 70px;
@@ -163,13 +185,6 @@ html {
         /* About store */
         .about-store {
             text-align: left;
-        }
-
-        /* Payment methods */
-        .payment-methods {
-            ul {
-                text-align: right;
-            }
         }
     }
 

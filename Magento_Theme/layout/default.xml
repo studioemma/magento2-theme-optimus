@@ -78,18 +78,16 @@
 
         <!-- After footer (containing copyright, address, payment and languages) -->
         <referenceContainer name="page.wrapper">
-            <container name="after.footer" htmlTag="div" htmlClass="page bottom" after="footer-container">
-                <container name="after.footer.content" htmlTag="div" htmlClass="footer content colm-grid">
-                    <container name="about.store" htmlTag="div" htmlClass="about-store colm1-2">
-                        <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="html/copyright.phtml"/>
-                        <block class="Magento\Framework\View\Element\Template" name="address" template="Magento_Theme::html/address.phtml" />
-                    </container>
-                    <container name="payment.methods" htmlTag="div" htmlClass="payment-methods colm1-2">
+            <container name="after.footer" htmlTag="div" htmlClass="page bottom up" after="footer-container">
+                <container name="after.footer.content" htmlTag="div" htmlClass="footer content">
+                    <container name="payment.methods" htmlTag="div" htmlClass="payment-methods">
                         <block class="Magento\Framework\View\Element\Template" name="payment.icons" template="Magento_Theme::html/payment.phtml"/>
                     </container>
-                    <block class="Magento\Store\Block\Switcher" name="store_language_footer" template="Magento_Theme::html/languages_footer.phtml" after="-" />
                 </container>
-                <container name="credits" htmlTag="div" htmlClass="footer content credits" >
+            </container>
+            <container name="below.after.footer" htmlTag="div" htmlClass="page bottom below" after="footer-container">
+                <container name="below.after.footer.content" htmlTag="div" htmlClass="footer content credits">
+                    <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
                     <block class="Magento\Framework\View\Element\Template" name="se.credits" after="-" template="Magento_Theme::html/se-logo.phtml" />
                 </container>
             </container>
