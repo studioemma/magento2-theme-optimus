@@ -57,11 +57,23 @@
         z-index: 101;
     }
 
+    .cart.table-wrapper .item .col.item {
+        min-height: 100px;
+    }
+
     .cart.table-wrapper .cart.items {
 
         .actions-toolbar > .action {
             .lib-button-reset();
+            display: inline-block;
+            margin-right: 1em;
 
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.action-delete,
+            &.action-towishlist,
             &.action-edit {
                 .lib-link(
                     @_link-color: @link__color,
@@ -73,27 +85,6 @@
                     @_link-color-active: @link__active__color,
                     @_link-text-decoration-active: @link__active__text-decoration,
                 );
-            }
-
-            &.action-delete {
-                .lib-icon-font(
-                    @_icon-font-content: '\f014',
-                    @_icon-font: 'FontAwesome',
-                    @_icon-font-size: 18px,
-                    @_icon-font-line-height: 32px,
-                    @_icon-font-color: inherit,
-                    @_icon-font-color-hover: inherit,
-                    @_icon-font-color-active: inherit,
-                    @_icon-font-margin: 0,
-                    @_icon-font-vertical-align: middle,
-                    @_icon-font-position: before,
-                    @_icon-font-text-hide: true,
-                    @_icon-font-display: inline-block
-                );
-                display: inline-block;
-                position: absolute;
-                top: 15px;
-                right: 0;
             }
         }
 
@@ -323,49 +314,21 @@
                 float: right;
                 margin-left: 0;
             }
-
-            .actions-toolbar {
-                width: ~"calc(100% - 130px)";
-                float: right;
-                margin-left: 0;
-
-                .action-edit {
-                    .lib-link(
-                        @_link-color: @primary__color,
-                        @_link-text-decoration: none,
-                        @_link-color-visited: @primary__color,
-                        @_link-text-decoration-visited: none,
-                        @_link-color-hover: @primary__color,
-                        @_link-text-decoration-hover: none,
-                        @_link-color-active: @primary__color,
-                        @_link-text-decoration-active: none,
-                    );
-                    .lib-icon-font(
-                        @_icon-font-content: '\f040',
-                        @_icon-font: 'FontAwesome',
-                        @_icon-font-size: 18px,
-                        @_icon-font-line-height: 32px,
-                        @_icon-font-color: inherit,
-                        @_icon-font-color-hover: inherit,
-                        @_icon-font-color-active: inherit,
-                        @_icon-font-margin: 0,
-                        @_icon-font-vertical-align: middle,
-                        @_icon-font-position: before,
-                        @_icon-font-text-hide: true,
-                        @_icon-font-display: inline-block
-                    );
-                    display: inline-block;
-                    margin-right: 8px;
-                }
-
-                .action-delete {
-                    position: static;
-                }
-            }
         }
 
         .col.subtotal {
             padding-right: 0;
+        }
+
+        .item-actions {
+
+            td {
+                padding-right: 0;
+            }
+
+            .actions-toolbar {
+                text-align: right;
+            }
         }
     }
 }
