@@ -26,18 +26,15 @@
         <div class="block-title filter-title" data-count="<?= /* @noEscape */ $filtered ?>" data-role="title">
             <strong><?= $block->escapeHtml(__('Shop By')); ?></strong>
         </div>
-        <div class="block-content filter-content">
-
-            <div class="responsive-hide-smallscreen">
-                <?= $block->getChildHtml('state') ?>
-                <?php if ($block->getLayer()->getState()->getFilters()) : ?>
-                    <div class="block-actions filter-actions">
-                        <a href="<?= $block->escapeUrl($block->getClearUrl()) ?>" class="action clear filter-clear">
-                            <span><?= $block->escapeHtml(__('Clear All')) ?></span>
-                        </a>
-                    </div>
-                <?php endif; ?>
-            </div>
+        <div class="block-content filter-content" data-role="content">
+            <?= $block->getChildHtml('state') ?>
+            <?php if ($block->getLayer()->getState()->getFilters()) : ?>
+                <div class="block-actions filter-actions">
+                    <a href="<?= $block->escapeUrl($block->getClearUrl()) ?>" class="action clear filter-clear">
+                        <span><?= $block->escapeHtml(__('Clear All')) ?></span>
+                    </a>
+                </div>
+            <?php endif; ?>
             <?php $wrapOptions = false; ?>
             <?php $actives = '';
                   $activeIndex = 0;
@@ -49,7 +46,7 @@
             <?php foreach ($block->getFilters() as $filter) : ?>
                 <?php if ($filter->getItemsCount()) : ?>
                     <?php if (!$wrapOptions) : ?>
-                        <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='
+                        <div class="filter-options" id="narrow-by-list" data-mage-init='
                         {
                             "accordion":
                             {
@@ -79,8 +76,5 @@
                 </script>
             <?php endif; ?>
         </div>
-    </div>
-    <div class="responsive-show-smallscreen active-filters">
-        <?= $block->getChildHtml('state') ?>
     </div>
 <?php endif; ?>
