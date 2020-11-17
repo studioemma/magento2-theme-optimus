@@ -3,6 +3,26 @@
 @layout__max-width-outside: 2000px;
 
 & when (@media-common = true) {
+
+    // unstyle magezon pagebuilder row
+    .message.global.cookie,
+    .payment-methods__icons,
+    .store-usp,
+    .header-quick-links,
+    .no-row {
+
+        .magezon-builder {
+
+            .mgz-container {
+                width: auto;
+            }
+        }
+
+        .mgz-element-column > .mgz-element-inner {
+            padding: 0;
+        }
+    }
+
     /* -------------------------------------------- *
      * Accordion
      */
