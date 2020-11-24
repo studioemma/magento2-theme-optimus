@@ -95,8 +95,8 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php endif; ?>
         <td class="col qty" data-th="<?= $block->escapeHtml(__('Qty')) ?>">
             <div class="field qty">
-                <label class="label" for="cart-<?= /* @escapeNotVerified */ $_item->getId() ?>-qty">
-                    <span><?= /* @escapeNotVerified */ __('Qty') ?></span>
+                <label for="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty">
+                        <span class="label"><?= $block->escapeHtml(__('Qty')) ?></span>
                 </label>
                 <div class="control qty">
                     <?php
@@ -105,17 +105,17 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                             echo $selectHtml;
                         }
                     ?>
-                    <input id="cart-<?= /* @escapeNotVerified */ $_item->getId() ?>-qty"
-                           name="cart[<?= /* @escapeNotVerified */ $_item->getId() ?>][qty]"
-                           data-cart-item-id="<?= /* @escapeNotVerified */ $_item->getSku() ?>"
-                           value="<?= /* @escapeNotVerified */ $block->getQty() ?>"
+                    <input id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
+                               name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
+                               data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
+                               value="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
                                type="number"
                                size="4"
                                step="any"
                                title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
                                class="input-text qty"
                                data-validate="{required:true,'validate-greater-than-zero':true}"
-                           data-role="cart-item-qty" />
+                               data-role="cart-item-qty"/>
                     <?php if (!empty($selectHtml)): ?>
                     <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo __('Update'); ?>" class="small-save-button"></button>
                     <?php endif; ?>

@@ -10,12 +10,12 @@
 ?>
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Add to Cart'); ?>
-<?php if ($_product->isSaleable()): ?>
+<?php if ($_product->isSaleable()) :?>
 <div class="box-tocart">
     <div class="fieldset">
-        <?php if ($block->shouldRenderQuantity()): ?>
+        <?php if ($block->shouldRenderQuantity()) :?>
         <div class="field qty">
-            <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
+            <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
             <div class="control">
                 <?php
                     $selectHtml = $block->getLayout()->createBlock('StudioEmma\Optimus\Block\Checkout\Cart\SelectQty')->setQty($block->getProductDefaultQty())->setTemplate('StudioEmma_Optimus::checkout/cart/select-qty.phtml')->toHtml();
@@ -26,8 +26,9 @@
                 <input type="number"
                        name="qty"
                        id="qty"
-                       value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
-                       title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                       min="0"
+                       value="<?= $block->getProductDefaultQty() * 1 ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
                        class="input-text qty"
                        data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
                        />
@@ -36,10 +37,10 @@
         <?php endif; ?>
         <div class="actions">
             <button type="submit"
-                    title="<?= /* @escapeNotVerified */ $buttonTitle ?>"
+                    title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
                     class="action primary tocart"
                     id="product-addtocart-button">
-                <span><?= /* @escapeNotVerified */ $buttonTitle ?></span>
+                <span><?= $block->escapeHtml($buttonTitle) ?></span>
             </button>
             <?= $block->getChildHtml('', true) ?>
         </div>
