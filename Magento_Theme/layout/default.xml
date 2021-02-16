@@ -15,7 +15,6 @@
         <referenceBlock name="my-account-link" remove="true"/>
         <referenceBlock name="authorization-link" remove="true"/>
         <referenceBlock name="register-link" remove="true"/>
-        <referenceBlock name="catalog.navigation.collapsing" remove="true"/>
 
         <!-- Head (containing meta tags and favicons) -->
         <referenceBlock name="head.additional">
