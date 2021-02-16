@@ -51,7 +51,55 @@
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    /*
+    // ---- Mobile breadcrumb styling
 
+    Will only be visible if more than 2 paths are shown
+    Home > Page 1  -> nothing will hapen
+    Home > Page 1 > Page 2 -> only < Page 1 will be shown
+
+    */
+
+    .breadcrumbs {
+
+        /* Show them on mobile (Optimus hides them by default */
+        display: block;
+
+        &.breadcrumbs-mobile--compact{
+            .item{
+
+                // Hide all but the last parent link
+                &:not(.is-mobile-path){
+                    display: none;
+                }
+                &.is-mobile-path {
+
+                    // Hide right breadcrumb arrows if available
+                    &:after {
+                        display: none;
+                        content: '';
+                    }
+
+                    // Add left breadcrumb arrow
+                    .lib-icon-font(
+                        @_icon-font-content: @breadcrumbs-icon__font-content,
+                        @_icon-font: @breadcrumbs-icon__font,
+                        @_icon-font-size: @breadcrumbs-icon__font-size,
+                        @_icon-font-line-height: @breadcrumbs-icon__font-line-height,
+                        @_icon-font-color: @breadcrumbs-icon__font-color,
+                        @_icon-font-margin: @breadcrumbs-icon__font-margin,
+                        @_icon-font-vertical-align: @breadcrumbs-icon__font-vertical-align,
+                        @_icon-font-position: before
+                    );
+
+                    // Rotate arrow 180 degrees to point left
+                    &:before{
+                        .lib-css(transform, rotate(180deg), 1);
+                    }
+                }
+            }
+        }
+    }
 }
 
 //
