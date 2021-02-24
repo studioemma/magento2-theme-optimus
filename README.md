@@ -133,7 +133,6 @@ As discussed, we divide Optimus specific work into two sections:
 
 * Removed breadcrumbs for screens smaller than 768px
 * Added a mobile pager (< select >) on category pages instead of default pager for screens smaller than 768px
-* Rearranged both the layered nav and sorting options on category pages for screens smaller than 768px. These are now placed in a readable manner above the category grid/list
 * The grid on category pages falls back to one column for screens smaller than 480px
 * Product actions (add to cart, add to wishlist, add to compare) have been added back to the category grid/list on screens smaller than 640px
 * Changed required form elements's colour from red to the default text colour, removed right align of labels
@@ -143,7 +142,6 @@ As discussed, we divide Optimus specific work into two sections:
 * Made several changes to account section to improve usability
 * Page zoom has been added to touch devices
 * Added a home link (text + icon) to the main navigation
-* A toggle system has been introduced in the layered navigation. Every clicked <dt> will toggle its followed <dd>
 * Adjusted the print stylesheet to focus on the real necessary content
 * The empty state wishlist & compare blocks will not be shown if they have no items inside of them
 
@@ -172,9 +170,7 @@ As discussed, we divide Optimus specific work into two sections:
 * have the desktop view display these blocks without any UI modification
 * Header has a new top row of USPs, derived from static block "store-usp"
 * Added a static block "product_info_stock" on the PDP next to the "Add to cart" action. You have to create this static block in the back-end.
-* Added a count toggle for the layered navigation. A specific numbers of filter options is shown; others are hidden in order to not have huge lists of options. You can change the number of filter options in responsive.js.
 * Added the language block to the footer on screens smaller than 768px
-* Added a visual checkbox (not a functional one) system for the layered nav. This can be activated through layout XML.
 * Added an SVG loading animation to the regular search in the header after submitting the search form
 * Added the Font Awesome library
 * The checkout success page now includes a static block with identifier "checkout-success". You have to create this static block.
