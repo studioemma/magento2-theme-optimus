@@ -22,9 +22,6 @@ var config = {
         mixins: {
             'Magento_Customer/js/view/customer': {
                 'js/accountdropdown': true
-            },
-            'mage/collapsible': {
-                'js/collapsible-mixin': true
             }
         }
     }
