@@ -1,0 +1,137 @@
+@limit-content-toggle__text-transform: false;
+@limit-content-fade: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 1.95), #FFFFFF);
+
+.limit-content-height(@height){
+    &[data-limit-content-height="@{height}px"]:not(.is-limit-content--expanded){
+
+        > [data-role="content"],
+        &:not(.is-limit-content--checked){
+            overflow: hidden;
+        }
+
+        // Limit height when not expanded
+        > [data-role="content"]{
+            max-height: ~"@{height}px";
+        }
+
+        // Used to prevent flash of content when limit content should be used. Based on height in data attrib + 1 is by design else the js wouldn't match
+        &:not(.is-limit-content--checked){
+            max-height: ~"calc(@{height}px + 1px)";
+        }
+    }
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .is-limit-content,
+    [data-limit-content="true"]{
+
+        .limit-content-height(150);
+        .limit-content-height(200);
+        .limit-content-height(250);
+        .limit-content-height(300);
+        .limit-content-height(350);
+        .limit-content-height(400);
+        .limit-content-height(450);
+        .limit-content-height(500);
+
+        // Toggle
+        > [data-role="toggle"] {
+
+            display: block;
+
+            cursor:pointer;
+            text-decoration: underline;
+            width: max-content;
+
+            .lib-css(text-transform, @limit-content-toggle__text-transform);
+            margin-left: auto;
+            margin-right: auto;
+
+            // Add plus
+            &:after {
+                padding-left: 5px;
+                font-size: 1.8rem;
+                content: '+';
+            }
+
+        }
+
+        // Content
+        > [data-role="content"] {
+
+            overflow: hidden;
+            position: relative;
+            &:before {
+                pointer-events: none;
+                content: "";
+                position: absolute;
+                height: 90px;
+                width: 100%;
+                bottom: 0px;
+                background-image: @limit-content-fade;
+            }
+
+        }
+
+        &.is-limit-content--expanded {
+
+            // if expanded: no max height, overflow visible & hide gradient
+            > [data-role="content"] {
+                overflow: visible;
+                max-height: none !important;
+                &:before {
+                    display: none;
+                }
+            }
+
+            // Set margin on toggle when expanded. Not needed when not expaned
+            > [data-role="toggle"] {
+                margin-top: 10px;
+                &:after {
+                    content: '-';
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+
+}
