@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="catalog_product_link"
+            class="Magento\Catalog\Block\Product\Widget\Link"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/product_widget_link.png">
+        <label translate="true">Catalog Product Link</label>
+        <description translate="true">Link to a Specified Product</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <options>
+                    <option name="link_empty" value="product/widget/link/link_empty.phtml">
+                        <label translate="true">Product Link Empty Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="catalog_category_link"
+            class="Magento\Catalog\Block\Category\Widget\Link"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/category_widget_link.png">
+        <label translate="true">Catalog Category Link</label>
+        <description translate="true">Link to a Specified Category</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <options>
+                    <option name="link_empty" value="category/widget/link/link_empty.phtml">
+                        <label translate="true">Category Link Empty Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="cms_page_link" class="Magento\Cms\Block\Widget\Page\Link" is_email_compatible="true"
+            placeholder_image="Magento_Cms::images/widget_page_link.png">
+        <label translate="true">CMS Page Link</label>
+        <description translate="true">Link to a CMS Page</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <options>
+                    <option name="link_empty" value="widget/link/link_empty.phtml">
+                        <label translate="true">CMS Page Link Empty Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="cms_static_block" class="Magento\Cms\Block\Widget\Block"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">CMS Static Block</label>
+        <description translate="true">Contents of a Static Block</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="10">
+                <options>
+                    <option name="empty" value="widget/static_block/empty.phtml">
+                        <label translate="true">CMS Static Block Empty Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
+
