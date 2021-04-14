@@ -1,33 +1,9 @@
 define([
     'jquery',
-    'matchMedia',
-    'mage/tabs',
     'domReady!',
     'mage/translate'
-], function ($, mediaCheck) {
+], function ($) {
     'use strict';
-
-    mediaCheck({
-        media: '(min-width: 769px)',
-
-        /**
-         * Switch to Desktop Version.
-         */
-        entry: function () {
-            setTimeout(function () {
-                $('.product.data.items').tabs('option', 'openOnFocus', true);
-            }, 500);
-
-        },
-        /**
-         * Switch to Mobile Version.
-         */
-        exit: function () {
-            setTimeout(function () {
-                $('.product.data.items').tabs('option', 'openOnFocus', false);
-            }, 500);
-        }
-    });
 
     /* General dropdown from regular anchor */
     $('.hover-action').click(function(e) {
