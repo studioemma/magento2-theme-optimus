@@ -118,6 +118,12 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
 
+    .is-limit-content--only-desktop {
+
+        > .toggle {
+            display: none;
+        }
+    }
 }
 
 //

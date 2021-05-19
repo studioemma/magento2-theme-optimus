@@ -1,11 +1,31 @@
-
-define(["jquery", "mage/translate"], function($){
+define([
+    'jquery',
+    'matchMedia',
+    'mage/translate'
+], function ($, mediaCheck) {
     "use strict";
 
     // All element with the css class or the pagebuilder attribute set to true
     $('.is-limit-content, [data-limit-content=true]').each(function(){
+
+        if (this.getAttribute('data-limit-content-height') === null) {
+            this.setAttribute('data-limit-content-height', '400px');
+        }
+
         checkHeight($(this));
-    })
+
+        if ($(this).hasClass('is-limit-content--only-desktop')) {
+            mediaCheck({
+                media: '(max-width: 768px)',
+                entry: function () {
+                    $(this).removeClass('is-limit-content');
+                }.bind(this),
+                exit: function () {
+                    $(this).addClass('is-limit-content');
+                }.bind(this)
+            });
+        }
+    });
 
     function checkHeight(element) {
 
